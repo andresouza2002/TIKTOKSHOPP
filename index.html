@@ -52,6 +52,7 @@ button:active,
   z-index:40;
   background:rgba(255,255,255,.94);
   backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
   padding:14px 16px;
   border-bottom:1px solid var(--line);
 }
@@ -796,6 +797,7 @@ button:active,
   max-width:406px;
   background:rgba(255,255,255,.96);
   backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
   border:1px solid rgba(0,0,0,.13);
   border-radius:18px;
   padding:12px 14px;
@@ -989,6 +991,161 @@ button:active,
   color:#777;
   margin-top:12px;
 }
+
+/* RESPONSIVO COMPLETO */
+
+@media (min-width:768px){
+  body{
+    padding-bottom:0;
+  }
+
+  .app{
+    max-width:1180px;
+    padding-bottom:90px;
+  }
+
+  .topbar{
+    max-width:1180px;
+    margin:auto;
+    border-radius:0 0 22px 22px;
+  }
+
+  .hero,
+  .timer,
+  .coupons{
+    margin-left:24px;
+    margin-right:24px;
+  }
+
+  .hero{
+    padding:34px 30px;
+  }
+
+  .hero h1{
+    font-size:52px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    padding:24px;
+  }
+
+  .imgbox{
+    height:230px;
+  }
+
+  .bottomNav,
+  .cartSummary{
+    max-width:1180px;
+  }
+
+  .purchaseToast{
+    max-width:520px;
+  }
+
+  .couponBox{
+    max-width:460px;
+  }
+}
+
+@media (min-width:1024px){
+  .grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .imgbox{
+    height:240px;
+  }
+
+  .card{
+    transition:.2s ease;
+  }
+
+  .card:hover{
+    transform:translateY(-4px);
+  }
+
+  .hero,
+  .coupons,
+  .timer{
+    max-width:1132px;
+  }
+
+  .cartBox,
+  .checkoutPanel,
+  .empty{
+    max-width:720px;
+    margin-left:24px;
+  }
+}
+
+@media (min-width:1280px){
+  .app,
+  .topbar,
+  .bottomNav,
+  .cartSummary{
+    max-width:1280px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(5,1fr);
+  }
+
+  .hero,
+  .coupons,
+  .timer{
+    max-width:1232px;
+  }
+}
+
+@media (max-width:430px){
+  .app{
+    max-width:100%;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:11px;
+    padding:11px;
+  }
+
+  .imgbox{
+    height:170px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .couponBtn{
+    padding:9px 11px;
+    font-size:11px;
+  }
+
+  .couponsHead h2{
+    font-size:18px;
+  }
+}
+
+@media (max-width:360px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .imgbox{
+    height:230px;
+  }
+
+  .couponsHead{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .couponBtn{
+    width:100%;
+  }
+}
 </style>
 </head>
 
@@ -1171,6 +1328,7 @@ let couponApplied=JSON.parse(localStorage.getItem("couponApplied")||"false");
 
 function moneyToNumber(v){return Number(v.replace("R$","").replace(/\./g,"").replace(",",".").trim())}
 function brl(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+
 function save(){
   localStorage.setItem("cart",JSON.stringify(cart));
   localStorage.setItem("favorites",JSON.stringify(favorites));
@@ -1178,263 +1336,279 @@ function save(){
 }
 
 function heartIcon(active){
-  return active
-  ? `<svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>`
-  : `<svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>`;
+  return `<svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>`;
 }
 
 function productCard(p){
-let fav=favorites.includes(p.id);
-let hl=p.highlight ? `featured ${p.highlight}` : "";
-let ribbon=p.label ? `<div class="ribbon ${p.highlight}">${p.label}</div>` : "";
-return `
-<div class="card ${hl}">
-${ribbon}
-<button class="fav press ${fav?'active':''}" onclick="toggleFavorite(${p.id})">${heartIcon(fav)}</button>
-<div class="imgbox"><img src="${p.image}" onerror="this.src='https://via.placeholder.com/400x400?text=Produto'"></div>
-<div class="cardBody">
-<span class="badge">${p.tag}</span>
-<div class="title">${p.name}</div>
-<div class="price">${p.price}</div>
-<div class="old">${p.old}</div>
-<div class="tags"><span>Frete grátis</span><span>80% OFF</span></div>
-<div class="rating">★ ${p.rating}</div>
-<div class="actions">
-<button class="add press" onclick="addToCart(${p.id})">Carrinho</button>
-<button class="buy press" onclick="buyNow(${p.id})">Comprar</button>
-</div>
-</div>
-</div>`;
+  let fav=favorites.includes(p.id);
+  let hl=p.highlight ? `featured ${p.highlight}` : "";
+  let ribbon=p.label ? `<div class="ribbon ${p.highlight}">${p.label}</div>` : "";
+
+  return `
+  <div class="card ${hl}">
+    ${ribbon}
+    <button class="fav press ${fav?'active':''}" onclick="toggleFavorite(${p.id})">${heartIcon(fav)}</button>
+    <div class="imgbox"><img src="${p.image}" onerror="this.src='https://via.placeholder.com/400x400?text=Produto'"></div>
+    <div class="cardBody">
+      <span class="badge">${p.tag}</span>
+      <div class="title">${p.name}</div>
+      <div class="price">${p.price}</div>
+      <div class="old">${p.old}</div>
+      <div class="tags"><span>Frete grátis</span><span>80% OFF</span></div>
+      <div class="rating">★ ${p.rating}</div>
+      <div class="actions">
+        <button class="add press" onclick="addToCart(${p.id})">Carrinho</button>
+        <button class="buy press" onclick="buyNow(${p.id})">Comprar</button>
+      </div>
+    </div>
+  </div>`;
 }
 
-function renderProducts(){productsGrid.innerHTML=products.map(productCard).join("")}
+function renderProducts(){
+  productsGrid.innerHTML=products.map(productCard).join("");
+}
 
 function renderFavorites(){
-let favs=products.filter(p=>favorites.includes(p.id));
-favoritesGrid.innerHTML=favs.map(productCard).join("");
-favEmpty.style.display=favs.length?"none":"block";
+  let favs=products.filter(p=>favorites.includes(p.id));
+  favoritesGrid.innerHTML=favs.map(productCard).join("");
+  favEmpty.style.display=favs.length?"none":"block";
 }
 
 function renderCart(){
-if(cart.length===0){
-cartList.innerHTML="";
-cartEmpty.style.display="block";
-cartSummary.classList.remove("active");
-checkoutPanel.classList.remove("active");
-updateCount();
-return;
-}
-cartEmpty.style.display="none";
-cartSummary.classList.add("active");
-cartList.innerHTML=`
-<div class="storeHead">Central de Ofertas</div>
-<div class="free">Você ganhou frete grátis. Promoção válida até 23:59.</div>
-${cart.map(i=>{
-let p=products.find(x=>x.id===i.id);
-return `
-<div class="cartItem">
-<img src="${p.image}" onerror="this.src='https://via.placeholder.com/200x200?text=Produto'">
-<div class="cartInfo">
-<h3>${p.name}</h3>
-<div class="cartPrice">${p.price}</div>
-<div class="qty">
-<button class="press" onclick="changeQty(${p.id},-1)">−</button>
-<span>${i.qty}</span>
-<button class="press" onclick="changeQty(${p.id},1)">+</button>
-</div>
-<button class="remove" onclick="removeCart(${p.id})">Remover</button>
-</div>
-</div>`;
-}).join("")}`;
-updateCount();
-updateTotal();
+  if(cart.length===0){
+    cartList.innerHTML="";
+    cartEmpty.style.display="block";
+    cartSummary.classList.remove("active");
+    checkoutPanel.classList.remove("active");
+    updateCount();
+    return;
+  }
+
+  cartEmpty.style.display="none";
+  cartSummary.classList.add("active");
+
+  cartList.innerHTML=`
+  <div class="storeHead">Central de Ofertas</div>
+  <div class="free">Você ganhou frete grátis. Promoção válida até 23:59.</div>
+  ${cart.map(i=>{
+    let p=products.find(x=>x.id===i.id);
+    return `
+    <div class="cartItem">
+      <img src="${p.image}" onerror="this.src='https://via.placeholder.com/200x200?text=Produto'">
+      <div class="cartInfo">
+        <h3>${p.name}</h3>
+        <div class="cartPrice">${p.price}</div>
+        <div class="qty">
+          <button class="press" onclick="changeQty(${p.id},-1)">−</button>
+          <span>${i.qty}</span>
+          <button class="press" onclick="changeQty(${p.id},1)">+</button>
+        </div>
+        <button class="remove" onclick="removeCart(${p.id})">Remover</button>
+      </div>
+    </div>`;
+  }).join("")}`;
+
+  updateCount();
+  updateTotal();
 }
 
 function addToCart(id){
-if(cart.length>0){
-  toast("Promoção limitada: finalize este item para adicionar outro.");
-  showPage("cart");
-  return;
-}
-cart=[{id,qty:1}];
-save();
-renderCart();
-updateCount();
-toast("Produto adicionado ao carrinho.");
+  if(cart.length>0){
+    toast("Promoção limitada: finalize este item para adicionar outro.");
+    showPage("cart");
+    return;
+  }
+
+  cart=[{id,qty:1}];
+  save();
+  renderCart();
+  updateCount();
+  toast("Produto adicionado ao carrinho.");
 }
 
 function changeQty(id,n){
-let item=cart.find(i=>i.id===id);
-if(!item)return;
+  let item=cart.find(i=>i.id===id);
+  if(!item)return;
 
-if(n>0){
-  toast("A promoção permite apenas 1 unidade por compra.");
-  return;
-}
+  if(n>0){
+    toast("A promoção permite apenas 1 unidade por compra.");
+    return;
+  }
 
-item.qty+=n;
-if(item.qty<=0)cart=[];
-save();
-renderCart();
+  item.qty+=n;
+  if(item.qty<=0)cart=[];
+  save();
+  renderCart();
 }
 
 function removeCart(id){
-cart=[];
-save();
-renderCart();
-toast("Produto removido.");
+  cart=[];
+  save();
+  renderCart();
+  toast("Produto removido.");
 }
 
-function updateCount(){cartCount.innerText=cart.reduce((s,i)=>s+i.qty,0)}
-function cartSubtotal(){return cart.reduce((s,i)=>{let p=products.find(x=>x.id===i.id);return s+moneyToNumber(p.price)*i.qty},0)}
-function updateTotal(){cartTotal.innerText=brl(cartSubtotal())}
+function updateCount(){
+  cartCount.innerText=cart.reduce((s,i)=>s+i.qty,0);
+}
+
+function cartSubtotal(){
+  return cart.reduce((s,i)=>{
+    let p=products.find(x=>x.id===i.id);
+    return s+moneyToNumber(p.price)*i.qty;
+  },0);
+}
+
+function updateTotal(){
+  cartTotal.innerText=brl(cartSubtotal());
+}
 
 function openInternalCheckout(){
-if(cart.length===0){
-  toast("Carrinho vazio.");
-  return;
-}
+  if(cart.length===0){
+    toast("Carrinho vazio.");
+    return;
+  }
 
-showPage("cart");
-checkoutPanel.classList.add("active");
+  showPage("cart");
+  checkoutPanel.classList.add("active");
 
-let subtotal=cartSubtotal();
-let final=couponApplied?subtotal*0.20:subtotal;
+  let subtotal=cartSubtotal();
+  let final=couponApplied?subtotal*0.20:subtotal;
 
-checkoutItems.innerHTML=cart.map(i=>{
-let p=products.find(x=>x.id===i.id);
-return `<div class="row"><span>${i.qty}x ${p.name.substring(0,30)}...</span><b>${brl(moneyToNumber(p.price)*i.qty)}</b></div>`;
-}).join("");
+  checkoutItems.innerHTML=cart.map(i=>{
+    let p=products.find(x=>x.id===i.id);
+    return `<div class="row"><span>${i.qty}x ${p.name.substring(0,30)}...</span><b>${brl(moneyToNumber(p.price)*i.qty)}</b></div>`;
+  }).join("");
 
-subTotal.innerText=brl(subtotal);
-couponText.innerText=couponApplied?"80% OFF aplicado":"Não aplicado";
-finalTotal.innerText=brl(final);
-window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+  subTotal.innerText=brl(subtotal);
+  couponText.innerText=couponApplied?"80% OFF aplicado":"Não aplicado";
+  finalTotal.innerText=brl(final);
+  window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
 }
 
 function buyNow(id){
-let p=products.find(x=>x.id===id);
+  let p=products.find(x=>x.id===id);
 
-if(p.checkout){
-  window.location.href=p.checkout;
-  return;
-}
+  if(p.checkout){
+    window.location.href=p.checkout;
+    return;
+  }
 
-cart=[{id,qty:1}];
-save();
-renderCart();
-openInternalCheckout();
+  cart=[{id,qty:1}];
+  save();
+  renderCart();
+  openInternalCheckout();
 }
 
 function finishOrder(){
-if(cart.length===0){
-  toast("Carrinho vazio.");
-  return;
-}
+  if(cart.length===0){
+    toast("Carrinho vazio.");
+    return;
+  }
 
-let p=products.find(x=>x.id===cart[0].id);
+  let p=products.find(x=>x.id===cart[0].id);
 
-if(p.checkout){
-  window.location.href=p.checkout;
-  return;
-}
+  if(p.checkout){
+    window.location.href=p.checkout;
+    return;
+  }
 
-toast("Checkout interno pronto para integrar.");
+  toast("Checkout interno pronto para integrar.");
 }
 
 function toggleFavorite(id){
-favorites=favorites.includes(id)?favorites.filter(f=>f!==id):[...favorites,id];
-save();
-renderProducts();
-renderFavorites();
-toast(favorites.includes(id)?"Adicionado aos favoritos.":"Removido dos favoritos.");
+  favorites=favorites.includes(id)?favorites.filter(f=>f!==id):[...favorites,id];
+  save();
+  renderProducts();
+  renderFavorites();
+  toast(favorites.includes(id)?"Adicionado aos favoritos.":"Removido dos favoritos.");
 }
 
 function applyCoupon(){
-couponApplied=true;
-save();
-updateCouponButton();
-toast("Cupom aplicado. Boas compras.");
+  couponApplied=true;
+  save();
+  updateCouponButton();
+  toast("Cupom aplicado. Boas compras.");
 }
 
 function saveCouponFromModal(){
-couponApplied=true;
-save();
-updateCouponButton();
+  couponApplied=true;
+  save();
+  updateCouponButton();
 
-const btn=document.getElementById("saveCouponBtn");
-btn.classList.add("saved");
-btn.innerText="Cupom aplicado";
+  const btn=document.getElementById("saveCouponBtn");
+  btn.classList.add("saved");
+  btn.innerText="Cupom aplicado";
 
-setTimeout(()=>{
-  closeCouponModal();
-  toast("Cupom 80% OFF + frete grátis aplicado.");
-},700);
+  setTimeout(()=>{
+    closeCouponModal();
+    toast("Cupom 80% OFF + frete grátis aplicado.");
+  },700);
 }
 
 function closeCouponModal(){
-document.getElementById("couponModal").style.display="none";
+  document.getElementById("couponModal").style.display="none";
 }
 
 function updateCouponButton(){
-if(couponApplied){
-couponBtn.classList.add("applied");
-couponBtn.innerHTML="Cupom aplicado<small>Boas compras.</small>";
-}
+  if(couponApplied){
+    couponBtn.classList.add("applied");
+    couponBtn.innerHTML="Cupom aplicado<small>Boas compras.</small>";
+  }
 }
 
 function showPage(page){
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
-document.getElementById(page+"Page").classList.add("active");
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
+  document.getElementById(page+"Page").classList.add("active");
 
-let nav=document.getElementById("nav-"+page);
-if(nav)nav.classList.add("active");
+  let nav=document.getElementById("nav-"+page);
+  if(nav)nav.classList.add("active");
 
-if(page==="favorites")renderFavorites();
-if(page==="cart")renderCart();
-if(page!=="cart")checkoutPanel.classList.remove("active");
+  if(page==="favorites")renderFavorites();
+  if(page==="cart")renderCart();
+  if(page!=="cart")checkoutPanel.classList.remove("active");
 
-window.scrollTo({top:0,behavior:"smooth"});
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function toast(msg){
-let el=document.getElementById("toast");
-el.innerText=msg;
-el.classList.add("show");
-setTimeout(()=>el.classList.remove("show"),1900);
+  let el=document.getElementById("toast");
+  el.innerText=msg;
+  el.classList.add("show");
+  setTimeout(()=>el.classList.remove("show"),1900);
 }
 
 function updateCountdown(){
-const now=new Date();
-const end=new Date();
-end.setHours(23,59,59,999);
+  const now=new Date();
+  const end=new Date();
+  end.setHours(23,59,59,999);
 
-let diff=end-now;
-if(diff<0)diff=0;
+  let diff=end-now;
+  if(diff<0)diff=0;
 
-let h=Math.floor(diff/1000/60/60);
-let m=Math.floor((diff/1000/60)%60);
-let s=Math.floor((diff/1000)%60);
+  let h=Math.floor(diff/1000/60/60);
+  let m=Math.floor((diff/1000/60)%60);
+  let s=Math.floor((diff/1000)%60);
 
-countdown.innerText=
-String(h).padStart(2,"0")+":"+
-String(m).padStart(2,"0")+":"+
-String(s).padStart(2,"0");
+  countdown.innerText=
+  String(h).padStart(2,"0")+":"+
+  String(m).padStart(2,"0")+":"+
+  String(s).padStart(2,"0");
 }
 
 function randomPurchaseToast(){
-const name=names[Math.floor(Math.random()*names.length)];
-const product=products[Math.floor(Math.random()*products.length)];
+  const name=names[Math.floor(Math.random()*names.length)];
+  const product=products[Math.floor(Math.random()*products.length)];
 
-purchaseTitle.innerText=`${name} acabou de comprar`;
-purchaseSub.innerText=product.name;
+  purchaseTitle.innerText=`${name} acabou de comprar`;
+  purchaseSub.innerText=product.name;
 
-purchaseToast.classList.add("show");
+  purchaseToast.classList.add("show");
 
-setTimeout(()=>{
-  purchaseToast.classList.remove("show");
-},4300);
+  setTimeout(()=>{
+    purchaseToast.classList.remove("show");
+  },4300);
 }
 
 renderProducts();
