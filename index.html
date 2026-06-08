@@ -6,81 +6,139 @@
 <title>Central de Ofertas</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{background:#f5f5f5;color:#111;padding-bottom:80px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#f6f6f6;
+  color:#171717;
+  padding-bottom:78px;
+  font-weight:400;
+}
 a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+
+.app{
+  max-width:430px;
+  margin:0 auto;
+  background:#f6f6f6;
+  min-height:100vh;
+}
 
 .topbar{
   background:#fff;
-  padding:14px 16px 10px;
+  padding:14px 16px 12px;
   position:sticky;
   top:0;
   z-index:20;
-  box-shadow:0 1px 8px rgba(0,0,0,.06)
+  border-bottom:1px solid #eee;
 }
-.top-icons{
+.top-line{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   margin-bottom:12px;
 }
-.top-icons span{
+.logo{
+  font-size:21px;
+  font-weight:700;
+}
+.cart-icon{
+  position:relative;
   font-size:24px;
+  cursor:pointer;
+}
+.cart-count{
+  position:absolute;
+  top:-8px;
+  right:-10px;
+  background:#ff2b63;
+  color:#fff;
+  font-size:11px;
+  min-width:18px;
+  height:18px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-weight:700;
 }
 .search{
+  height:44px;
+  background:#f2f2f2;
+  border-radius:14px;
   display:flex;
   align-items:center;
-  background:#f1f1f1;
-  border-radius:12px;
-  padding:10px 12px;
-  font-size:15px;
+  padding:0 14px;
   color:#777;
+  font-size:15px;
 }
-.search b{font-size:20px;margin-right:8px;color:#111}
+.search span{
+  font-size:20px;
+  margin-right:8px;
+  color:#222;
+}
+
+.page{display:none}
+.page.active{display:block}
 
 .hero{
   margin:12px;
   border-radius:18px;
-  overflow:hidden;
-  background:linear-gradient(135deg,#ff2b65,#ff7b2b);
+  background:linear-gradient(135deg,#ff2b63,#ff8a3d);
   color:#fff;
-  padding:18px;
+  padding:20px 18px;
 }
-.hero small{font-weight:800;color:#111}
-.hero h1{font-size:34px;line-height:1;margin:8px 0}
-.hero p{font-size:14px;font-weight:700}
-.hero .cta{
-  display:inline-block;
-  background:#20e0e0;
+.hero small{
   color:#111;
-  font-weight:900;
-  padding:10px 18px;
-  border-radius:30px;
+  font-size:12px;
+  font-weight:700;
+}
+.hero h1{
+  font-size:34px;
+  line-height:.96;
+  margin:8px 0;
+  letter-spacing:-1px;
+}
+.hero p{
+  font-size:14px;
+  line-height:1.4;
+  opacity:.96;
+}
+.hero a{
+  display:inline-block;
   margin-top:14px;
+  background:#19e0df;
+  color:#111;
+  border-radius:999px;
+  padding:10px 18px;
+  font-weight:700;
+  font-size:14px;
 }
 
 .coupons{
   margin:12px;
-  background:#ff2b65;
+  background:#fff;
   border-radius:18px;
   padding:14px;
-  color:#fff;
+  border:1px solid #eee;
 }
-.coupons-head{
+.coupons-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
   margin-bottom:12px;
 }
-.coupons-head h2{font-size:26px}
-.coupons-head button{
-  background:#fff;
-  color:#ff2b65;
+.coupons-title h2{
+  font-size:20px;
+  font-weight:700;
+}
+.coupons-title button{
   border:0;
-  border-radius:24px;
-  padding:10px 16px;
-  font-weight:900;
+  background:#ffedf3;
+  color:#ff2b63;
+  border-radius:999px;
+  padding:9px 13px;
+  font-weight:700;
 }
 .coupon-list{
   display:grid;
@@ -88,28 +146,45 @@ a{text-decoration:none;color:inherit}
   gap:8px;
 }
 .coupon{
-  background:#fff;
-  color:#111;
-  border-radius:10px;
+  border:1px solid #dff7f6;
+  background:#f3ffff;
+  border-radius:12px;
   padding:10px 6px;
   text-align:center;
-  min-height:70px;
 }
-.coupon b{color:#008b8b;font-size:18px}
-.coupon span{display:block;font-size:12px;color:#008b8b;margin-top:4px}
+.coupon b{
+  color:#008f8f;
+  display:block;
+  font-size:15px;
+}
+.coupon span{
+  color:#008f8f;
+  font-size:11px;
+}
 
 .tabs{
   display:flex;
+  gap:24px;
   overflow-x:auto;
-  gap:26px;
-  padding:14px 16px 8px;
   background:#fff;
-  font-size:20px;
-  font-weight:500;
+  padding:14px 16px 8px;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
 }
-.tabs span{white-space:nowrap;color:#777}
-.tabs .active{color:#111;border-bottom:3px solid #111;padding-bottom:8px}
-.tabs .promo{color:#4c36ff;font-weight:900}
+.tabs span{
+  white-space:nowrap;
+  font-size:18px;
+  color:#777;
+  padding-bottom:8px;
+}
+.tabs .active{
+  color:#111;
+  border-bottom:2px solid #111;
+}
+.tabs .promo{
+  color:#5941ff;
+  font-weight:700;
+}
 
 .grid{
   display:grid;
@@ -120,15 +195,15 @@ a{text-decoration:none;color:inherit}
 
 .card{
   background:#fff;
-  border-radius:14px;
+  border-radius:16px;
   overflow:hidden;
-  box-shadow:0 2px 10px rgba(0,0,0,.05)
+  border:1px solid #eee;
+  position:relative;
 }
 .imgbox{
   width:100%;
-  height:185px;
+  height:180px;
   background:#eee;
-  overflow:hidden;
 }
 .imgbox img{
   width:100%;
@@ -136,335 +211,789 @@ a{text-decoration:none;color:inherit}
   object-fit:cover;
   display:block;
 }
-.card-body{padding:10px}
+.fav-btn{
+  position:absolute;
+  top:8px;
+  right:8px;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.92);
+  font-size:18px;
+  cursor:pointer;
+}
+.fav-btn.active{
+  color:#ff2b63;
+}
+.card-body{
+  padding:10px;
+}
 .badge{
   display:inline-block;
-  background:#e8ffff;
+  background:#eaffff;
   color:#008b8b;
-  font-weight:900;
-  font-size:13px;
+  font-size:12px;
+  font-weight:700;
   padding:3px 6px;
   border-radius:6px;
-  margin-bottom:5px;
+  margin-bottom:6px;
 }
 .title{
   font-size:14px;
   line-height:1.25;
   min-height:36px;
-  margin-bottom:8px;
+  font-weight:500;
+  color:#151515;
 }
 .price{
-  color:#ff2b65;
-  font-size:24px;
-  font-weight:900;
+  color:#ff2b63;
+  font-size:23px;
+  font-weight:750;
+  margin-top:7px;
 }
 .old{
   color:#999;
   text-decoration:line-through;
   font-size:13px;
-  margin-left:4px;
+  font-weight:400;
 }
-.discount{
+.tags{
   display:flex;
-  gap:6px;
-  margin:8px 0;
   flex-wrap:wrap;
+  gap:5px;
+  margin:8px 0;
 }
-.discount span{
-  background:#ffeaf1;
-  color:#ff2b65;
-  font-size:12px;
-  font-weight:800;
+.tags span{
+  background:#ffedf3;
+  color:#ff2b63;
+  font-size:11px;
   padding:4px 6px;
   border-radius:6px;
+  font-weight:650;
 }
 .rating{
-  font-size:13px;
+  font-size:12px;
   color:#666;
-  margin-bottom:8px;
+  margin-bottom:9px;
+}
+.actions{
+  display:flex;
+  gap:7px;
+}
+.add-cart{
+  flex:1;
+  border:0;
+  background:#f1f1f1;
+  color:#111;
+  border-radius:999px;
+  padding:10px 6px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
 }
 .buy{
-  display:block;
-  width:100%;
-  background:#ff2b65;
+  flex:1;
+  border:0;
+  background:#ff2b63;
   color:#fff;
+  border-radius:999px;
+  padding:10px 6px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.section-title{
+  padding:18px 16px 8px;
+  font-size:22px;
+  font-weight:700;
+}
+.empty{
+  margin:20px 12px;
+  background:#fff;
+  border-radius:16px;
+  padding:28px 16px;
   text-align:center;
-  border-radius:22px;
-  padding:11px;
-  font-weight:900;
-  font-size:15px;
+  color:#777;
+  border:1px solid #eee;
+}
+.empty b{
+  color:#111;
+  display:block;
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.cart-store{
+  margin:12px;
+  background:#fff;
+  border-radius:16px;
+  border:1px solid #eee;
+  overflow:hidden;
+}
+.store-head{
+  padding:14px;
+  font-size:17px;
+  font-weight:700;
+  border-bottom:1px solid #eee;
+}
+.free-box{
+  background:#ecffff;
+  color:#077;
+  padding:12px 14px;
+  font-size:14px;
+  font-weight:500;
+}
+.cart-item{
+  display:flex;
+  gap:12px;
+  padding:14px;
+  border-bottom:1px solid #f0f0f0;
+}
+.cart-item img{
+  width:82px;
+  height:82px;
+  border-radius:12px;
+  object-fit:cover;
+  background:#eee;
+}
+.cart-info{
+  flex:1;
+}
+.cart-info h3{
+  font-size:14px;
+  font-weight:500;
+  line-height:1.25;
+  margin-bottom:6px;
+}
+.cart-price{
+  color:#ff2b63;
+  font-weight:750;
+  font-size:18px;
+}
+.qty{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:8px;
+}
+.qty button{
+  width:26px;
+  height:26px;
+  border:0;
+  background:#f1f1f1;
+  border-radius:7px;
+  font-size:18px;
+}
+.remove{
+  border:0;
+  background:none;
+  color:#999;
+  font-size:12px;
+  margin-top:8px;
+}
+
+.cart-summary{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:66px;
+  width:100%;
+  max-width:430px;
+  background:#fff;
+  border-top:1px solid #eee;
+  padding:10px 12px;
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  z-index:25;
+}
+.cart-summary.active{display:flex}
+.total-box small{
+  color:#008b8b;
+  display:block;
+  font-size:12px;
+}
+.total-box b{
+  color:#ff2b63;
+  font-size:20px;
+}
+.checkout-btn{
+  border:0;
+  background:#ff2b63;
+  color:#fff;
+  border-radius:999px;
+  padding:13px 24px;
+  font-size:16px;
+  font-weight:800;
+}
+
+.profile-box{
+  margin:12px;
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
+  border:1px solid #eee;
+}
+.profile-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.avatar{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff2b63,#7546ff);
+}
+.profile-head h2{
+  font-size:20px;
+  font-weight:700;
+}
+.profile-menu{
+  display:grid;
+  gap:10px;
+}
+.profile-menu div{
+  padding:14px;
+  background:#fafafa;
+  border-radius:14px;
+  border:1px solid #eee;
+  display:flex;
+  justify-content:space-between;
 }
 
 .bottom-nav{
   position:fixed;
+  left:50%;
+  transform:translateX(-50%);
   bottom:0;
-  left:0;
-  right:0;
+  width:100%;
+  max-width:430px;
   height:66px;
   background:#fff;
   display:flex;
-  justify-content:space-around;
   align-items:center;
-  box-shadow:0 -2px 10px rgba(0,0,0,.08);
-  z-index:30;
+  justify-content:space-around;
+  border-top:1px solid #e5e5e5;
+  z-index:40;
 }
 .nav-item{
-  text-align:center;
-  font-size:12px;
+  border:0;
+  background:none;
   color:#777;
+  font-size:11px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  cursor:pointer;
+  min-width:58px;
 }
-.nav-item b{
-  display:block;
-  font-size:24px;
+.nav-item svg{
+  width:23px;
+  height:23px;
+  stroke:currentColor;
+  stroke-width:2;
+  fill:none;
+}
+.nav-item.active{
   color:#111;
+  font-weight:600;
 }
-.plus{
+.nav-plus{
+  width:48px;
+  height:34px;
+  border-radius:12px;
   background:#111;
-  color:#fff!important;
-  width:50px;
-  height:38px;
-  border-radius:14px;
-  display:flex!important;
+  color:#fff;
+  display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px!important;
+  margin-top:-6px;
 }
+.nav-plus svg{stroke:#fff}
 
-@media(min-width:700px){
-  body{max-width:430px;margin:auto;background:#eee}
-  .bottom-nav{max-width:430px;margin:auto}
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:84px;
+  transform:translateX(-50%);
+  background:#222;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:13px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:60;
+}
+.toast.show{
+  opacity:1;
+  bottom:96px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  <div class="top-icons">
-    <span>LIVE</span>
-    <span>Loja</span>
-    <span>🛒</span>
+<div class="app">
+
+  <div class="topbar">
+    <div class="top-line">
+      <div class="logo">Central de Ofertas</div>
+      <div class="cart-icon" onclick="showPage('cart')">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </div>
+    </div>
+    <div class="search"><span>⌕</span> buscar produtos em oferta</div>
   </div>
-  <div class="search"><b>⌕</b> buscar produtos em oferta</div>
+
+  <section id="homePage" class="page active">
+    <section class="hero">
+      <small>6.6 MEGA PROMO • OFERTAS LIMITADAS</small>
+      <h1>Até 12x<br>Sem Juros</h1>
+      <p>Frete grátis • descontos exclusivos • compra segura</p>
+      <a href="#productsGrid">Comprar Agora</a>
+    </section>
+
+    <section class="coupons">
+      <div class="coupons-title">
+        <h2>Cupons novos clientes</h2>
+        <button onclick="toast('Cupons resgatados')">Resgatar tudo</button>
+      </div>
+      <div class="coupon-list">
+        <div class="coupon"><b>Frete grátis</b><span>no envio</span></div>
+        <div class="coupon"><b>R$ 20</b><span>desconto</span></div>
+        <div class="coupon"><b>12%</b><span>OFF</span></div>
+      </div>
+    </section>
+
+    <div class="tabs">
+      <span class="active">Todos</span>
+      <span class="promo">6.6</span>
+      <span>Eletrônicos</span>
+      <span>Casa</span>
+      <span>Beleza</span>
+    </div>
+
+    <main class="grid" id="productsGrid"></main>
+  </section>
+
+  <section id="favoritesPage" class="page">
+    <h2 class="section-title">Favoritos</h2>
+    <main class="grid" id="favoritesGrid"></main>
+    <div class="empty" id="favEmpty">
+      <b>Nenhum favorito ainda</b>
+      Toque no coração dos produtos para salvar aqui.
+    </div>
+  </section>
+
+  <section id="cartPage" class="page">
+    <h2 class="section-title">Carrinho</h2>
+    <div class="cart-store" id="cartList"></div>
+    <div class="empty" id="cartEmpty">
+      <b>Seu carrinho está vazio</b>
+      Adicione produtos para finalizar a compra.
+    </div>
+  </section>
+
+  <section id="ordersPage" class="page">
+    <h2 class="section-title">Pedidos</h2>
+    <div class="empty">
+      <b>Central de pedidos</b>
+      Seus pedidos aparecerão aqui após a finalização.
+    </div>
+  </section>
+
+  <section id="profilePage" class="page">
+    <h2 class="section-title">Perfil</h2>
+    <div class="profile-box">
+      <div class="profile-head">
+        <div class="avatar"></div>
+        <div>
+          <h2>Minha conta</h2>
+          <p style="color:#777;font-size:14px">Cliente verificado</p>
+        </div>
+      </div>
+      <div class="profile-menu">
+        <div>Catálogo de endereços <span>›</span></div>
+        <div>Métodos de pagamento <span>›</span></div>
+        <div>Cupons disponíveis <span>›</span></div>
+        <div>Ajuda e suporte <span>›</span></div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
-<section class="hero">
-  <small>6.6 MEGA PROMO • OFERTAS LIMITADAS</small>
-  <h1>Até 12x<br>Sem Juros</h1>
-  <p>Frete grátis • Descontos exclusivos • Compra segura</p>
-  <a class="cta" href="#produtos">Comprar Agora</a>
-</section>
-
-<section class="coupons">
-  <div class="coupons-head">
-    <h2>Cupons novos clientes</h2>
-    <button>Resgatar tudo</button>
+<div class="cart-summary" id="cartSummary">
+  <div class="total-box">
+    <small>Frete grátis</small>
+    <b id="cartTotal">R$ 0,00</b>
   </div>
-  <div class="coupon-list">
-    <div class="coupon"><b>Frete grátis</b><span>Desconto no envio</span></div>
-    <div class="coupon"><b>R$ 20</b><span>de desconto</span></div>
-    <div class="coupon"><b>12%</b><span>OFF limitado</span></div>
-  </div>
-</section>
-
-<div class="tabs">
-  <span class="active">Todos</span>
-  <span class="promo">6.6</span>
-  <span>Eletrônicos</span>
-  <span>Casa</span>
-  <span>Beleza</span>
+  <button class="checkout-btn" onclick="checkoutCart()">Finalizar compra</button>
 </div>
-
-<main class="grid" id="produtos">
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="tv-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=Samsung+Smart+TV'">
-    </div>
-    <div class="card-body">
-      <span class="badge">6.6</span>
-      <div class="title">Samsung Smart TV 70'' Crystal UHD 4K + Soundbar</div>
-      <div>
-        <span class="price">R$ 700,00</span>
-        <span class="old">R$ 5.699,00</span>
-      </div>
-      <div class="discount">
-        <span>80% OFF</span>
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.8 | 5374 vendidos</div>
-      <a class="buy" href="https://www.pagamentos-seguro.link/checkout/9bcd808e-4226-4043-8b2f-17f20a4a3505">Comprar Agora</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="airfryer-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=Air+Fryer'">
-    </div>
-    <div class="card-body">
-      <span class="badge">Oferta</span>
-      <div class="title">Air Fryer Mondial AFO-25L-BI 25L</div>
-      <div>
-        <span class="price">R$ 179,90</span>
-        <span class="old">R$ 899,00</span>
-      </div>
-      <div class="discount">
-        <span>25% OFF</span>
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.7 | 2241 vendidos</div>
-      <a class="buy" href="#">Comprar Agora</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="jbl-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=JBL+Boombox'">
-    </div>
-    <div class="card-body">
-      <span class="badge">6.6</span>
-      <div class="title">Caixa de Som JBL Boombox 4 Portátil</div>
-      <div>
-        <span class="price">R$ 399,90</span>
-        <span class="old">R$ 2.319,20</span>
-      </div>
-      <div class="discount">
-        <span>Relâmpago</span>
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.9 | 891 vendidos</div>
-      <a class="buy" href="#">Comprar Agora</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="churrasqueira-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=Churrasqueira'">
-    </div>
-    <div class="card-body">
-      <span class="badge">Casa</span>
-      <div class="title">Churrasqueira elétrica Arno GPRA preta</div>
-      <div>
-        <span class="price">R$ 75,82</span>
-        <span class="old">R$ 377,29</span>
-      </div>
-      <div class="discount">
-        <span>Oferta</span>
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.6 | 774 vendidos</div>
-      <a class="buy" href="#">Comprar Agora</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="cooler-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=Cooler+20L'">
-    </div>
-    <div class="card-body">
-      <span class="badge">Promo</span>
-      <div class="title">Caixa Térmica Cooler SUV 20L</div>
-      <div>
-        <span class="price">R$ 23,42</span>
-        <span class="old">R$ 137,60</span>
-      </div>
-      <div class="discount">
-        <span>OFF</span>
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.5 | 421 vendidos</div>
-      <a class="buy" href="#">Comprar Agora</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="projetor-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=Projetor+Full+HD'">
-    </div>
-    <div class="card-body">
-      <span class="badge">6.6</span>
-      <div class="title">Projetor multimídia 5200 lúmens Full HD</div>
-      <div>
-        <span class="price">R$ 269,90</span>
-        <span class="old">R$ 1.349,91</span>
-      </div>
-      <div class="discount">
-        <span>25% OFF</span>
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.7 | 1205 vendidos</div>
-      <a class="buy" href="#">Comprar Agora</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="body-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=Body+Splash'">
-    </div>
-    <div class="card-body">
-      <span class="badge">Beleza</span>
-      <div class="title">Kit Body Splash Mother Extraordinaire</div>
-      <div>
-        <span class="price">R$ 23,99</span>
-        <span class="old">R$ 118,90</span>
-      </div>
-      <div class="discount">
-        <span>Oferta</span>
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.8 | 685 vendidos</div>
-      <a class="buy" href="#">Comprar Agora</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="chapeu-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=Kit+Chapeus'">
-    </div>
-    <div class="card-body">
-      <span class="badge">Oferta</span>
-      <div class="title">Kit 10 Chapéus Natanzinho Original</div>
-      <div>
-        <span class="price">R$ 56,90</span>
-        <span class="old">R$ 56,90</span>
-      </div>
-      <div class="discount">
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.4 | 219 vendidos</div>
-      <a class="buy" href="#">Comprar Agora</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="imgbox">
-      <img src="ferramentas-1.jpg" onerror="this.src='https://via.placeholder.com/400x400?text=Ferramentas'">
-    </div>
-    <div class="card-body">
-      <span class="badge">Casa</span>
-      <div class="title">Jogo de Ferramentas 169 Peças</div>
-      <div>
-        <span class="price">R$ 19,90</span>
-        <span class="old">R$ 289,90</span>
-      </div>
-      <div class="discount">
-        <span>Relâmpago</span>
-        <span>Frete grátis</span>
-      </div>
-      <div class="rating">⭐ 4.6 | 984 vendidos</div>
-      <a class="buy" href="#">Comprar Agora</a>
-    </div>
-  </div>
-
-</main>
 
 <div class="bottom-nav">
-  <div class="nav-item"><b>⌂</b>Início</div>
-  <div class="nav-item"><b>♡</b>Favoritos</div>
-  <div class="nav-item"><b class="plus">+</b></div>
-  <div class="nav-item"><b>☰</b>Pedidos</div>
-  <div class="nav-item"><b>👤</b>Perfil</div>
+  <button class="nav-item active" onclick="showPage('home')" id="nav-home">
+    <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>
+    Início
+  </button>
+
+  <button class="nav-item" onclick="showPage('favorites')" id="nav-favorites">
+    <svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>
+    Favoritos
+  </button>
+
+  <button class="nav-item" onclick="showPage('home')">
+    <span class="nav-plus">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+    </span>
+  </button>
+
+  <button class="nav-item" onclick="showPage('orders')" id="nav-orders">
+    <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    Pedidos
+  </button>
+
+  <button class="nav-item" onclick="showPage('profile')" id="nav-profile">
+    <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/></svg>
+    Perfil
+  </button>
 </div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const products = [
+  {
+    id:1,
+    name:"Samsung Smart TV 70'' Crystal UHD 4K + Soundbar",
+    old:"R$ 5.699,00",
+    price:"R$ 700,00",
+    image:"tv-1.jpg",
+    checkout:"https://www.pagamentos-seguro.link/checkout/9bcd808e-4226-4043-8b2f-17f20a4a3505",
+    rating:"⭐ 4.8 | 5374 vendidos",
+    tag:"6.6"
+  },
+  {
+    id:2,
+    name:"Air Fryer Mondial AFO-25L-BI 25L",
+    old:"R$ 899,00",
+    price:"R$ 179,90",
+    image:"airfryer-1.jpg",
+    checkout:"#",
+    rating:"⭐ 4.7 | 2241 vendidos",
+    tag:"Oferta"
+  },
+  {
+    id:3,
+    name:"Caixa de Som JBL Boombox 4 Portátil",
+    old:"R$ 2.319,20",
+    price:"R$ 399,90",
+    image:"jbl-1.jpg",
+    checkout:"#",
+    rating:"⭐ 4.9 | 891 vendidos",
+    tag:"6.6"
+  },
+  {
+    id:4,
+    name:"Churrasqueira elétrica Arno GPRA preta",
+    old:"R$ 377,29",
+    price:"R$ 75,82",
+    image:"churrasqueira-1.jpg",
+    checkout:"#",
+    rating:"⭐ 4.6 | 774 vendidos",
+    tag:"Casa"
+  },
+  {
+    id:5,
+    name:"Caixa Térmica Cooler SUV 20L",
+    old:"R$ 137,60",
+    price:"R$ 23,42",
+    image:"cooler-1.jpg",
+    checkout:"#",
+    rating:"⭐ 4.5 | 421 vendidos",
+    tag:"Promo"
+  },
+  {
+    id:6,
+    name:"Projetor multimídia 5200 lúmens Full HD",
+    old:"R$ 1.349,91",
+    price:"R$ 269,90",
+    image:"projetor-1.jpg",
+    checkout:"#",
+    rating:"⭐ 4.7 | 1205 vendidos",
+    tag:"6.6"
+  },
+  {
+    id:7,
+    name:"Kit Body Splash Mother Extraordinaire",
+    old:"R$ 118,90",
+    price:"R$ 23,99",
+    image:"body-1.jpg",
+    checkout:"#",
+    rating:"⭐ 4.8 | 685 vendidos",
+    tag:"Beleza"
+  },
+  {
+    id:8,
+    name:"Kit 10 Chapéus Natanzinho Original",
+    old:"R$ 56,90",
+    price:"R$ 56,90",
+    image:"chapeu-1.jpg",
+    checkout:"#",
+    rating:"⭐ 4.4 | 219 vendidos",
+    tag:"Oferta"
+  },
+  {
+    id:9,
+    name:"Jogo de Ferramentas 169 Peças",
+    old:"R$ 289,90",
+    price:"R$ 19,90",
+    image:"ferramentas-1.jpg",
+    checkout:"#",
+    rating:"⭐ 4.6 | 984 vendidos",
+    tag:"Casa"
+  }
+];
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function moneyToNumber(value){
+  return Number(value.replace("R$","").replace(/\./g,"").replace(",",".").trim());
+}
+
+function numberToMoney(value){
+  return value.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+}
+
+function renderProducts(){
+  const grid = document.getElementById("productsGrid");
+  grid.innerHTML = products.map(productCard).join("");
+}
+
+function productCard(p){
+  const isFav = favorites.includes(p.id);
+
+  return `
+    <div class="card">
+      <button class="fav-btn ${isFav ? "active" : ""}" onclick="toggleFavorite(${p.id})">
+        ${isFav ? "♥" : "♡"}
+      </button>
+
+      <div class="imgbox">
+        <img src="${p.image}" onerror="this.src='https://via.placeholder.com/400x400?text=Produto'">
+      </div>
+
+      <div class="card-body">
+        <span class="badge">${p.tag}</span>
+        <div class="title">${p.name}</div>
+        <div class="price">${p.price}</div>
+        <div class="old">${p.old}</div>
+
+        <div class="tags">
+          <span>Frete grátis</span>
+          <span>Oferta</span>
+        </div>
+
+        <div class="rating">${p.rating}</div>
+
+        <div class="actions">
+          <button class="add-cart" onclick="addToCart(${p.id})">Carrinho</button>
+          <button class="buy" onclick="buyNow(${p.id})">Comprar</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderFavorites(){
+  const grid = document.getElementById("favoritesGrid");
+  const empty = document.getElementById("favEmpty");
+  const favProducts = products.filter(p => favorites.includes(p.id));
+
+  grid.innerHTML = favProducts.map(productCard).join("");
+  empty.style.display = favProducts.length ? "none" : "block";
+}
+
+function renderCart(){
+  const list = document.getElementById("cartList");
+  const empty = document.getElementById("cartEmpty");
+  const summary = document.getElementById("cartSummary");
+
+  if(cart.length === 0){
+    list.innerHTML = "";
+    empty.style.display = "block";
+    summary.classList.remove("active");
+    updateCartCount();
+    return;
+  }
+
+  empty.style.display = "none";
+  summary.classList.add("active");
+
+  list.innerHTML = `
+    <div class="store-head">Central de Ofertas</div>
+    <div class="free-box">🚚 Você ganhou frete grátis!</div>
+    ${cart.map(item => {
+      const p = products.find(prod => prod.id === item.id);
+      return `
+        <div class="cart-item">
+          <img src="${p.image}" onerror="this.src='https://via.placeholder.com/200x200?text=Produto'">
+          <div class="cart-info">
+            <h3>${p.name}</h3>
+            <div class="cart-price">${p.price}</div>
+
+            <div class="qty">
+              <button onclick="changeQty(${p.id}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${p.id}, 1)">+</button>
+            </div>
+
+            <button class="remove" onclick="removeFromCart(${p.id})">Remover</button>
+          </div>
+        </div>
+      `;
+    }).join("")}
+  `;
+
+  updateCartCount();
+  updateTotal();
+}
+
+function addToCart(id){
+  const item = cart.find(i => i.id === id);
+
+  if(item){
+    item.qty++;
+  }else{
+    cart.push({id:id,qty:1});
+  }
+
+  save();
+  renderCart();
+  updateCartCount();
+  toast("Produto adicionado ao carrinho");
+}
+
+function changeQty(id, amount){
+  const item = cart.find(i => i.id === id);
+  if(!item) return;
+
+  item.qty += amount;
+
+  if(item.qty <= 0){
+    cart = cart.filter(i => i.id !== id);
+  }
+
+  save();
+  renderCart();
+}
+
+function removeFromCart(id){
+  cart = cart.filter(i => i.id !== id);
+  save();
+  renderCart();
+  toast("Produto removido");
+}
+
+function updateCartCount(){
+  const total = cart.reduce((sum,item) => sum + item.qty, 0);
+  document.getElementById("cartCount").innerText = total;
+}
+
+function updateTotal(){
+  const total = cart.reduce((sum,item) => {
+    const p = products.find(prod => prod.id === item.id);
+    return sum + moneyToNumber(p.price) * item.qty;
+  },0);
+
+  document.getElementById("cartTotal").innerText = numberToMoney(total);
+}
+
+function toggleFavorite(id){
+  if(favorites.includes(id)){
+    favorites = favorites.filter(f => f !== id);
+    toast("Removido dos favoritos");
+  }else{
+    favorites.push(id);
+    toast("Adicionado aos favoritos");
+  }
+
+  save();
+  renderProducts();
+  renderFavorites();
+}
+
+function buyNow(id){
+  const p = products.find(prod => prod.id === id);
+
+  if(!p.checkout || p.checkout === "#"){
+    toast("Checkout ainda não configurado");
+    return;
+  }
+
+  window.location.href = p.checkout;
+}
+
+function checkoutCart(){
+  if(cart.length === 0){
+    toast("Carrinho vazio");
+    return;
+  }
+
+  const firstItem = cart[0];
+  const p = products.find(prod => prod.id === firstItem.id);
+
+  if(!p.checkout || p.checkout === "#"){
+    toast("Checkout deste produto ainda não configurado");
+    return;
+  }
+
+  window.location.href = p.checkout;
+}
+
+function showPage(page){
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+
+  document.getElementById(page + "Page").classList.add("active");
+
+  const nav = document.getElementById("nav-" + page);
+  if(nav) nav.classList.add("active");
+
+  if(page === "favorites") renderFavorites();
+  if(page === "cart") renderCart();
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function save(){
+  localStorage.setItem("favorites",JSON.stringify(favorites));
+  localStorage.setItem("cart",JSON.stringify(cart));
+}
+
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.innerText = msg;
+  el.classList.add("show");
+
+  setTimeout(() => {
+    el.classList.remove("show");
+  },1800);
+}
+
+renderProducts();
+renderFavorites();
+renderCart();
+updateCartCount();
+</script>
 
 </body>
 </html>
