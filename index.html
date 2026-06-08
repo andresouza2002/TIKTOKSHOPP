@@ -16,6 +16,119 @@ body{
 .app{max-width:430px;margin:auto;min-height:100vh}
 button,a{font-family:inherit;text-decoration:none;color:inherit}
 
+.couponModal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.68);
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.couponBox{
+  width:100%;
+  max-width:430px;
+  background:linear-gradient(180deg,#fff4ec,#fff);
+  border-radius:14px;
+  padding:24px 20px 22px;
+  position:relative;
+  text-align:center;
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+.couponClose{
+  position:absolute;
+  right:-10px;
+  top:-44px;
+  width:34px;
+  height:34px;
+  border:2px solid rgba(255,255,255,.7);
+  border-radius:50%;
+  background:rgba(0,0,0,.25);
+  color:#fff;
+  font-size:22px;
+}
+.gift{
+  font-size:58px;
+  margin-top:-58px;
+  margin-bottom:6px;
+  filter:drop-shadow(0 8px 14px rgba(255,174,65,.45));
+}
+.couponBox h2{
+  font-size:18px;
+  color:#9b3a00;
+  margin-bottom:18px;
+  font-weight:900;
+}
+.couponTicket{
+  display:grid;
+  grid-template-columns:40% 60%;
+  border:1px solid #ffd2c2;
+  background:#fff8f5;
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:22px;
+  position:relative;
+}
+.couponTicket:before,
+.couponTicket:after{
+  content:"";
+  position:absolute;
+  left:39.5%;
+  width:12px;
+  height:12px;
+  background:#fff;
+  border:1px solid #ffd2c2;
+  border-radius:50%;
+}
+.couponTicket:before{top:-7px}
+.couponTicket:after{bottom:-7px}
+.ticketLeft{
+  padding:28px 8px;
+  border-right:1px dashed #ffd2c2;
+}
+.ticketLeft b{
+  font-size:32px;
+  color:#ff2b1f;
+}
+.ticketLeft span{
+  display:block;
+  margin-top:8px;
+  font-size:14px;
+}
+.ticketRight{
+  text-align:left;
+  padding:26px 14px;
+}
+.ticketRight b{
+  color:#ff2b1f;
+  font-size:20px;
+}
+.ticketRight span{
+  display:block;
+  font-size:13px;
+  color:#555;
+  margin-top:4px;
+}
+.saveCoupon{
+  width:82%;
+  border:0;
+  background:#222;
+  color:#fff;
+  border-radius:999px;
+  padding:17px;
+  font-size:22px;
+  font-weight:900;
+}
+.saveCoupon.saved{
+  background:linear-gradient(135deg,#19b957,#22d66d);
+}
+.couponNote{
+  font-size:12px;
+  color:#777;
+  margin-top:12px;
+}
+
 .topbar{
   position:sticky;top:0;z-index:20;
   background:rgba(255,255,255,.94);
@@ -114,19 +227,8 @@ button,a{font-family:inherit;text-decoration:none;color:inherit}
   border:1px solid rgba(0,0,0,.06);
   box-shadow:0 14px 24px rgba(0,0,0,.08), inset 0 1px 0 #fff;
   position:relative;
-  transform:translateZ(0);
 }
-.card:before{
-  content:"";
-  position:absolute;inset:0;
-  border-radius:22px;
-  pointer-events:none;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.9);
-}
-.imgbox{
-  height:180px;background:#eee;overflow:hidden;
-  border-bottom:1px solid #f0f0f0;
-}
+.imgbox{height:180px;background:#eee;overflow:hidden;border-bottom:1px solid #f0f0f0}
 .imgbox img{width:100%;height:100%;object-fit:cover;display:block}
 .fav{
   position:absolute;top:9px;right:9px;
@@ -245,6 +347,30 @@ button,a{font-family:inherit;text-decoration:none;color:inherit}
 </head>
 
 <body>
+
+<div class="couponModal" id="couponModal">
+  <div class="couponBox">
+    <button class="couponClose" onclick="closeCouponModal()">×</button>
+    <div class="gift">🎁</div>
+    <h2>Ofertas especiais só para você</h2>
+
+    <div class="couponTicket">
+      <div class="ticketLeft">
+        <b>80%<small>OFF</small></b>
+        <span>+ Frete grátis</span>
+      </div>
+      <div class="ticketRight">
+        <b>Cupom 6.6</b>
+        <span>Sem valor mínimo</span>
+        <span>Por tempo limitado</span>
+      </div>
+    </div>
+
+    <button class="saveCoupon" id="saveCouponBtn" onclick="saveCouponFromModal()">Salvar cupons</button>
+    <div class="couponNote">Cupom confirmado após resgate</div>
+  </div>
+</div>
+
 <div class="app">
 
 <header class="topbar">
@@ -274,7 +400,7 @@ button,a{font-family:inherit;text-decoration:none;color:inherit}
     <div class="couponGrid">
       <div class="coupon"><b>Frete grátis</b><span>no envio</span></div>
       <div class="coupon"><b>80%</b><span>OFF aplicado</span></div>
-      <div class="coupon"><b>12x</b><span>sem juros</span></div>
+      <div class="coupon"><b>6.6</b><span>sem mínimo</span></div>
     </div>
   </div>
 
@@ -440,10 +566,8 @@ save();renderCart();
 function removeCart(id){cart=cart.filter(i=>i.id!==id);save();renderCart();toast("Produto removido")}
 function updateCount(){cartCount.innerText=cart.reduce((s,i)=>s+i.qty,0)}
 function cartSubtotal(){return cart.reduce((s,i)=>{let p=products.find(x=>x.id===i.id);return s+moneyToNumber(p.price)*i.qty},0)}
-function updateTotal(){
-let total=cartSubtotal();
-cartTotal.innerText=brl(total);
-}
+function updateTotal(){cartTotal.innerText=brl(cartSubtotal())}
+
 function openInternalCheckout(){
 showPage("cart");
 checkoutPanel.classList.add("active");
@@ -458,24 +582,51 @@ couponText.innerText=couponApplied?"80% OFF aplicado":"Não aplicado";
 finalTotal.innerText=brl(final);
 window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
 }
+
 function buyNow(id){
 cart=[{id,qty:1}];
 save();renderCart();openInternalCheckout();
 }
+
 function toggleFavorite(id){
 favorites=favorites.includes(id)?favorites.filter(f=>f!==id):[...favorites,id];
 save();renderProducts();renderFavorites();
 toast(favorites.includes(id)?"Adicionado aos favoritos":"Removido dos favoritos");
 }
+
 function applyCoupon(){
-couponApplied=true;save();updateCouponButton();toast("Cupom aplicado. Boas compras!");
+couponApplied=true;
+save();
+updateCouponButton();
+toast("Cupom aplicado. Boas compras!");
 }
+
+function saveCouponFromModal(){
+couponApplied=true;
+save();
+updateCouponButton();
+
+const btn=document.getElementById("saveCouponBtn");
+btn.classList.add("saved");
+btn.innerText="Cupom aplicado";
+
+setTimeout(()=>{
+  closeCouponModal();
+  toast("Cupom 80% OFF + frete grátis aplicado");
+},700);
+}
+
+function closeCouponModal(){
+document.getElementById("couponModal").style.display="none";
+}
+
 function updateCouponButton(){
 if(couponApplied){
 couponBtn.classList.add("applied");
 couponBtn.innerHTML="✅ Cupom aplicado<small>Boas compras!</small>";
 }
 }
+
 function showPage(page){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
@@ -487,6 +638,7 @@ if(page==="cart")renderCart();
 if(page!=="cart")checkoutPanel.classList.remove("active");
 window.scrollTo({top:0,behavior:"smooth"});
 }
+
 function toast(msg){
 let el=document.getElementById("toast");
 el.innerText=msg;
@@ -500,5 +652,6 @@ renderCart();
 updateCouponButton();
 updateCount();
 </script>
+
 </body>
 </html>
