@@ -992,171 +992,446 @@ button:active,
   margin-top:12px;
 }
 
-/* RESPONSIVO COMPLETO */
+/* ===== PIX CHECKOUT MODAL ===== */
+.pixOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  z-index:2000;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+}
 
+.pixOverlay.active{
+  display:flex;
+}
+
+.pixSheet{
+  width:100%;
+  max-width:430px;
+  background:#fff;
+  border-radius:26px 26px 0 0;
+  padding:0 0 32px;
+  max-height:92vh;
+  overflow-y:auto;
+  box-shadow:0 -20px 60px rgba(0,0,0,.28);
+  position:relative;
+}
+
+.pixHandle{
+  width:42px;
+  height:5px;
+  background:#ddd;
+  border-radius:99px;
+  margin:12px auto 0;
+}
+
+.pixSheetHead{
+  padding:16px 20px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.pixSheetHead h3{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:-.4px;
+}
+
+.pixClose{
+  border:0;
+  background:none;
+  font-size:26px;
+  color:#888;
+  cursor:pointer;
+  line-height:1;
+}
+
+/* Steps */
+.pixSteps{
+  display:flex;
+  gap:0;
+  margin:0;
+}
+
+.pixStep{
+  display:none;
+  width:100%;
+  padding:0 20px;
+}
+
+.pixStep.active{
+  display:block;
+}
+
+/* Step 1 — formulário */
+.formGroup{
+  margin-bottom:14px;
+}
+
+.formGroup label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  color:#444;
+  margin-bottom:6px;
+}
+
+.formGroup input{
+  width:100%;
+  border:1.5px solid #e0e0e0;
+  border-radius:14px;
+  padding:13px 14px;
+  font-size:15px;
+  font-family:inherit;
+  background:#fafafa;
+  color:#111;
+  outline:none;
+  transition:.2s;
+}
+
+.formGroup input:focus{
+  border-color:var(--pink);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(255,43,99,.10);
+}
+
+.formGroup input.error{
+  border-color:#ff2b63;
+  background:#fff5f7;
+}
+
+.formRow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.pixProductLine{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:#f8f8f8;
+  border-radius:16px;
+  padding:12px 14px;
+  margin:16px 0;
+  border:1px solid #ebebeb;
+}
+
+.pixProductLine img{
+  width:54px;
+  height:54px;
+  border-radius:10px;
+  object-fit:cover;
+  background:#eee;
+}
+
+.pixProductLine .pInfo{
+  flex:1;
+}
+
+.pixProductLine .pInfo b{
+  font-size:13px;
+  font-weight:700;
+  line-height:1.3;
+  display:block;
+}
+
+.pixProductLine .pInfo span{
+  font-size:18px;
+  font-weight:900;
+  color:var(--pink);
+}
+
+.pixSubmitBtn{
+  width:100%;
+  background:var(--pink);
+  color:#fff;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:999px;
+  padding:16px;
+  font-size:17px;
+  font-weight:900;
+  box-shadow:0 7px 0 var(--pink-dark),0 12px 22px rgba(255,43,99,.22);
+  cursor:pointer;
+  margin-top:8px;
+}
+
+.pixSubmitBtn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+  transform:none !important;
+  box-shadow:0 4px 0 var(--pink-dark) !important;
+}
+
+/* Step 2 — QR Code */
+.pixQrWrap{
+  text-align:center;
+  padding:10px 0 0;
+}
+
+.pixQrWrap p{
+  font-size:14px;
+  color:#555;
+  margin-bottom:14px;
+  font-weight:500;
+  line-height:1.5;
+}
+
+#qrcodeCanvas{
+  display:block;
+  margin:0 auto 16px;
+  border-radius:18px;
+  border:6px solid #fff;
+  box-shadow:0 10px 28px rgba(0,0,0,.10),0 0 0 1px #ebebeb;
+}
+
+.copyCodeBtn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  background:#111;
+  color:#fff;
+  border:1px solid rgba(0,0,0,.15);
+  border-radius:999px;
+  padding:14px;
+  font-size:15px;
+  font-weight:900;
+  box-shadow:0 6px 0 #000,0 10px 20px rgba(0,0,0,.14);
+  cursor:pointer;
+  margin-bottom:12px;
+}
+
+.copyCodeBtn svg{
+  width:18px;
+  height:18px;
+  stroke:#fff;
+  stroke-width:2.2;
+  fill:none;
+  flex-shrink:0;
+}
+
+.pixCodeSmall{
+  background:#f4f4f5;
+  border-radius:12px;
+  padding:10px 14px;
+  font-size:11px;
+  color:#666;
+  word-break:break-all;
+  line-height:1.5;
+  margin-bottom:14px;
+  text-align:left;
+  font-family:monospace;
+}
+
+.pixTimer{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:14px;
+  font-weight:700;
+  color:#555;
+  margin-bottom:16px;
+}
+
+.pixTimer span{
+  color:var(--pink);
+  font-size:18px;
+  font-weight:900;
+}
+
+.pixStatusBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:#fff8e7;
+  color:#b06d00;
+  border:1px solid #ffd98a;
+  border-radius:999px;
+  padding:7px 14px;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:16px;
+}
+
+.pixStatusBadge.completed{
+  background:#eaffef;
+  color:#1a7a3c;
+  border-color:#8de8a8;
+}
+
+.pixStatusDot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#f5a623;
+  animation:pulse 1.4s ease-in-out infinite;
+}
+
+.pixStatusBadge.completed .pixStatusDot{
+  background:#19b957;
+  animation:none;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:1}
+  50%{opacity:.35}
+}
+
+/* Step 3 — Confirmação */
+.pixConfirm{
+  text-align:center;
+  padding:12px 0 8px;
+}
+
+.pixCheckCircle{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#19b957,#22d66d);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 18px;
+  box-shadow:0 14px 30px rgba(25,185,87,.30);
+  animation:popIn .4s cubic-bezier(.175,.885,.32,1.275) forwards;
+}
+
+@keyframes popIn{
+  0%{transform:scale(0);opacity:0}
+  100%{transform:scale(1);opacity:1}
+}
+
+.pixCheckCircle svg{
+  width:38px;
+  height:38px;
+  stroke:#fff;
+  stroke-width:3;
+  fill:none;
+}
+
+.pixConfirm h3{
+  font-size:24px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.pixConfirm p{
+  font-size:14px;
+  color:#555;
+  line-height:1.55;
+  margin-bottom:20px;
+}
+
+.pixConfirmClose{
+  width:100%;
+  background:#111;
+  color:#fff;
+  border:1px solid rgba(0,0,0,.14);
+  border-radius:999px;
+  padding:16px;
+  font-size:16px;
+  font-weight:900;
+  box-shadow:0 7px 0 #000;
+  cursor:pointer;
+}
+
+/* Loading spinner */
+.pixLoading{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:32px 20px;
+  gap:14px;
+  text-align:center;
+}
+
+.pixLoading.active{
+  display:flex;
+}
+
+.spinner{
+  width:48px;
+  height:48px;
+  border:4px solid #f0f0f0;
+  border-top-color:var(--pink);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.pixLoading p{
+  font-size:15px;
+  font-weight:600;
+  color:#555;
+}
+
+/* RESPONSIVO */
 @media (min-width:768px){
-  body{
-    padding-bottom:0;
-  }
-
-  .app{
-    max-width:1180px;
-    padding-bottom:90px;
-  }
-
-  .topbar{
-    max-width:1180px;
-    margin:auto;
-    border-radius:0 0 22px 22px;
-  }
-
-  .hero,
-  .timer,
-  .coupons{
-    margin-left:24px;
-    margin-right:24px;
-  }
-
-  .hero{
-    padding:34px 30px;
-  }
-
-  .hero h1{
-    font-size:52px;
-  }
-
-  .grid{
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    padding:24px;
-  }
-
-  .imgbox{
-    height:230px;
-  }
-
-  .bottomNav,
-  .cartSummary{
-    max-width:1180px;
-  }
-
-  .purchaseToast{
-    max-width:520px;
-  }
-
-  .couponBox{
-    max-width:460px;
-  }
+  body{padding-bottom:0}
+  .app{max-width:1180px;padding-bottom:90px}
+  .topbar{max-width:1180px;margin:auto;border-radius:0 0 22px 22px}
+  .hero,.timer,.coupons{margin-left:24px;margin-right:24px}
+  .hero{padding:34px 30px}
+  .hero h1{font-size:52px}
+  .grid{grid-template-columns:repeat(3,1fr);gap:18px;padding:24px}
+  .imgbox{height:230px}
+  .bottomNav,.cartSummary{max-width:1180px}
+  .purchaseToast{max-width:520px}
+  .couponBox{max-width:460px}
+  .pixSheet{max-width:480px}
 }
 
 @media (min-width:1024px){
-  .grid{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-  .imgbox{
-    height:240px;
-  }
-
-  .card{
-    transition:.2s ease;
-  }
-
-  .card:hover{
-    transform:translateY(-4px);
-  }
-
-  .hero,
-  .coupons,
-  .timer{
-    max-width:1132px;
-  }
-
-  .cartBox,
-  .checkoutPanel,
-  .empty{
-    max-width:720px;
-    margin-left:24px;
-  }
+  .grid{grid-template-columns:repeat(4,1fr)}
+  .imgbox{height:240px}
+  .card{transition:.2s ease}
+  .card:hover{transform:translateY(-4px)}
+  .hero,.coupons,.timer{max-width:1132px}
+  .cartBox,.checkoutPanel,.empty{max-width:720px;margin-left:24px}
 }
 
 @media (min-width:1280px){
-  .app,
-  .topbar,
-  .bottomNav,
-  .cartSummary{
-    max-width:1280px;
-  }
-
-  .grid{
-    grid-template-columns:repeat(5,1fr);
-  }
-
-  .hero,
-  .coupons,
-  .timer{
-    max-width:1232px;
-  }
+  .app,.topbar,.bottomNav,.cartSummary{max-width:1280px}
+  .grid{grid-template-columns:repeat(5,1fr)}
+  .hero,.coupons,.timer{max-width:1232px}
 }
 
 @media (max-width:430px){
-  .app{
-    max-width:100%;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:11px;
-    padding:11px;
-  }
-
-  .imgbox{
-    height:170px;
-  }
-
-  .hero h1{
-    font-size:34px;
-  }
-
-  .couponBtn{
-    padding:9px 11px;
-    font-size:11px;
-  }
-
-  .couponsHead h2{
-    font-size:18px;
-  }
+  .app{max-width:100%}
+  .grid{grid-template-columns:repeat(2,1fr);gap:11px;padding:11px}
+  .imgbox{height:170px}
+  .hero h1{font-size:34px}
+  .couponBtn{padding:9px 11px;font-size:11px}
+  .couponsHead h2{font-size:18px}
 }
 
 @media (max-width:360px){
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .imgbox{
-    height:230px;
-  }
-
-  .couponsHead{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .couponBtn{
-    width:100%;
-  }
+  .grid{grid-template-columns:1fr}
+  .imgbox{height:230px}
+  .couponsHead{flex-direction:column;align-items:flex-start}
+  .couponBtn{width:100%}
 }
 </style>
 </head>
 
 <body>
 
+<!-- MODAL CUPOM -->
 <div class="couponModal" id="couponModal">
   <div class="couponBox">
     <button class="couponClose press" onclick="closeCouponModal()">×</button>
     <div class="giftBox"></div>
     <h2>Ofertas especiais só para você</h2>
-
     <div class="couponTicket">
       <div class="ticketLeft">
         <b>80%<small>OFF</small></b>
@@ -1168,12 +1443,12 @@ button:active,
         <span>Válido até 23:59</span>
       </div>
     </div>
-
     <button class="saveCoupon press" id="saveCouponBtn" onclick="saveCouponFromModal()">Salvar cupons</button>
     <div class="couponNote">Cupom confirmado após resgate</div>
   </div>
 </div>
 
+<!-- TOAST COMPRA -->
 <div class="purchaseToast" id="purchaseToast">
   <div class="purchaseIcon">
     <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
@@ -1183,6 +1458,93 @@ button:active,
     <span id="purchaseSub">Produto comprado agora</span>
   </div>
 </div>
+
+<!-- ===== PIX CHECKOUT SHEET ===== -->
+<div class="pixOverlay" id="pixOverlay" onclick="handlePixOverlayClick(event)">
+  <div class="pixSheet" id="pixSheet">
+    <div class="pixHandle"></div>
+    <div class="pixSheetHead">
+      <h3 id="pixSheetTitle">Finalizar com PIX</h3>
+      <button class="pixClose" onclick="closePixModal()">×</button>
+    </div>
+
+    <!-- Loader enquanto cria cobrança -->
+    <div class="pixLoading" id="pixLoading">
+      <div class="spinner"></div>
+      <p>Gerando cobrança PIX...</p>
+    </div>
+
+    <!-- Step 1: Dados do cliente -->
+    <div class="pixStep active" id="pixStep1">
+      <div id="pixProductPreview"></div>
+
+      <div class="formGroup">
+        <label>Nome completo</label>
+        <input type="text" id="fName" placeholder="Ana Paula Ferreira" autocomplete="name">
+      </div>
+
+      <div class="formRow">
+        <div class="formGroup">
+          <label>CPF</label>
+          <input type="text" id="fCpf" placeholder="000.000.000-00" maxlength="14" autocomplete="off">
+        </div>
+        <div class="formGroup">
+          <label>Telefone</label>
+          <input type="tel" id="fPhone" placeholder="(11) 98765-4321" maxlength="15" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="formGroup">
+        <label>E-mail</label>
+        <input type="email" id="fEmail" placeholder="seuemail@email.com" autocomplete="email">
+      </div>
+
+      <button class="pixSubmitBtn press" id="pixSubmitBtn" onclick="submitPixForm()">
+        Gerar QR Code PIX
+      </button>
+      <div class="note" style="margin-bottom:10px">🔒 Pagamento 100% seguro · Ambiente criptografado</div>
+    </div>
+
+    <!-- Step 2: QR Code -->
+    <div class="pixStep" id="pixStep2">
+      <div class="pixQrWrap">
+        <div class="pixStatusBadge" id="pixStatusBadge">
+          <div class="pixStatusDot" id="pixStatusDot"></div>
+          <span id="pixStatusText">Aguardando pagamento</span>
+        </div>
+
+        <p>Abra o app do seu banco, selecione PIX e<br>escaneie o QR Code abaixo.</p>
+
+        <canvas id="qrcodeCanvas" width="220" height="220"></canvas>
+
+        <div class="pixTimer">
+          ⏱ Expira em <span id="pixCountdown">15:00</span>
+        </div>
+
+        <button class="copyCodeBtn press" onclick="copyPixCode()">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copiar código PIX (Copia e Cola)
+        </button>
+
+        <div class="pixCodeSmall" id="pixCodeSmall"></div>
+      </div>
+    </div>
+
+    <!-- Step 3: Confirmado -->
+    <div class="pixStep" id="pixStep3">
+      <div class="pixConfirm">
+        <div class="pixCheckCircle">
+          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h3>Pagamento confirmado!</h3>
+        <p>Recebemos seu pagamento com sucesso.<br>Em breve você receberá a confirmação por e-mail.</p>
+        <button class="pixConfirmClose press" onclick="closePixModal()">Continuar comprando</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- FIM PIX CHECKOUT SHEET -->
 
 <div class="app">
 
@@ -1258,8 +1620,8 @@ button:active,
     <div class="row"><span>Frete</span><b style="color:#008b8b">Grátis</b></div>
     <div class="row"><span>Cupom</span><b id="couponText">80% OFF</b></div>
     <div class="row"><span>Total</span><b class="total" id="finalTotal">R$ 0,00</b></div>
-    <button class="fakePay press" onclick="finishOrder()">Fazer pedido</button>
-    <div class="note">Checkout interno pronto para integração.</div>
+    <button class="fakePay press" onclick="openPixFromCheckout()">Pagar com PIX</button>
+    <div class="note">🔒 Pagamento seguro via PIX</div>
   </div>
 </section>
 
@@ -1301,53 +1663,118 @@ button:active,
 
 <div class="toast" id="toast"></div>
 
+<!-- QR Code library (sem backend necessário) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <script>
-const checkoutTV = "https://www.pagamentos-seguro.link/checkout/9bcd808e-4226-4043-8b2f-17f20a4a3505";
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const DUTTYFY_URL = "https://www.pagamentos-seguros.app/api-pix/H2wSBp_v_JYqT-2i8md1309aZnPLoiJKlSl-d4B_m1pZ1s4YAN51Kwv0C65viAK2kNgoYyKrPYbW9TbhOp1dyw";
 
-const products=[
-{id:1,name:"Samsung Smart TV 70'' Crystal UHD 4K + Soundbar",old:"R$ 5.699,00",price:"R$ 700,00",image:"tv-1.jpg",rating:"4.8 | 5374 vendidos",tag:"6.6",highlight:"best",label:"Mais vendido",checkout:checkoutTV},
-{id:2,name:"Air Fryer Mondial AFO-25L-BI 25L",old:"R$ 899,00",price:"R$ 179,90",image:"airfryer-1.jpg",rating:"4.7 | 2241 vendidos",tag:"Oferta",highlight:"",label:""},
-{id:3,name:"Caixa de Som JBL Boombox 4 Portátil",old:"R$ 2.319,20",price:"R$ 399,90",image:"jbl-1.jpg",rating:"4.9 | 891 vendidos",tag:"6.6",highlight:"ratingPlus",label:"Melhor avaliado"},
-{id:4,name:"Churrasqueira elétrica Arno GPRA preta",old:"R$ 377,29",price:"R$ 75,82",image:"churrasqueira-1.jpg",rating:"4.6 | 774 vendidos",tag:"Casa",highlight:"",label:""},
-{id:5,name:"Caixa Térmica Cooler SUV 20L",old:"R$ 137,60",price:"R$ 23,42",image:"cooler-1.jpg",rating:"4.5 | 421 vendidos",tag:"Promo",highlight:"",label:""},
-{id:6,name:"Projetor multimídia 5200 lúmens Full HD",old:"R$ 1.349,91",price:"R$ 269,90",image:"projetor-1.jpg",rating:"4.7 | 1205 vendidos",tag:"6.6",highlight:"lightning",label:"Oferta relâmpago"},
-{id:7,name:"Kit Body Splash Mother Extraordinaire",old:"R$ 118,90",price:"R$ 23,99",image:"body-1.jpg",rating:"4.8 | 685 vendidos",tag:"Beleza",highlight:"women",label:"Preferido da mulherada"},
-{id:8,name:"Kit 10 Chapéus Natanzinho Original",old:"R$ 56,90",price:"R$ 56,90",image:"chapeu-1.jpg",rating:"4.4 | 219 vendidos",tag:"Oferta",highlight:"",label:""},
-{id:9,name:"Jogo de Ferramentas 169 Peças",old:"R$ 289,90",price:"R$ 19,90",image:"ferramentas-1.jpg",rating:"4.6 | 984 vendidos",tag:"Casa",highlight:"",label:""}
+/* ============================================================
+   PRODUTOS
+   ============================================================ */
+const products = [
+  {id:1, name:"Samsung Smart TV 70'' Crystal UHD 4K + Soundbar",    old:"R$ 5.699,00", price:"R$ 700,00",  image:"tv-1.jpg",           rating:"4.8 | 5374 vendidos", tag:"6.6",    highlight:"best",       label:"Mais vendido"},
+  {id:2, name:"Air Fryer Mondial AFO-25L-BI 25L",                    old:"R$ 899,00",   price:"R$ 179,90", image:"airfryer-1.jpg",      rating:"4.7 | 2241 vendidos", tag:"Oferta", highlight:"",           label:""},
+  {id:3, name:"Caixa de Som JBL Boombox 4 Portátil",                 old:"R$ 2.319,20", price:"R$ 399,90", image:"jbl-1.jpg",           rating:"4.9 | 891 vendidos",  tag:"6.6",    highlight:"ratingPlus", label:"Melhor avaliado"},
+  {id:4, name:"Churrasqueira elétrica Arno GPRA preta",              old:"R$ 377,29",   price:"R$ 75,82",  image:"churrasqueira-1.jpg", rating:"4.6 | 774 vendidos",  tag:"Casa",   highlight:"",           label:""},
+  {id:5, name:"Caixa Térmica Cooler SUV 20L",                        old:"R$ 137,60",   price:"R$ 23,42",  image:"cooler-1.jpg",        rating:"4.5 | 421 vendidos",  tag:"Promo",  highlight:"",           label:""},
+  {id:6, name:"Projetor multimídia 5200 lúmens Full HD",             old:"R$ 1.349,91", price:"R$ 269,90", image:"projetor-1.jpg",      rating:"4.7 | 1205 vendidos", tag:"6.6",    highlight:"lightning",  label:"Oferta relâmpago"},
+  {id:7, name:"Kit Body Splash Mother Extraordinaire",               old:"R$ 118,90",   price:"R$ 23,99",  image:"body-1.jpg",          rating:"4.8 | 685 vendidos",  tag:"Beleza", highlight:"women",      label:"Preferido da mulherada"},
+  {id:8, name:"Kit 10 Chapéus Natanzinho Original",                  old:"R$ 56,90",    price:"R$ 56,90",  image:"chapeu-1.jpg",        rating:"4.4 | 219 vendidos",  tag:"Oferta", highlight:"",           label:""},
+  {id:9, name:"Jogo de Ferramentas 169 Peças",                       old:"R$ 289,90",   price:"R$ 19,90",  image:"ferramentas-1.jpg",   rating:"4.6 | 984 vendidos",  tag:"Casa",   highlight:"",           label:""}
 ];
 
-const names=[
-"Mariana","Carlos","Fernanda","João","Patrícia","Lucas","Rafael","Aline","Bruno","Camila",
-"Juliana","Mateus","Gabriela","Thiago","Larissa","Eduardo","Renata","Vinícius","Bianca","Felipe",
-"Isabela","Gustavo","Amanda","Rodrigo","Vanessa","Diego","Letícia","Marcelo","Natália","André"
+const names = [
+  "Mariana","Carlos","Fernanda","João","Patrícia","Lucas","Rafael","Aline","Bruno","Camila",
+  "Juliana","Mateus","Gabriela","Thiago","Larissa","Eduardo","Renata","Vinícius","Bianca","Felipe",
+  "Isabela","Gustavo","Amanda","Rodrigo","Vanessa","Diego","Letícia","Marcelo","Natália","André"
 ];
 
-let cart=JSON.parse(localStorage.getItem("cart")||"[]");
-let favorites=JSON.parse(localStorage.getItem("favorites")||"[]");
-let couponApplied=JSON.parse(localStorage.getItem("couponApplied")||"false");
+/* ============================================================
+   ESTADO
+   ============================================================ */
+let cart          = JSON.parse(localStorage.getItem("cart")          || "[]");
+let favorites     = JSON.parse(localStorage.getItem("favorites")     || "[]");
+let couponApplied = JSON.parse(localStorage.getItem("couponApplied") || "false");
 
-function moneyToNumber(v){return Number(v.replace("R$","").replace(/\./g,"").replace(",",".").trim())}
-function brl(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+// PIX state
+let pixProductId     = null;
+let pixCode          = "";
+let pixTransactionId = "";
+let pixPollingTimer  = null;
+let pixSessionTimer  = null;
+let pixCountdownInt  = null;
+let pixSecondsLeft   = 900; // 15 min
 
-function save(){
-  localStorage.setItem("cart",JSON.stringify(cart));
-  localStorage.setItem("favorites",JSON.stringify(favorites));
-  localStorage.setItem("couponApplied",JSON.stringify(couponApplied));
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function moneyToNumber(v){
+  return Number(v.replace("R$","").replace(/\./g,"").replace(",",".").trim());
 }
 
-function heartIcon(active){
+function brl(v){
+  return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+}
+
+function toCents(brlStr){
+  return Math.round(moneyToNumber(brlStr) * 100);
+}
+
+function save(){
+  localStorage.setItem("cart",          JSON.stringify(cart));
+  localStorage.setItem("favorites",     JSON.stringify(favorites));
+  localStorage.setItem("couponApplied", JSON.stringify(couponApplied));
+}
+
+function maskCpf(v){
+  v = v.replace(/\D/g,"");
+  if(v.length <= 11){
+    v = v.replace(/(\d{3})(\d)/,"$1.$2");
+    v = v.replace(/(\d{3})(\d)/,"$1.$2");
+    v = v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+  }
+  return v;
+}
+
+function maskPhone(v){
+  v = v.replace(/\D/g,"");
+  if(v.length <= 10){
+    v = v.replace(/(\d{2})(\d)/,"($1) $2");
+    v = v.replace(/(\d{4})(\d)/,"$1-$2");
+  } else {
+    v = v.replace(/(\d{2})(\d)/,"($1) $2");
+    v = v.replace(/(\d{5})(\d)/,"$1-$2");
+  }
+  return v;
+}
+
+function digitsOnly(v){
+  return v.replace(/\D/g,"");
+}
+
+function validateEmail(e){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+}
+
+/* ============================================================
+   PRODUTOS / CARRINHO / FAVORITOS (original mantido)
+   ============================================================ */
+function heartIcon(){
   return `<svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>`;
 }
 
 function productCard(p){
-  let fav=favorites.includes(p.id);
-  let hl=p.highlight ? `featured ${p.highlight}` : "";
-  let ribbon=p.label ? `<div class="ribbon ${p.highlight}">${p.label}</div>` : "";
-
+  let fav = favorites.includes(p.id);
+  let hl  = p.highlight ? `featured ${p.highlight}` : "";
+  let ribbon = p.label ? `<div class="ribbon ${p.highlight}">${p.label}</div>` : "";
   return `
   <div class="card ${hl}">
     ${ribbon}
-    <button class="fav press ${fav?'active':''}" onclick="toggleFavorite(${p.id})">${heartIcon(fav)}</button>
+    <button class="fav press ${fav?"active":""}" onclick="toggleFavorite(${p.id})">${heartIcon()}</button>
     <div class="imgbox"><img src="${p.image}" onerror="this.src='https://via.placeholder.com/400x400?text=Produto'"></div>
     <div class="cardBody">
       <span class="badge">${p.tag}</span>
@@ -1365,33 +1792,33 @@ function productCard(p){
 }
 
 function renderProducts(){
-  productsGrid.innerHTML=products.map(productCard).join("");
+  document.getElementById("productsGrid").innerHTML = products.map(productCard).join("");
 }
 
 function renderFavorites(){
-  let favs=products.filter(p=>favorites.includes(p.id));
-  favoritesGrid.innerHTML=favs.map(productCard).join("");
-  favEmpty.style.display=favs.length?"none":"block";
+  let favs = products.filter(p => favorites.includes(p.id));
+  document.getElementById("favoritesGrid").innerHTML = favs.map(productCard).join("");
+  document.getElementById("favEmpty").style.display = favs.length ? "none" : "block";
 }
 
 function renderCart(){
-  if(cart.length===0){
-    cartList.innerHTML="";
-    cartEmpty.style.display="block";
-    cartSummary.classList.remove("active");
-    checkoutPanel.classList.remove("active");
+  if(cart.length === 0){
+    document.getElementById("cartList").innerHTML = "";
+    document.getElementById("cartEmpty").style.display  = "block";
+    document.getElementById("cartSummary").classList.remove("active");
+    document.getElementById("checkoutPanel").classList.remove("active");
     updateCount();
     return;
   }
 
-  cartEmpty.style.display="none";
-  cartSummary.classList.add("active");
+  document.getElementById("cartEmpty").style.display = "none";
+  document.getElementById("cartSummary").classList.add("active");
 
-  cartList.innerHTML=`
+  document.getElementById("cartList").innerHTML = `
   <div class="storeHead">Central de Ofertas</div>
   <div class="free">Você ganhou frete grátis. Promoção válida até 23:59.</div>
-  ${cart.map(i=>{
-    let p=products.find(x=>x.id===i.id);
+  ${cart.map(i => {
+    let p = products.find(x => x.id === i.id);
     return `
     <div class="cartItem">
       <img src="${p.image}" onerror="this.src='https://via.placeholder.com/200x200?text=Produto'">
@@ -1413,204 +1840,507 @@ function renderCart(){
 }
 
 function addToCart(id){
-  if(cart.length>0){
+  if(cart.length > 0){
     toast("Promoção limitada: finalize este item para adicionar outro.");
     showPage("cart");
     return;
   }
-
-  cart=[{id,qty:1}];
+  cart = [{id, qty:1}];
   save();
   renderCart();
   updateCount();
   toast("Produto adicionado ao carrinho.");
 }
 
-function changeQty(id,n){
-  let item=cart.find(i=>i.id===id);
-  if(!item)return;
-
-  if(n>0){
-    toast("A promoção permite apenas 1 unidade por compra.");
-    return;
-  }
-
-  item.qty+=n;
-  if(item.qty<=0)cart=[];
+function changeQty(id, n){
+  let item = cart.find(i => i.id === id);
+  if(!item) return;
+  if(n > 0){ toast("A promoção permite apenas 1 unidade por compra."); return; }
+  item.qty += n;
+  if(item.qty <= 0) cart = [];
   save();
   renderCart();
 }
 
 function removeCart(id){
-  cart=[];
+  cart = [];
   save();
   renderCart();
   toast("Produto removido.");
 }
 
 function updateCount(){
-  cartCount.innerText=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById("cartCount").innerText = cart.reduce((s,i) => s+i.qty, 0);
 }
 
 function cartSubtotal(){
-  return cart.reduce((s,i)=>{
-    let p=products.find(x=>x.id===i.id);
-    return s+moneyToNumber(p.price)*i.qty;
-  },0);
+  return cart.reduce((s,i) => {
+    let p = products.find(x => x.id === i.id);
+    return s + moneyToNumber(p.price) * i.qty;
+  }, 0);
 }
 
 function updateTotal(){
-  cartTotal.innerText=brl(cartSubtotal());
+  document.getElementById("cartTotal").innerText = brl(cartSubtotal());
 }
 
 function openInternalCheckout(){
-  if(cart.length===0){
-    toast("Carrinho vazio.");
-    return;
-  }
-
+  if(cart.length === 0){ toast("Carrinho vazio."); return; }
   showPage("cart");
-  checkoutPanel.classList.add("active");
+  document.getElementById("checkoutPanel").classList.add("active");
 
-  let subtotal=cartSubtotal();
-  let final=couponApplied?subtotal*0.20:subtotal;
+  let subtotal = cartSubtotal();
+  let final    = couponApplied ? subtotal * 0.20 : subtotal;
 
-  checkoutItems.innerHTML=cart.map(i=>{
-    let p=products.find(x=>x.id===i.id);
+  document.getElementById("checkoutItems").innerHTML = cart.map(i => {
+    let p = products.find(x => x.id === i.id);
     return `<div class="row"><span>${i.qty}x ${p.name.substring(0,30)}...</span><b>${brl(moneyToNumber(p.price)*i.qty)}</b></div>`;
   }).join("");
 
-  subTotal.innerText=brl(subtotal);
-  couponText.innerText=couponApplied?"80% OFF aplicado":"Não aplicado";
-  finalTotal.innerText=brl(final);
-  window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
-}
-
-function buyNow(id){
-  let p=products.find(x=>x.id===id);
-
-  if(p.checkout){
-    window.location.href=p.checkout;
-    return;
-  }
-
-  cart=[{id,qty:1}];
-  save();
-  renderCart();
-  openInternalCheckout();
-}
-
-function finishOrder(){
-  if(cart.length===0){
-    toast("Carrinho vazio.");
-    return;
-  }
-
-  let p=products.find(x=>x.id===cart[0].id);
-
-  if(p.checkout){
-    window.location.href=p.checkout;
-    return;
-  }
-
-  toast("Checkout interno pronto para integrar.");
+  document.getElementById("subTotal").innerText   = brl(subtotal);
+  document.getElementById("couponText").innerText = couponApplied ? "80% OFF aplicado" : "Não aplicado";
+  document.getElementById("finalTotal").innerText = brl(final);
+  window.scrollTo({top: document.body.scrollHeight, behavior:"smooth"});
 }
 
 function toggleFavorite(id){
-  favorites=favorites.includes(id)?favorites.filter(f=>f!==id):[...favorites,id];
+  favorites = favorites.includes(id) ? favorites.filter(f => f !== id) : [...favorites, id];
   save();
   renderProducts();
   renderFavorites();
-  toast(favorites.includes(id)?"Adicionado aos favoritos.":"Removido dos favoritos.");
+  toast(favorites.includes(id) ? "Adicionado aos favoritos." : "Removido dos favoritos.");
 }
 
 function applyCoupon(){
-  couponApplied=true;
+  couponApplied = true;
   save();
   updateCouponButton();
   toast("Cupom aplicado. Boas compras.");
 }
 
 function saveCouponFromModal(){
-  couponApplied=true;
+  couponApplied = true;
   save();
   updateCouponButton();
-
-  const btn=document.getElementById("saveCouponBtn");
+  const btn = document.getElementById("saveCouponBtn");
   btn.classList.add("saved");
-  btn.innerText="Cupom aplicado";
-
-  setTimeout(()=>{
-    closeCouponModal();
-    toast("Cupom 80% OFF + frete grátis aplicado.");
-  },700);
+  btn.innerText = "Cupom aplicado";
+  setTimeout(() => { closeCouponModal(); toast("Cupom 80% OFF + frete grátis aplicado."); }, 700);
 }
 
 function closeCouponModal(){
-  document.getElementById("couponModal").style.display="none";
+  document.getElementById("couponModal").style.display = "none";
 }
 
 function updateCouponButton(){
   if(couponApplied){
-    couponBtn.classList.add("applied");
-    couponBtn.innerHTML="Cupom aplicado<small>Boas compras.</small>";
+    const btn = document.getElementById("couponBtn");
+    btn.classList.add("applied");
+    btn.innerHTML = "Cupom aplicado<small>Boas compras.</small>";
   }
 }
 
 function showPage(page){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".nav").forEach(n => n.classList.remove("active"));
   document.getElementById(page+"Page").classList.add("active");
-
-  let nav=document.getElementById("nav-"+page);
-  if(nav)nav.classList.add("active");
-
-  if(page==="favorites")renderFavorites();
-  if(page==="cart")renderCart();
-  if(page!=="cart")checkoutPanel.classList.remove("active");
-
-  window.scrollTo({top:0,behavior:"smooth"});
+  let nav = document.getElementById("nav-"+page);
+  if(nav) nav.classList.add("active");
+  if(page === "favorites") renderFavorites();
+  if(page === "cart")      renderCart();
+  if(page !== "cart")      document.getElementById("checkoutPanel").classList.remove("active");
+  window.scrollTo({top:0, behavior:"smooth"});
 }
 
 function toast(msg){
-  let el=document.getElementById("toast");
-  el.innerText=msg;
+  let el = document.getElementById("toast");
+  el.innerText = msg;
   el.classList.add("show");
-  setTimeout(()=>el.classList.remove("show"),1900);
+  setTimeout(() => el.classList.remove("show"), 1900);
 }
 
+/* ============================================================
+   COUNTDOWN HOME
+   ============================================================ */
 function updateCountdown(){
-  const now=new Date();
-  const end=new Date();
+  const now = new Date();
+  const end = new Date();
   end.setHours(23,59,59,999);
-
-  let diff=end-now;
-  if(diff<0)diff=0;
-
-  let h=Math.floor(diff/1000/60/60);
-  let m=Math.floor((diff/1000/60)%60);
-  let s=Math.floor((diff/1000)%60);
-
-  countdown.innerText=
-  String(h).padStart(2,"0")+":"+
-  String(m).padStart(2,"0")+":"+
-  String(s).padStart(2,"0");
+  let diff = Math.max(end - now, 0);
+  let h = Math.floor(diff/1000/60/60);
+  let m = Math.floor((diff/1000/60) % 60);
+  let s = Math.floor((diff/1000) % 60);
+  document.getElementById("countdown").innerText =
+    String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
 }
 
+/* ============================================================
+   FAKE PURCHASE TOASTS
+   ============================================================ */
 function randomPurchaseToast(){
-  const name=names[Math.floor(Math.random()*names.length)];
-  const product=products[Math.floor(Math.random()*products.length)];
-
-  purchaseTitle.innerText=`${name} acabou de comprar`;
-  purchaseSub.innerText=product.name;
-
-  purchaseToast.classList.add("show");
-
-  setTimeout(()=>{
-    purchaseToast.classList.remove("show");
-  },4300);
+  const name    = names[Math.floor(Math.random() * names.length)];
+  const product = products[Math.floor(Math.random() * products.length)];
+  document.getElementById("purchaseTitle").innerText = `${name} acabou de comprar`;
+  document.getElementById("purchaseSub").innerText   = product.name;
+  const el = document.getElementById("purchaseToast");
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 4300);
 }
 
+/* ============================================================
+   PIX — abrir modal
+   ============================================================ */
+function buyNow(id){
+  openPixModal(id);
+}
+
+function openPixFromCheckout(){
+  if(cart.length === 0){ toast("Carrinho vazio."); return; }
+  openPixModal(cart[0].id);
+}
+
+function openPixModal(id){
+  pixProductId = id;
+  const p = products.find(x => x.id === id);
+
+  // Reset state
+  stopPixPolling();
+  clearInterval(pixCountdownInt);
+  pixSecondsLeft = 900;
+  pixCode = "";
+  pixTransactionId = "";
+
+  // UI reset
+  goToPixStep(1);
+  document.getElementById("pixSheetTitle").innerText = "Finalizar com PIX";
+  document.getElementById("pixLoading").classList.remove("active");
+
+  // Preencher prévia do produto
+  document.getElementById("pixProductPreview").innerHTML = `
+    <div class="pixProductLine">
+      <img src="${p.image}" onerror="this.src='https://via.placeholder.com/100x100?text=P'">
+      <div class="pInfo">
+        <b>${p.name}</b>
+        <span>${p.price}</span>
+      </div>
+    </div>`;
+
+  // Abrir overlay
+  document.getElementById("pixOverlay").classList.add("active");
+  document.body.style.overflow = "hidden";
+
+  // Máscaras nos campos
+  document.getElementById("fCpf").addEventListener("input", function(){
+    this.value = maskCpf(this.value);
+  });
+  document.getElementById("fPhone").addEventListener("input", function(){
+    this.value = maskPhone(this.value);
+  });
+}
+
+function closePixModal(){
+  document.getElementById("pixOverlay").classList.remove("active");
+  document.body.style.overflow = "";
+  stopPixPolling();
+  clearInterval(pixCountdownInt);
+}
+
+function handlePixOverlayClick(e){
+  if(e.target === document.getElementById("pixOverlay")) closePixModal();
+}
+
+function goToPixStep(n){
+  document.querySelectorAll(".pixStep").forEach(s => s.classList.remove("active"));
+  document.getElementById("pixStep"+n).classList.add("active");
+}
+
+/* ============================================================
+   PIX — Step 1: Validação e submit
+   ============================================================ */
+function submitPixForm(){
+  const name  = document.getElementById("fName").value.trim();
+  const cpf   = digitsOnly(document.getElementById("fCpf").value);
+  const phone = digitsOnly(document.getElementById("fPhone").value);
+  const email = document.getElementById("fEmail").value.trim();
+
+  let ok = true;
+
+  function mark(id, valid){
+    const el = document.getElementById(id);
+    el.classList.toggle("error", !valid);
+    if(!valid) ok = false;
+  }
+
+  mark("fName",  name.length >= 3);
+  mark("fCpf",   cpf.length === 11 || cpf.length === 14);
+  mark("fPhone", phone.length >= 10 && phone.length <= 11);
+  mark("fEmail", validateEmail(email));
+
+  if(!ok){ toast("Preencha todos os campos corretamente."); return; }
+
+  createPixCharge({name, cpf, phone, email});
+}
+
+/* ============================================================
+   PIX — Criar cobrança na Duttyfy
+   ============================================================ */
+async function createPixCharge({name, cpf, phone, email}){
+  const p       = products.find(x => x.id === pixProductId);
+  const priceNum = moneyToNumber(p.price);
+  const final    = couponApplied ? priceNum * 0.20 : priceNum;
+  const cents    = Math.round(final * 100);
+
+  // captura UTMs da URL atual
+  const utm = window.location.search.replace(/^\?/, "");
+
+  const body = {
+    amount: cents,
+    customer: {
+      name:     name,
+      document: digitsOnly(cpf),
+      email:    email,
+      phone:    digitsOnly(phone)
+    },
+    item: {
+      title:    p.name,
+      price:    cents,
+      quantity: 1
+    },
+    paymentMethod: "PIX",
+    ...(utm ? {utm} : {})
+  };
+
+  // Mostrar loader, esconder steps
+  document.getElementById("pixLoading").classList.add("active");
+  goToPixStep(0); // sem step ativo
+  document.querySelectorAll(".pixStep").forEach(s => s.classList.remove("active"));
+
+  let attempt = 0;
+  const maxAttempts = 3;
+  const delays = [1000, 2000, 4000];
+
+  while(attempt < maxAttempts){
+    try {
+      const res = await fetch(DUTTYFY_URL, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(15000)
+      });
+
+      if(res.status >= 400 && res.status < 500){
+        // 4xx: não retentável
+        const err = await res.json().catch(() => ({}));
+        document.getElementById("pixLoading").classList.remove("active");
+        goToPixStep(1);
+        toast("Erro nos dados: " + (err.message || "verifique e tente novamente."));
+        return;
+      }
+
+      if(!res.ok) throw new Error("HTTP " + res.status);
+
+      const data = await res.json();
+      pixCode          = data.pixCode;
+      pixTransactionId = data.transactionId;
+
+      // Persiste localmente
+      localStorage.setItem("lastPix_txId",    pixTransactionId);
+      localStorage.setItem("lastPix_product", JSON.stringify({id: p.id, name: p.name, price: brl(final)}));
+
+      document.getElementById("pixLoading").classList.remove("active");
+      showPixQr();
+      return;
+
+    } catch(err) {
+      attempt++;
+      if(attempt >= maxAttempts){
+        document.getElementById("pixLoading").classList.remove("active");
+        goToPixStep(1);
+        toast("Não foi possível gerar o PIX. Tente novamente.");
+        return;
+      }
+      await new Promise(r => setTimeout(r, delays[attempt - 1]));
+    }
+  }
+}
+
+/* ============================================================
+   PIX — Exibir QR Code
+   ============================================================ */
+function showPixQr(){
+  goToPixStep(2);
+  document.getElementById("pixSheetTitle").innerText = "Pagar com PIX";
+
+  // Gera QR Code no canvas
+  const canvas = document.getElementById("qrcodeCanvas");
+  const ctx    = canvas.getContext("2d");
+  ctx.clearRect(0,0,220,220);
+
+  try {
+    // QRCode.js: cria em div temporária e depois copia imagem
+    const tmp = document.createElement("div");
+    tmp.style.cssText = "position:absolute;visibility:hidden";
+    document.body.appendChild(tmp);
+
+    new QRCode(tmp, {
+      text:          pixCode,
+      width:         220,
+      height:        220,
+      colorDark:     "#111111",
+      colorLight:    "#ffffff",
+      correctLevel:  QRCode.CorrectLevel.M
+    });
+
+    setTimeout(() => {
+      const img = tmp.querySelector("img") || tmp.querySelector("canvas");
+      if(img){
+        if(img.tagName === "IMG"){
+          const i = new Image();
+          i.onload = () => { ctx.drawImage(i,0,0,220,220); };
+          i.src = img.src;
+        } else {
+          ctx.drawImage(img,0,0,220,220);
+        }
+      }
+      document.body.removeChild(tmp);
+    }, 120);
+  } catch(e){
+    // Fallback: escreve texto no canvas
+    ctx.fillStyle = "#f4f4f4";
+    ctx.fillRect(0,0,220,220);
+    ctx.fillStyle = "#333";
+    ctx.font = "11px monospace";
+    ctx.fillText("QR Code indisponível", 20, 110);
+  }
+
+  // Código copia-e-cola
+  const short = pixCode.length > 60 ? pixCode.substring(0,60)+"..." : pixCode;
+  document.getElementById("pixCodeSmall").innerText = short;
+
+  // Status badge
+  setPixStatus("pending");
+
+  // Countdown 15 min
+  pixSecondsLeft = 900;
+  updatePixCountdown();
+  pixCountdownInt = setInterval(() => {
+    pixSecondsLeft--;
+    updatePixCountdown();
+    if(pixSecondsLeft <= 0){
+      clearInterval(pixCountdownInt);
+      stopPixPolling();
+      setPixStatus("expired");
+      toast("Tempo expirado. Gere um novo PIX.");
+    }
+  }, 1000);
+
+  // Polling
+  startPixPolling();
+}
+
+function updatePixCountdown(){
+  const m = Math.floor(pixSecondsLeft / 60);
+  const s = pixSecondsLeft % 60;
+  document.getElementById("pixCountdown").innerText =
+    String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+}
+
+function setPixStatus(status){
+  const badge = document.getElementById("pixStatusBadge");
+  const text  = document.getElementById("pixStatusText");
+  if(status === "completed"){
+    badge.classList.add("completed");
+    text.innerText = "Pagamento confirmado!";
+  } else if(status === "expired"){
+    badge.style.background = "#fff0f0";
+    badge.style.color      = "#c0392b";
+    badge.style.borderColor= "#f5aaaa";
+    text.innerText = "Expirado";
+  } else {
+    badge.classList.remove("completed");
+    text.innerText = "Aguardando pagamento";
+  }
+}
+
+/* ============================================================
+   PIX — Copiar código
+   ============================================================ */
+function copyPixCode(){
+  if(!pixCode) return;
+  navigator.clipboard.writeText(pixCode).then(() => {
+    toast("Código PIX copiado!");
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement("textarea");
+    ta.value = pixCode;
+    ta.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    toast("Código PIX copiado!");
+  });
+}
+
+/* ============================================================
+   PIX — Polling de status
+   ============================================================ */
+function startPixPolling(){
+  stopPixPolling();
+
+  pixPollingTimer = setInterval(async () => {
+    if(!pixTransactionId) return;
+    try {
+      const url = `${DUTTYFY_URL}?transactionId=${encodeURIComponent(pixTransactionId)}`;
+      const res = await fetch(url, {signal: AbortSignal.timeout(10000)});
+      if(!res.ok) return; // aguarda próximo ciclo
+      const data = await res.json();
+
+      if(data.status === "COMPLETED"){
+        stopPixPolling();
+        clearInterval(pixCountdownInt);
+        onPixPaid();
+      }
+    } catch(e){
+      // falha silenciosa, tenta no próximo ciclo
+    }
+  }, 5000);
+
+  // Sessão máx 15 min
+  pixSessionTimer = setTimeout(() => {
+    stopPixPolling();
+  }, 15 * 60 * 1000);
+}
+
+function stopPixPolling(){
+  clearInterval(pixPollingTimer);
+  clearTimeout(pixSessionTimer);
+  pixPollingTimer = null;
+  pixSessionTimer = null;
+}
+
+/* ============================================================
+   PIX — Pagamento confirmado
+   ============================================================ */
+function onPixPaid(){
+  setPixStatus("completed");
+
+  // Limpa carrinho
+  cart = [];
+  save();
+  renderCart();
+  updateCount();
+
+  // Vai para step 3 após breve delay
+  setTimeout(() => {
+    goToPixStep(3);
+    document.getElementById("pixSheetTitle").innerText = "Pedido confirmado";
+  }, 800);
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
 renderProducts();
 renderFavorites();
 renderCart();
@@ -1618,10 +2348,9 @@ updateCouponButton();
 updateCount();
 updateCountdown();
 
-setInterval(updateCountdown,1000);
-setTimeout(randomPurchaseToast,15000);
-setInterval(randomPurchaseToast,50000);
+setInterval(updateCountdown, 1000);
+setTimeout(randomPurchaseToast, 15000);
+setInterval(randomPurchaseToast, 50000);
 </script>
-
 </body>
 </html>
