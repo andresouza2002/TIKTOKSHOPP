@@ -284,7 +284,6 @@ button:active,
   font-weight:500;
 }
 
-/* Estoque badge */
 .stockBadge{
   display:inline-flex;
   align-items:center;
@@ -688,7 +687,7 @@ button:active,
 </div>
 
 <!-- ===== PIX CHECKOUT SHEET ===== -->
-<div class="pixOverlay" id="pixOverlay" onclick="handlePixOverlayClick(event)">
+<div class="pixOverlay" id="pixOverlay">
   <div class="pixSheet" id="pixSheet">
     <div class="pixHandle"></div>
     <div class="pixSheetHead">
@@ -873,7 +872,7 @@ button:active,
 <section id="cartPage" class="page">
   <h2 class="sectionTitle">Carrinho</h2>
   <div class="cartBox" id="cartList"></div>
-  <div class="empty" id="cartEmpty"><b>Seu carrinho está vazio</b>Adicione até 5 produtos por compra.</div>
+  <div class="empty" id="cartEmpty"><b>Seu carrinho está vazio</b>Adicione 1 produto por compra.</div>
 
   <div class="checkoutPanel" id="checkoutPanel">
     <h2>Resumo do pedido</h2>
@@ -934,7 +933,6 @@ const DUTTYFY_URL = "https://www.pagamentos-seguros.app/api-pix/H2wSBp_v_JYqT-2i
    PRODUTOS
    ============================================================ */
 const products = [
-  /* ---- ORIGINAIS ---- */
   {
     id:1,
     name:"Samsung Smart TV 70'' Crystal UHD 4K + Soundbar",
@@ -1007,8 +1005,6 @@ const products = [
     rating:"4.6 | 984 vendidos", tag:"Casa", highlight:"", label:"",
     stock:null
   },
-
-  /* ---- NOVOS ---- */
   {
     id:10,
     name:"iPhone 17 Pro Max Branco 256GB LACRADO 1 Ano Garantia Apple 5G Dual E-sim Original",
@@ -1099,9 +1095,7 @@ const products = [
   }
 ];
 
-/* Fallbacks */
-const fallbackImages = {};
-products.forEach(p => { fallbackImages[p.id] = "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&q=80"; });
+const fallbackImg = "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&q=80";
 
 const names = [
   "Mariana","Carlos","Fernanda","João","Patrícia","Lucas","Rafael","Aline","Bruno","Camila",
@@ -1110,13 +1104,19 @@ const names = [
 ];
 
 /* ============================================================
-   ESTADO
+   ESTADO — carrinho limitado a 1 produto
    ============================================================ */
-const MAX_CART_ITEMS = 5;
+const MAX_CART_ITEMS = 1; // LIMITE: 1 produto por compra
 
 let cart          = JSON.parse(localStorage.getItem("cart")          || "[]");
 let favorites     = JSON.parse(localStorage.getItem("favorites")     || "[]");
 let couponApplied = JSON.parse(localStorage.getItem("couponApplied") || "false");
+
+// Garante que carrinho antigo (com múltiplos itens) não quebre — mantém só o primeiro
+if (cart.length > MAX_CART_ITEMS) {
+  cart = [cart[0]];
+  save();
+}
 
 // PIX state
 let pixProductId     = null;
@@ -1128,7 +1128,6 @@ let pixCountdownInt  = null;
 let pixSecondsLeft   = 900;
 let selectedDelivery = "PAC";
 const SEDEX_PRICE    = 21.82;
-let pixIsCheckout    = false; // true = veio do checkout (múltiplos itens)
 
 /* ============================================================
    HELPERS
@@ -1173,16 +1172,19 @@ function maskPhone(v){
   return v;
 }
 
-function digitsOnly(v){ return v.replace(/\D/g,"") }
+function digitsOnly(v){ return v.replace(/\D/g,""); }
 
-function validateEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) }
+function validateEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
 function calcTotal(productPrice){
   return productPrice + (selectedDelivery === "SEDEX" ? SEDEX_PRICE : 0);
 }
 
-function calcCartTotal(){
-  return cartSubtotal() + (selectedDelivery === "SEDEX" ? SEDEX_PRICE : 0);
+function cartSubtotal(){
+  return cart.reduce((s,i) => {
+    const p = products.find(x => x.id === i.id);
+    return s + moneyToNumber(p.price) * i.qty;
+  }, 0);
 }
 
 /* ============================================================
@@ -1203,9 +1205,7 @@ function selectDelivery(type){
 
 function updatePixTotalDisplay(){
   let total = 0;
-  if(pixIsCheckout){
-    total = calcCartTotal();
-  } else if(pixProductId){
+  if(pixProductId){
     const p = products.find(x => x.id === pixProductId);
     total = calcTotal(moneyToNumber(p.price));
   }
@@ -1229,14 +1229,15 @@ function heartIcon(){
 }
 
 function imgTag(p){
-  return `<img src="${p.image}" onerror="this.onerror=null;this.src='${fallbackImages[p.id] || 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&q=80'}'">`;
+  const fb = fallbackImg;
+  return `<img src="${p.image}" onerror="this.onerror=null;this.src='${fb}'">`;
 }
 
 function productCard(p){
-  let fav    = favorites.includes(p.id);
-  let hl     = p.highlight ? `featured ${p.highlight}` : "";
-  let ribbon = p.label ? `<div class="ribbon ${p.highlight}">${p.label}</div>` : "";
-  let oldHtml = p.old && p.old !== p.price ? `<div class="old">${p.old}</div>` : "";
+  const fav    = favorites.includes(p.id);
+  const hl     = p.highlight ? `featured ${p.highlight}` : "";
+  const ribbon = p.label ? `<div class="ribbon ${p.highlight}">${p.label}</div>` : "";
+  const oldHtml = p.old && p.old !== p.price ? `<div class="old">${p.old}</div>` : "";
   return `
   <div class="card ${hl}">
     ${ribbon}
@@ -1263,13 +1264,13 @@ function renderProducts(){
 }
 
 function renderFavorites(){
-  let favs = products.filter(p => favorites.includes(p.id));
+  const favs = products.filter(p => favorites.includes(p.id));
   document.getElementById("favoritesGrid").innerHTML = favs.map(productCard).join("");
   document.getElementById("favEmpty").style.display = favs.length ? "none" : "block";
 }
 
 /* ============================================================
-   CARRINHO — aceita até 5 itens distintos
+   CARRINHO — máximo 1 produto por compra
    ============================================================ */
 function renderCart(){
   if(cart.length === 0){
@@ -1283,13 +1284,13 @@ function renderCart(){
   document.getElementById("cartEmpty").style.display = "none";
   document.getElementById("cartSummary").classList.add("active");
   document.getElementById("cartList").innerHTML = `
-  <div class="storeHead">Central de Ofertas · ${cart.length}/5 produto${cart.length>1?"s":""}</div>
+  <div class="storeHead">Central de Ofertas · ${cart.length} produto</div>
   <div class="free">Frete grátis em todos os produtos! Promoção válida até 23:59.</div>
   ${cart.map(i => {
-    let p = products.find(x => x.id === i.id);
+    const p = products.find(x => x.id === i.id);
     return `
     <div class="cartItem">
-      <img src="${p.image}" onerror="this.onerror=null;this.src='${fallbackImages[p.id]}'" style="width:84px;height:84px;border-radius:16px;object-fit:cover;background:#eee">
+      <img src="${p.image}" onerror="this.onerror=null;this.src='${fallbackImg}'" style="width:84px;height:84px;border-radius:16px;object-fit:cover;background:#eee">
       <div class="cartInfo">
         <h3>${p.name}</h3>
         <div class="cartPrice">${p.price}</div>
@@ -1307,15 +1308,15 @@ function renderCart(){
 }
 
 function addToCart(id){
+  // Se já há um produto diferente no carrinho, bloqueia
+  if(cart.length > 0 && cart[0].id !== id){
+    toast("Apenas 1 produto por compra. Remova o atual primeiro.");
+    showPage("cart");
+    return;
+  }
+  // Se é o mesmo produto, incrementa qty (sem limite de unidades por enquanto)
   const existing = cart.find(i => i.id === id);
   if(existing){
-    // já está no carrinho, só incrementa qty (não conta como novo slot)
-    const totalQty = cart.reduce((s,i) => s + i.qty, 0);
-    if(totalQty >= MAX_CART_ITEMS){
-      toast("Limite de 5 itens no carrinho atingido.");
-      showPage("cart");
-      return;
-    }
     existing.qty++;
     save();
     renderCart();
@@ -1323,11 +1324,7 @@ function addToCart(id){
     toast("Quantidade atualizada no carrinho.");
     return;
   }
-  if(cart.length >= MAX_CART_ITEMS){
-    toast("Carrinho cheio. Máximo de 5 produtos por compra.");
-    showPage("cart");
-    return;
-  }
+  // Adiciona novo produto (carrinho estava vazio)
   cart.push({id, qty:1});
   save();
   renderCart();
@@ -1336,15 +1333,8 @@ function addToCart(id){
 }
 
 function changeQty(id, n){
-  let item = cart.find(i => i.id === id);
+  const item = cart.find(i => i.id === id);
   if(!item) return;
-  if(n > 0){
-    const totalQty = cart.reduce((s,i) => s + i.qty, 0);
-    if(totalQty >= MAX_CART_ITEMS){
-      toast("Limite de 5 itens no carrinho atingido.");
-      return;
-    }
-  }
   item.qty += n;
   if(item.qty <= 0) cart = cart.filter(i => i.id !== id);
   save();
@@ -1362,13 +1352,6 @@ function updateCount(){
   document.getElementById("cartCount").innerText = cart.reduce((s,i) => s+i.qty, 0);
 }
 
-function cartSubtotal(){
-  return cart.reduce((s,i) => {
-    let p = products.find(x => x.id === i.id);
-    return s + moneyToNumber(p.price) * i.qty;
-  }, 0);
-}
-
 function updateTotal(){
   document.getElementById("cartTotal").innerText = brl(cartSubtotal());
 }
@@ -1377,9 +1360,9 @@ function openInternalCheckout(){
   if(cart.length === 0){ toast("Carrinho vazio."); return; }
   showPage("cart");
   document.getElementById("checkoutPanel").classList.add("active");
-  let subtotal = cartSubtotal();
+  const subtotal = cartSubtotal();
   document.getElementById("checkoutItems").innerHTML = cart.map(i => {
-    let p = products.find(x => x.id === i.id);
+    const p = products.find(x => x.id === i.id);
     return `<div class="row"><span>${i.qty}x ${p.name.substring(0,30)}...</span><b>${brl(moneyToNumber(p.price)*i.qty)}</b></div>`;
   }).join("");
   document.getElementById("subTotal").innerText   = brl(subtotal);
@@ -1429,7 +1412,7 @@ function showPage(page){
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.querySelectorAll(".nav").forEach(n => n.classList.remove("active"));
   document.getElementById(page+"Page").classList.add("active");
-  let nav = document.getElementById("nav-"+page);
+  const nav = document.getElementById("nav-"+page);
   if(nav) nav.classList.add("active");
   if(page === "favorites") renderFavorites();
   if(page === "cart")      renderCart();
@@ -1438,7 +1421,7 @@ function showPage(page){
 }
 
 function toast(msg){
-  let el = document.getElementById("toast");
+  const el = document.getElementById("toast");
   el.innerText = msg;
   el.classList.add("show");
   setTimeout(() => el.classList.remove("show"), 1900);
@@ -1451,10 +1434,10 @@ function updateCountdown(){
   const now = new Date();
   const end = new Date();
   end.setHours(23,59,59,999);
-  let diff = Math.max(end - now, 0);
-  let h = Math.floor(diff/1000/60/60);
-  let m = Math.floor((diff/1000/60) % 60);
-  let s = Math.floor((diff/1000) % 60);
+  const diff = Math.max(end - now, 0);
+  const h = Math.floor(diff/1000/60/60);
+  const m = Math.floor((diff/1000/60) % 60);
+  const s = Math.floor((diff/1000) % 60);
   document.getElementById("countdown").innerText =
     String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
 }
@@ -1476,17 +1459,18 @@ function randomPurchaseToast(){
    PIX — abrir modal
    ============================================================ */
 function buyNow(id){
-  pixIsCheckout = false;
   openPixModal(id);
 }
 
+// Checkout pelo carrinho — usa o produto do carrinho
 function openPixFromCheckout(){
   if(cart.length === 0){ toast("Carrinho vazio."); return; }
-  pixIsCheckout = true;
-  openPixModal(null);
+  const cartItemId = cart[0].id; // sempre 1 produto
+  openPixModal(cartItemId);
 }
 
 function openPixModal(id){
+  // Reset completo do estado PIX
   pixProductId     = id;
   selectedDelivery = "PAC";
 
@@ -1496,40 +1480,35 @@ function openPixModal(id){
   pixCode          = "";
   pixTransactionId = "";
 
-  goToPixStep(1);
-  document.getElementById("pixSheetTitle").innerText = "Finalizar com PIX";
+  // Reseta UI
   document.getElementById("pixLoading").classList.remove("active");
+  document.getElementById("pixSheetTitle").innerText = "Finalizar com PIX";
+  document.getElementById("pixSubmitBtn").disabled  = false;
+  document.getElementById("pixSubmitBtn").innerText = "Gerar QR Code PIX";
 
-  selectDelivery("PAC");
-
-  // Preview do produto / carrinho
-  if(pixIsCheckout){
-    const items = cart.map(i => {
-      const p = products.find(x => x.id === i.id);
-      return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-        <img src="${p.image}" onerror="this.onerror=null;this.src='${fallbackImages[p.id]}'" style="width:42px;height:42px;border-radius:8px;object-fit:cover;background:#eee">
-        <div style="flex:1"><b style="font-size:12px;font-weight:700">${i.qty}x ${p.name.substring(0,36)}${p.name.length>36?'...':''}</b>
-        <span style="display:block;font-size:13px;font-weight:900;color:#ff2b63">${brl(moneyToNumber(p.price)*i.qty)}</span></div>
-      </div>`;
-    }).join("");
-    document.getElementById("pixProductPreview").innerHTML = `
-      <div style="background:#f8f8f8;border-radius:16px;padding:12px 14px;margin:16px 0;border:1px solid #ebebeb">${items}</div>`;
-  } else {
-    const p = products.find(x => x.id === id);
-    document.getElementById("pixProductPreview").innerHTML = `
-      <div class="pixProductLine">
-        <img src="${p.image}" onerror="this.onerror=null;this.src='${fallbackImages[p.id]||'https://via.placeholder.com/100x100?text=P'}'">
-        <div class="pInfo"><b>${p.name}</b><span>${p.price}</span></div>
-      </div>`;
-  }
-
-  updatePixTotalDisplay();
-
+  // Limpa campos e erros
   ["fName","fCpf","fPhone","fEmail"].forEach(fid => {
     document.getElementById(fid).value = "";
     document.getElementById(fid).classList.remove("error");
   });
 
+  // Volta sempre ao step 1
+  goToPixStep(1);
+
+  // Reseta delivery UI
+  selectDelivery("PAC");
+
+  // Preview do produto
+  const p = products.find(x => x.id === id);
+  document.getElementById("pixProductPreview").innerHTML = `
+    <div class="pixProductLine">
+      <img src="${p.image}" onerror="this.onerror=null;this.src='${fallbackImg}'">
+      <div class="pInfo"><b>${p.name}</b><span>${p.price}</span></div>
+    </div>`;
+
+  updatePixTotalDisplay();
+
+  // Abre o overlay
   document.getElementById("pixOverlay").classList.add("active");
   document.body.style.overflow = "hidden";
 }
@@ -1541,9 +1520,17 @@ function closePixModal(){
   clearInterval(pixCountdownInt);
 }
 
-function handlePixOverlayClick(e){
-  if(e.target === document.getElementById("pixOverlay")) closePixModal();
+// Fecha ao clicar no fundo — mas NÃO durante loading ou QR exibido
+function handlePixOverlayBackdrop(e){
+  if(e.target !== document.getElementById("pixOverlay")) return;
+  // Não fecha se estiver no step 2 (QR ativo) ou carregando
+  const isLoading = document.getElementById("pixLoading").classList.contains("active");
+  const isQr      = document.getElementById("pixStep2").classList.contains("active");
+  if(isLoading || isQr) return;
+  closePixModal();
 }
+
+document.getElementById("pixOverlay").addEventListener("click", handlePixOverlayBackdrop);
 
 function goToPixStep(n){
   document.querySelectorAll(".pixStep").forEach(s => s.classList.remove("active"));
@@ -1558,47 +1545,39 @@ function submitPixForm(){
   const cpf   = digitsOnly(document.getElementById("fCpf").value);
   const phone = digitsOnly(document.getElementById("fPhone").value);
   const email = document.getElementById("fEmail").value.trim();
+
   let ok = true;
   function mark(fid, valid){
     document.getElementById(fid).classList.toggle("error", !valid);
     if(!valid) ok = false;
   }
   mark("fName",  name.length >= 3);
-  mark("fCpf",   cpf.length === 11 || cpf.length === 14);
+  mark("fCpf",   cpf.length === 11);
   mark("fPhone", phone.length >= 10 && phone.length <= 11);
   mark("fEmail", validateEmail(email));
+
   if(!ok){ toast("Preencha todos os campos corretamente."); return; }
+
   createPixCharge({name, cpf, phone, email});
 }
 
 /* ============================================================
-   PIX — Criar cobrança
+   PIX — Criar cobrança (produto único)
    ============================================================ */
 async function createPixCharge({name, cpf, phone, email}){
-  let total, itemTitle, cents;
+  const p        = products.find(x => x.id === pixProductId);
+  const priceNum = moneyToNumber(p.price);
+  const total    = calcTotal(priceNum);
+  const cents    = toCents(total);
 
-  if(pixIsCheckout){
-    // Carrinho com múltiplos produtos
-    const sub = cartSubtotal();
-    total = calcCartTotal();
-    cents = toCents(total);
-    itemTitle = cart.map(i => {
-      const p = products.find(x => x.id === i.id);
-      return `${i.qty}x ${p.name.substring(0,40)}`;
-    }).join(" | ");
-    if(selectedDelivery === "SEDEX") itemTitle += ` — SEDEX +R$21,82`;
-  } else {
-    const p    = products.find(x => x.id === pixProductId);
-    const priceNum = moneyToNumber(p.price);
-    total = calcTotal(priceNum);
-    cents = toCents(total);
-    const deliveryInfo = selectedDelivery === "SEDEX"
-      ? "SEDEX Correios (até 18h) — R$ 21,82"
-      : "PAC Correios (1-3 dias úteis) — Frete grátis";
-    itemTitle = `${p.name} — ${deliveryInfo}`;
-  }
+  const deliveryLabel = selectedDelivery === "SEDEX"
+    ? "SEDEX Correios (ate 18h) +R$21,82"
+    : "PAC Correios (1-3 dias uteis) Frete gratis";
 
-  const utm  = window.location.search.replace(/^\?/, "");
+  // Título curto para evitar rejeição da API (máx ~100 chars)
+  const rawTitle = p.name.substring(0, 60);
+  const itemTitle = `${rawTitle} - ${deliveryLabel}`.substring(0, 100);
+
   const body = {
     amount: cents,
     customer: {
@@ -1612,17 +1591,18 @@ async function createPixCharge({name, cpf, phone, email}){
       price:    cents,
       quantity: 1
     },
-    paymentMethod: "PIX",
-    ...(utm ? {utm} : {})
+    paymentMethod: "PIX"
   };
 
   const submitBtn = document.getElementById("pixSubmitBtn");
   submitBtn.disabled  = true;
   submitBtn.innerText = "Gerando PIX...";
-  document.getElementById("pixLoading").classList.add("active");
-  document.querySelectorAll(".pixStep").forEach(s => s.classList.remove("active"));
 
-  function restoreBtn(){
+  // Mostra loading, esconde steps
+  document.querySelectorAll(".pixStep").forEach(s => s.classList.remove("active"));
+  document.getElementById("pixLoading").classList.add("active");
+
+  function restoreForm(){
     submitBtn.disabled  = false;
     submitBtn.innerText = "Gerar QR Code PIX";
     document.getElementById("pixLoading").classList.remove("active");
@@ -1630,23 +1610,31 @@ async function createPixCharge({name, cpf, phone, email}){
   }
 
   try {
-    const res  = await fetch(DUTTYFY_URL, {
+    const res = await fetch(DUTTYFY_URL, {
       method:  "POST",
       headers: {"Content-Type": "application/json"},
       body:    JSON.stringify(body),
-      signal:  AbortSignal.timeout(15000)
+      signal:  AbortSignal.timeout(20000)
     });
-    const data = await res.json().catch(() => ({}));
 
-    if(res.status >= 400 && res.status < 500){
-      restoreBtn();
-      toast("Erro: " + (data.message || "verifique os dados e tente novamente."));
+    let data = {};
+    try { data = await res.json(); } catch(e){}
+
+    if(!res.ok){
+      restoreForm();
+      const msg = data.message || data.error || "Erro ao gerar PIX. Tente novamente.";
+      toast(msg);
       return;
     }
-    if(!res.ok){ restoreBtn(); toast("Erro no servidor. Tente novamente."); return; }
+
+    if(!data.pixCode){
+      restoreForm();
+      toast("Resposta inválida da API. Tente novamente.");
+      return;
+    }
 
     pixCode          = data.pixCode;
-    pixTransactionId = data.transactionId;
+    pixTransactionId = data.transactionId || "";
 
     localStorage.setItem("lastPix_txId",    pixTransactionId);
     localStorage.setItem("lastPix_product", JSON.stringify({price: brl(total)}));
@@ -1657,8 +1645,12 @@ async function createPixCharge({name, cpf, phone, email}){
     showPixQr(total);
 
   } catch(err){
-    restoreBtn();
-    toast("Não foi possível gerar o PIX. Verifique sua conexão e tente novamente.");
+    restoreForm();
+    if(err.name === "TimeoutError" || err.name === "AbortError"){
+      toast("Tempo esgotado. Verifique sua conexão e tente novamente.");
+    } else {
+      toast("Erro de conexão. Verifique sua internet e tente novamente.");
+    }
   }
 }
 
@@ -1674,13 +1666,14 @@ function showPixQr(total){
     ? "SEDEX Correios — até 18 horas"
     : "PAC Correios — Frete grátis";
 
+  // Gera QR Code no canvas
   const canvas = document.getElementById("qrcodeCanvas");
   const ctx    = canvas.getContext("2d");
   ctx.clearRect(0,0,220,220);
 
   try {
     const tmp = document.createElement("div");
-    tmp.style.cssText = "position:absolute;visibility:hidden";
+    tmp.style.cssText = "position:absolute;visibility:hidden;left:-9999px";
     document.body.appendChild(tmp);
     new QRCode(tmp, {
       text:         pixCode,
@@ -1701,14 +1694,15 @@ function showPixQr(total){
           ctx.drawImage(img,0,0,220,220);
         }
       }
-      document.body.removeChild(tmp);
-    }, 120);
+      if(document.body.contains(tmp)) document.body.removeChild(tmp);
+    }, 150);
   } catch(e){
     ctx.fillStyle = "#f4f4f4";
     ctx.fillRect(0,0,220,220);
-    ctx.fillStyle = "#333";
-    ctx.font = "11px monospace";
-    ctx.fillText("QR Code indisponível", 20, 110);
+    ctx.fillStyle = "#555";
+    ctx.font = "12px monospace";
+    ctx.textAlign = "center";
+    ctx.fillText("Use o código abaixo", 110, 110);
   }
 
   const short = pixCode.length > 60 ? pixCode.substring(0,60)+"..." : pixCode;
@@ -1716,6 +1710,7 @@ function showPixQr(total){
 
   setPixStatus("pending");
 
+  // Countdown 15 min
   pixSecondsLeft = 900;
   updatePixCountdown();
   pixCountdownInt = setInterval(() => {
@@ -1725,7 +1720,7 @@ function showPixQr(total){
       clearInterval(pixCountdownInt);
       stopPixPolling();
       setPixStatus("expired");
-      toast("Tempo expirado. Gere um novo PIX.");
+      toast("Tempo expirado. Feche e gere um novo PIX.");
     }
   }, 1000);
 
@@ -1742,6 +1737,7 @@ function updatePixCountdown(){
 function setPixStatus(status){
   const badge = document.getElementById("pixStatusBadge");
   const text  = document.getElementById("pixStatusText");
+  badge.style.cssText = ""; // limpa estilos inline
   if(status === "completed"){
     badge.classList.add("completed");
     text.innerText = "Pagamento confirmado!";
@@ -1766,10 +1762,10 @@ function copyPixCode(){
   }).catch(() => {
     const ta = document.createElement("textarea");
     ta.value = pixCode;
-    ta.style.cssText = "position:fixed;opacity:0";
+    ta.style.cssText = "position:fixed;opacity:0;top:0;left:0";
     document.body.appendChild(ta);
     ta.select();
-    document.execCommand("copy");
+    try { document.execCommand("copy"); } catch(e){}
     document.body.removeChild(ta);
     toast("Código PIX copiado!");
   });
@@ -1780,6 +1776,8 @@ function copyPixCode(){
    ============================================================ */
 function startPixPolling(){
   stopPixPolling();
+  if(!pixTransactionId) return;
+
   pixPollingTimer = setInterval(async () => {
     if(!pixTransactionId) return;
     try {
@@ -1794,6 +1792,7 @@ function startPixPolling(){
       }
     } catch(e){}
   }, 5000);
+
   pixSessionTimer = setTimeout(() => { stopPixPolling(); }, 15 * 60 * 1000);
 }
 
