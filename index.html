@@ -332,29 +332,11 @@ button:active,
   position:relative;
 }
 
-.card.featured{
-  border-width:1.5px;
-}
-
-.card.best{
-  border-color:rgba(255,43,99,.70);
-  box-shadow:0 16px 30px rgba(255,43,99,.16),0 0 15px rgba(255,43,99,.22);
-}
-
-.card.ratingPlus{
-  border-color:rgba(255,174,0,.75);
-  box-shadow:0 16px 30px rgba(255,174,0,.14),0 0 15px rgba(255,174,0,.22);
-}
-
-.card.women{
-  border-color:rgba(190,72,255,.68);
-  box-shadow:0 16px 30px rgba(190,72,255,.14),0 0 15px rgba(190,72,255,.20);
-}
-
-.card.lightning{
-  border-color:rgba(0,160,160,.70);
-  box-shadow:0 16px 30px rgba(0,160,160,.13),0 0 15px rgba(0,160,160,.20);
-}
+.card.featured{border-width:1.5px}
+.card.best{border-color:rgba(255,43,99,.70);box-shadow:0 16px 30px rgba(255,43,99,.16),0 0 15px rgba(255,43,99,.22)}
+.card.ratingPlus{border-color:rgba(255,174,0,.75);box-shadow:0 16px 30px rgba(255,174,0,.14),0 0 15px rgba(255,174,0,.22)}
+.card.women{border-color:rgba(190,72,255,.68);box-shadow:0 16px 30px rgba(190,72,255,.14),0 0 15px rgba(190,72,255,.20)}
+.card.lightning{border-color:rgba(0,160,160,.70);box-shadow:0 16px 30px rgba(0,160,160,.13),0 0 15px rgba(0,160,160,.20)}
 
 .ribbon{
   position:absolute;
@@ -407,22 +389,10 @@ button:active,
   justify-content:center;
 }
 
-.fav svg{
-  width:19px;
-  height:19px;
-  stroke:#111;
-  stroke-width:2.2;
-  fill:none;
-}
+.fav svg{width:19px;height:19px;stroke:#111;stroke-width:2.2;fill:none}
+.fav.active svg{fill:#ff2b63;stroke:#ff2b63}
 
-.fav.active svg{
-  fill:#ff2b63;
-  stroke:#ff2b63;
-}
-
-.cardBody{
-  padding:11px;
-}
+.cardBody{padding:11px}
 
 .badge{
   display:inline-block;
@@ -435,945 +405,182 @@ button:active,
   margin-bottom:6px;
 }
 
-.title{
-  font-size:14px;
-  line-height:1.25;
-  min-height:36px;
-  font-weight:600;
-  color:#131313;
-}
+.title{font-size:14px;line-height:1.25;min-height:36px;font-weight:600;color:#131313}
+.price{font-size:23px;color:var(--pink);font-weight:900;margin-top:8px;letter-spacing:-.5px}
+.old{font-size:13px;color:#999;text-decoration:line-through}
 
-.price{
-  font-size:23px;
-  color:var(--pink);
-  font-weight:900;
-  margin-top:8px;
-  letter-spacing:-.5px;
-}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}
+.tags span{background:#ffedf3;color:var(--pink);font-size:11px;font-weight:850;padding:4px 6px;border-radius:7px}
 
-.old{
-  font-size:13px;
-  color:#999;
-  text-decoration:line-through;
-}
+.rating{font-size:12px;color:#666;margin-bottom:9px;font-weight:500}
 
-.tags{
-  display:flex;
-  gap:5px;
-  flex-wrap:wrap;
-  margin:8px 0;
-}
+.actions{display:flex;gap:7px}
+.actions button{flex:1;border:1px solid rgba(0,0,0,.12);border-radius:999px;padding:10px 5px;font-weight:900;font-size:12px;cursor:pointer;transition:.12s ease}
+.add{background:#f1f1f1;color:#111;box-shadow:0 5px 0 #d9d9d9,0 8px 15px rgba(0,0,0,.08)}
+.buy{background:var(--pink);color:#fff;box-shadow:0 5px 0 var(--pink-dark),0 8px 15px rgba(255,43,99,.22)}
 
-.tags span{
-  background:#ffedf3;
-  color:var(--pink);
-  font-size:11px;
-  font-weight:850;
-  padding:4px 6px;
-  border-radius:7px;
-}
+.sectionTitle{font-size:23px;font-weight:900;padding:18px 16px 8px;letter-spacing:-.5px}
 
-.rating{
-  font-size:12px;
-  color:#666;
-  margin-bottom:9px;
-  font-weight:500;
-}
+.empty{margin:16px 12px;background:#fff;border-radius:22px;padding:30px 18px;text-align:center;color:#777;border:1px solid rgba(0,0,0,.12);box-shadow:0 12px 24px rgba(0,0,0,.05)}
+.empty b{display:block;color:#111;font-size:18px;margin-bottom:6px}
 
-.actions{
-  display:flex;
-  gap:7px;
-}
+.cartBox{margin:12px;background:#fff;border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,.14);box-shadow:0 14px 26px rgba(0,0,0,.07),0 0 12px rgba(0,0,0,.05)}
+.storeHead{padding:14px;font-weight:900;border-bottom:1px solid #eee}
+.free{background:#ecffff;color:#077;padding:12px 14px;font-weight:700;font-size:14px}
 
-.actions button{
-  flex:1;
-  border:1px solid rgba(0,0,0,.12);
-  border-radius:999px;
-  padding:10px 5px;
-  font-weight:900;
-  font-size:12px;
-  cursor:pointer;
-  transition:.12s ease;
-}
-
-.add{
-  background:#f1f1f1;
-  color:#111;
-  box-shadow:0 5px 0 #d9d9d9,0 8px 15px rgba(0,0,0,.08);
-}
-
-.buy{
-  background:var(--pink);
-  color:#fff;
-  box-shadow:0 5px 0 var(--pink-dark),0 8px 15px rgba(255,43,99,.22);
-}
-
-.sectionTitle{
-  font-size:23px;
-  font-weight:900;
-  padding:18px 16px 8px;
-  letter-spacing:-.5px;
-}
-
-.empty{
-  margin:16px 12px;
-  background:#fff;
-  border-radius:22px;
-  padding:30px 18px;
-  text-align:center;
-  color:#777;
-  border:1px solid rgba(0,0,0,.12);
-  box-shadow:0 12px 24px rgba(0,0,0,.05);
-}
-
-.empty b{
-  display:block;
-  color:#111;
-  font-size:18px;
-  margin-bottom:6px;
-}
-
-.cartBox{
-  margin:12px;
-  background:#fff;
-  border-radius:24px;
-  overflow:hidden;
-  border:1px solid rgba(0,0,0,.14);
-  box-shadow:0 14px 26px rgba(0,0,0,.07),0 0 12px rgba(0,0,0,.05);
-}
-
-.storeHead{
-  padding:14px;
-  font-weight:900;
-  border-bottom:1px solid #eee;
-}
-
-.free{
-  background:#ecffff;
-  color:#077;
-  padding:12px 14px;
-  font-weight:700;
-  font-size:14px;
-}
-
-.cartItem{
-  display:flex;
-  gap:12px;
-  padding:14px;
-  border-bottom:1px solid #f2f2f2;
-}
-
-.cartItem img{
-  width:84px;
-  height:84px;
-  border-radius:16px;
-  object-fit:cover;
-  background:#eee;
-}
-
+.cartItem{display:flex;gap:12px;padding:14px;border-bottom:1px solid #f2f2f2}
+.cartItem img{width:84px;height:84px;border-radius:16px;object-fit:cover;background:#eee}
 .cartInfo{flex:1}
+.cartInfo h3{font-size:14px;font-weight:600;line-height:1.25}
+.cartPrice{color:var(--pink);font-size:18px;font-weight:900;margin-top:6px}
+.qty{display:flex;gap:10px;align-items:center;margin-top:8px}
+.qty button{width:29px;height:29px;border:1px solid rgba(0,0,0,.10);border-radius:10px;background:#f1f1f1;font-size:18px;box-shadow:0 4px 0 #dadada}
+.remove{border:0;background:none;color:#999;font-size:12px;margin-top:8px;font-weight:700}
 
-.cartInfo h3{
-  font-size:14px;
-  font-weight:600;
-  line-height:1.25;
-}
-
-.cartPrice{
-  color:var(--pink);
-  font-size:18px;
-  font-weight:900;
-  margin-top:6px;
-}
-
-.qty{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin-top:8px;
-}
-
-.qty button{
-  width:29px;
-  height:29px;
-  border:1px solid rgba(0,0,0,.10);
-  border-radius:10px;
-  background:#f1f1f1;
-  font-size:18px;
-  box-shadow:0 4px 0 #dadada;
-}
-
-.remove{
-  border:0;
-  background:none;
-  color:#999;
-  font-size:12px;
-  margin-top:8px;
-  font-weight:700;
-}
-
-.checkoutPanel{
-  display:none;
-  margin:12px;
-  background:#fff;
-  border-radius:24px;
-  border:1px solid rgba(0,0,0,.14);
-  padding:16px;
-  box-shadow:0 14px 26px rgba(0,0,0,.07),0 0 12px rgba(0,0,0,.05);
-}
-
+.checkoutPanel{display:none;margin:12px;background:#fff;border-radius:24px;border:1px solid rgba(0,0,0,.14);padding:16px;box-shadow:0 14px 26px rgba(0,0,0,.07),0 0 12px rgba(0,0,0,.05)}
 .checkoutPanel.active{display:block}
+.checkoutPanel h2{font-size:22px;margin-bottom:12px;font-weight:900}
 
-.checkoutPanel h2{
-  font-size:22px;
-  margin-bottom:12px;
-  font-weight:900;
-}
+.row{display:flex;justify-content:space-between;gap:12px;margin:9px 0;font-size:15px}
+.total{font-size:24px;font-weight:900;color:var(--pink)}
 
-.row{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  margin:9px 0;
-  font-size:15px;
-}
+.fakePay{width:100%;border:1px solid rgba(0,0,0,.12);border-radius:999px;background:var(--pink);color:#fff;padding:15px;font-size:17px;font-weight:900;margin-top:14px;box-shadow:0 7px 0 var(--pink-dark),0 12px 20px rgba(255,43,99,.20)}
 
-.total{
-  font-size:24px;
-  font-weight:900;
-  color:var(--pink);
-}
+.note{font-size:12px;color:#777;margin-top:8px;text-align:center}
 
-.fakePay{
-  width:100%;
-  border:1px solid rgba(0,0,0,.12);
-  border-radius:999px;
-  background:var(--pink);
-  color:#fff;
-  padding:15px;
-  font-size:17px;
-  font-weight:900;
-  margin-top:14px;
-  box-shadow:0 7px 0 var(--pink-dark),0 12px 20px rgba(255,43,99,.20);
-}
-
-.note{
-  font-size:12px;
-  color:#777;
-  margin-top:8px;
-  text-align:center;
-}
-
-.cartSummary{
-  position:fixed;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:66px;
-  width:100%;
-  max-width:430px;
-  background:#fff;
-  border-top:1px solid #eee;
-  padding:10px 12px;
-  z-index:35;
-  display:none;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 -8px 18px rgba(0,0,0,.07);
-}
-
+.cartSummary{position:fixed;left:50%;transform:translateX(-50%);bottom:66px;width:100%;max-width:430px;background:#fff;border-top:1px solid #eee;padding:10px 12px;z-index:35;display:none;justify-content:space-between;align-items:center;box-shadow:0 -8px 18px rgba(0,0,0,.07)}
 .cartSummary.active{display:flex}
+.cartSummary small{display:block;color:#008b8b;font-weight:700}
+.cartSummary b{color:var(--pink);font-size:20px;font-weight:900}
+.cartSummary button{border:1px solid rgba(0,0,0,.12);background:var(--pink);color:#fff;border-radius:999px;padding:13px 22px;font-size:16px;font-weight:900;box-shadow:0 6px 0 var(--pink-dark)}
 
-.cartSummary small{
-  display:block;
-  color:#008b8b;
-  font-weight:700;
-}
-
-.cartSummary b{
-  color:var(--pink);
-  font-size:20px;
-  font-weight:900;
-}
-
-.cartSummary button{
-  border:1px solid rgba(0,0,0,.12);
-  background:var(--pink);
-  color:#fff;
-  border-radius:999px;
-  padding:13px 22px;
-  font-size:16px;
-  font-weight:900;
-  box-shadow:0 6px 0 var(--pink-dark);
-}
-
-.bottomNav{
-  position:fixed;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:0;
-  width:100%;
-  max-width:430px;
-  height:66px;
-  background:#fff;
-  border-top:1px solid #e5e5e5;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  z-index:45;
-}
-
-.nav{
-  border:0;
-  background:none;
-  color:#777;
-  font-size:11px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:3px;
-  min-width:68px;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.nav svg{
-  width:23px;
-  height:23px;
-  stroke:currentColor;
-  stroke-width:2;
-  fill:none;
-}
-
-.nav.active{
-  color:#111;
-  font-weight:900;
-}
-
-.navPlus{
-  width:50px;
-  height:36px;
-  background:#111;
-  border-radius:13px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-top:-7px;
-  box-shadow:0 6px 0 #000,0 10px 18px rgba(0,0,0,.22);
-  border:1px solid rgba(255,255,255,.08);
-}
-
+.bottomNav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:430px;height:66px;background:#fff;border-top:1px solid #e5e5e5;display:flex;justify-content:space-around;align-items:center;z-index:45}
+.nav{border:0;background:none;color:#777;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:68px;cursor:pointer;font-weight:600}
+.nav svg{width:23px;height:23px;stroke:currentColor;stroke-width:2;fill:none}
+.nav.active{color:#111;font-weight:900}
+.navPlus{width:50px;height:36px;background:#111;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-top:-7px;box-shadow:0 6px 0 #000,0 10px 18px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.08)}
 .navPlus svg{stroke:#fff}
 
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:84px;
-  transform:translateX(-50%);
-  background:#222;
-  color:#fff;
-  border-radius:999px;
-  padding:11px 15px;
-  font-size:13px;
-  z-index:1000;
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
-  max-width:360px;
-  text-align:center;
-  font-weight:700;
-}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:#222;color:#fff;border-radius:999px;padding:11px 15px;font-size:13px;z-index:1000;opacity:0;pointer-events:none;transition:.25s;max-width:360px;text-align:center;font-weight:700}
+.toast.show{opacity:1;bottom:96px}
 
-.toast.show{
-  opacity:1;
-  bottom:96px;
-}
+.purchaseToast{position:fixed;left:50%;top:86px;transform:translateX(-50%) translateY(-20px);width:calc(100% - 24px);max-width:406px;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(0,0,0,.13);border-radius:18px;padding:12px 14px;z-index:900;display:flex;align-items:center;gap:11px;opacity:0;pointer-events:none;transition:.35s ease;box-shadow:0 14px 28px rgba(0,0,0,.16),0 0 12px rgba(0,0,0,.08)}
+.purchaseToast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.purchaseIcon{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,#111,#333);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 #000}
+.purchaseIcon svg{width:20px;height:20px;stroke:#fff;stroke-width:2.3;fill:none}
+.purchaseText b{display:block;font-size:13px;font-weight:900}
+.purchaseText span{display:block;font-size:12px;color:#666;margin-top:2px;font-weight:600}
 
-.purchaseToast{
-  position:fixed;
-  left:50%;
-  top:86px;
-  transform:translateX(-50%) translateY(-20px);
-  width:calc(100% - 24px);
-  max-width:406px;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(0,0,0,.13);
-  border-radius:18px;
-  padding:12px 14px;
-  z-index:900;
-  display:flex;
-  align-items:center;
-  gap:11px;
-  opacity:0;
-  pointer-events:none;
-  transition:.35s ease;
-  box-shadow:0 14px 28px rgba(0,0,0,.16),0 0 12px rgba(0,0,0,.08);
-}
-
-.purchaseToast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
-
-.purchaseIcon{
-  width:38px;
-  height:38px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#111,#333);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 5px 0 #000;
-}
-
-.purchaseIcon svg{
-  width:20px;
-  height:20px;
-  stroke:#fff;
-  stroke-width:2.3;
-  fill:none;
-}
-
-.purchaseText b{
-  display:block;
-  font-size:13px;
-  font-weight:900;
-}
-
-.purchaseText span{
-  display:block;
-  font-size:12px;
-  color:#666;
-  margin-top:2px;
-  font-weight:600;
-}
-
-.couponModal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.68);
-  z-index:999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-}
-
-.couponBox{
-  width:100%;
-  max-width:430px;
-  background:linear-gradient(180deg,#fff4ec,#fff);
-  border-radius:18px;
-  padding:24px 20px 22px;
-  position:relative;
-  text-align:center;
-  box-shadow:0 20px 50px rgba(0,0,0,.35);
-  border:1px solid rgba(0,0,0,.12);
-}
-
-.couponClose{
-  position:absolute;
-  right:-4px;
-  top:-44px;
-  width:34px;
-  height:34px;
-  border:2px solid rgba(255,255,255,.7);
-  border-radius:50%;
-  background:rgba(0,0,0,.25);
-  color:#fff;
-  font-size:22px;
-}
-
-.giftBox{
-  width:84px;
-  height:64px;
-  margin:-58px auto 10px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#ffd59c,#ff9f3d);
-  box-shadow:0 12px 26px rgba(255,174,65,.45);
-  position:relative;
-}
-
-.giftBox:before{
-  content:"";
-  position:absolute;
-  left:37px;
-  top:0;
-  width:10px;
-  height:64px;
-  background:rgba(255,255,255,.65);
-}
-
-.giftBox:after{
-  content:"";
-  position:absolute;
-  left:20px;
-  top:-15px;
-  width:44px;
-  height:24px;
-  border:8px solid #ffd59c;
-  border-radius:50%;
-}
-
-.couponBox h2{
-  font-size:18px;
-  color:#9b3a00;
-  margin-bottom:18px;
-  font-weight:900;
-}
-
-.couponTicket{
-  display:grid;
-  grid-template-columns:40% 60%;
-  border:1px solid #ffd2c2;
-  background:#fff8f5;
-  border-radius:8px;
-  overflow:hidden;
-  margin-bottom:22px;
-  position:relative;
-}
-
-.ticketLeft{
-  padding:28px 8px;
-  border-right:1px dashed #ffd2c2;
-}
-
-.ticketLeft b{
-  font-size:32px;
-  color:#ff2b1f;
-  font-weight:900;
-}
-
-.ticketLeft span{
-  display:block;
-  margin-top:8px;
-  font-size:14px;
-}
-
-.ticketRight{
-  text-align:left;
-  padding:26px 14px;
-}
-
-.ticketRight b{
-  color:#ff2b1f;
-  font-size:20px;
-  font-weight:900;
-}
-
-.ticketRight span{
-  display:block;
-  font-size:13px;
-  color:#555;
-  margin-top:4px;
-}
-
-.saveCoupon{
-  width:82%;
-  border:1px solid rgba(0,0,0,.14);
-  background:#222;
-  color:#fff;
-  border-radius:999px;
-  padding:17px;
-  font-size:21px;
-  font-weight:900;
-  box-shadow:0 7px 0 #000,0 14px 20px rgba(0,0,0,.18);
-}
-
-.saveCoupon.saved{
-  background:linear-gradient(135deg,#19b957,#22d66d);
-  box-shadow:0 7px 0 #0b8b3b,0 14px 20px rgba(25,185,87,.18);
-}
-
-.couponNote{
-  font-size:12px;
-  color:#777;
-  margin-top:12px;
-}
+.couponModal{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:999;display:flex;align-items:center;justify-content:center;padding:18px}
+.couponBox{width:100%;max-width:430px;background:linear-gradient(180deg,#fff4ec,#fff);border-radius:18px;padding:24px 20px 22px;position:relative;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.12)}
+.couponClose{position:absolute;right:-4px;top:-44px;width:34px;height:34px;border:2px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(0,0,0,.25);color:#fff;font-size:22px}
+.giftBox{width:84px;height:64px;margin:-58px auto 10px;border-radius:18px;background:linear-gradient(135deg,#ffd59c,#ff9f3d);box-shadow:0 12px 26px rgba(255,174,65,.45);position:relative}
+.giftBox:before{content:"";position:absolute;left:37px;top:0;width:10px;height:64px;background:rgba(255,255,255,.65)}
+.giftBox:after{content:"";position:absolute;left:20px;top:-15px;width:44px;height:24px;border:8px solid #ffd59c;border-radius:50%}
+.couponBox h2{font-size:18px;color:#9b3a00;margin-bottom:18px;font-weight:900}
+.couponTicket{display:grid;grid-template-columns:40% 60%;border:1px solid #ffd2c2;background:#fff8f5;border-radius:8px;overflow:hidden;margin-bottom:22px;position:relative}
+.ticketLeft{padding:28px 8px;border-right:1px dashed #ffd2c2}
+.ticketLeft b{font-size:32px;color:#ff2b1f;font-weight:900}
+.ticketLeft span{display:block;margin-top:8px;font-size:14px}
+.ticketRight{text-align:left;padding:26px 14px}
+.ticketRight b{color:#ff2b1f;font-size:20px;font-weight:900}
+.ticketRight span{display:block;font-size:13px;color:#555;margin-top:4px}
+.saveCoupon{width:82%;border:1px solid rgba(0,0,0,.14);background:#222;color:#fff;border-radius:999px;padding:17px;font-size:21px;font-weight:900;box-shadow:0 7px 0 #000,0 14px 20px rgba(0,0,0,.18)}
+.saveCoupon.saved{background:linear-gradient(135deg,#19b957,#22d66d);box-shadow:0 7px 0 #0b8b3b,0 14px 20px rgba(25,185,87,.18)}
+.couponNote{font-size:12px;color:#777;margin-top:12px}
 
 /* ===== PIX CHECKOUT MODAL ===== */
-.pixOverlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.72);
-  z-index:2000;
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
-}
+.pixOverlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:2000;display:none;align-items:flex-end;justify-content:center}
+.pixOverlay.active{display:flex}
+.pixSheet{width:100%;max-width:430px;background:#fff;border-radius:26px 26px 0 0;padding:0 0 32px;max-height:92vh;overflow-y:auto;box-shadow:0 -20px 60px rgba(0,0,0,.28);position:relative}
+.pixHandle{width:42px;height:5px;background:#ddd;border-radius:99px;margin:12px auto 0}
+.pixSheetHead{padding:16px 20px 0;display:flex;justify-content:space-between;align-items:center}
+.pixSheetHead h3{font-size:20px;font-weight:900;letter-spacing:-.4px}
+.pixClose{border:0;background:none;font-size:26px;color:#888;cursor:pointer;line-height:1}
 
-.pixOverlay.active{
-  display:flex;
-}
+.pixStep{display:none;width:100%;padding:0 20px}
+.pixStep.active{display:block}
 
-.pixSheet{
-  width:100%;
-  max-width:430px;
-  background:#fff;
-  border-radius:26px 26px 0 0;
-  padding:0 0 32px;
-  max-height:92vh;
-  overflow-y:auto;
-  box-shadow:0 -20px 60px rgba(0,0,0,.28);
-  position:relative;
-}
+/* Entrega */
+.deliverySection{margin:16px 0 18px}
+.deliverySection h4{font-size:13px;font-weight:800;color:#444;margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px}
+.deliveryOpts{display:flex;flex-direction:column;gap:9px}
+.deliveryOpt{display:flex;align-items:center;gap:12px;border:2px solid #e8e8e8;border-radius:16px;padding:13px 14px;cursor:pointer;transition:.15s;background:#fafafa}
+.deliveryOpt.selected{border-color:#ff2b63;background:#fff5f8}
+.deliveryOpt input[type=radio]{display:none}
+.deliveryRadio{width:20px;height:20px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s}
+.deliveryOpt.selected .deliveryRadio{border-color:#ff2b63;background:#ff2b63}
+.deliveryOpt.selected .deliveryRadio:after{content:"";width:7px;height:7px;border-radius:50%;background:#fff}
+.deliveryLabel{flex:1}
+.deliveryLabel b{display:block;font-size:14px;font-weight:800;color:#111}
+.deliveryLabel span{font-size:12px;color:#555;font-weight:500}
+.deliveryPrice{font-size:14px;font-weight:900;color:#008b8b}
+.deliveryPrice.sedex-price{color:var(--pink)}
+.deliveryBadge{font-size:10px;font-weight:900;padding:3px 7px;border-radius:6px;background:#e7fff1;color:#008b3a;border:1px solid #b8f0cc}
 
-.pixHandle{
-  width:42px;
-  height:5px;
-  background:#ddd;
-  border-radius:99px;
-  margin:12px auto 0;
-}
+/* Formulário */
+.formGroup{margin-bottom:14px}
+.formGroup label{display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:6px}
+.formGroup input{width:100%;border:1.5px solid #e0e0e0;border-radius:14px;padding:13px 14px;font-size:15px;font-family:inherit;background:#fafafa;color:#111;outline:none;transition:.2s}
+.formGroup input:focus{border-color:var(--pink);background:#fff;box-shadow:0 0 0 3px rgba(255,43,99,.10)}
+.formGroup input.error{border-color:#ff2b63;background:#fff5f7}
+.formRow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-.pixSheetHead{
-  padding:16px 20px 0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+.pixProductLine{display:flex;align-items:center;gap:12px;background:#f8f8f8;border-radius:16px;padding:12px 14px;margin:16px 0;border:1px solid #ebebeb}
+.pixProductLine img{width:54px;height:54px;border-radius:10px;object-fit:cover;background:#eee}
+.pixProductLine .pInfo{flex:1}
+.pixProductLine .pInfo b{font-size:13px;font-weight:700;line-height:1.3;display:block}
+.pixProductLine .pInfo span{font-size:18px;font-weight:900;color:var(--pink)}
 
-.pixSheetHead h3{
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:-.4px;
-}
+/* Total no step1 */
+.pixTotalLine{display:flex;justify-content:space-between;align-items:center;background:#f4f4f5;border-radius:14px;padding:12px 14px;margin:14px 0;border:1px solid #e8e8e8}
+.pixTotalLine span{font-size:14px;font-weight:600;color:#555}
+.pixTotalLine b{font-size:22px;font-weight:900;color:#111}
 
-.pixClose{
-  border:0;
-  background:none;
-  font-size:26px;
-  color:#888;
-  cursor:pointer;
-  line-height:1;
-}
+.pixSubmitBtn{width:100%;background:var(--pink);color:#fff;border:1px solid rgba(0,0,0,.12);border-radius:999px;padding:16px;font-size:17px;font-weight:900;box-shadow:0 7px 0 var(--pink-dark),0 12px 22px rgba(255,43,99,.22);cursor:pointer;margin-top:8px}
+.pixSubmitBtn:disabled{opacity:.6;cursor:not-allowed;transform:none!important;box-shadow:0 4px 0 var(--pink-dark)!important}
 
-/* Steps */
-.pixSteps{
-  display:flex;
-  gap:0;
-  margin:0;
-}
+/* QR Step */
+.pixQrWrap{text-align:center;padding:10px 0 0}
+.pixQrWrap p{font-size:14px;color:#555;margin-bottom:14px;font-weight:500;line-height:1.5}
 
-.pixStep{
-  display:none;
-  width:100%;
-  padding:0 20px;
-}
+/* Valor abaixo do QR */
+.qrValueBox{background:#f4f4f5;border-radius:14px;padding:12px 16px;margin:0 auto 16px;max-width:260px;text-align:center;border:1px solid #e8e8e8}
+.qrValueBox small{display:block;font-size:12px;color:#777;font-weight:600;margin-bottom:2px}
+.qrValueBox b{display:block;font-size:26px;font-weight:900;color:var(--pink)}
+.qrValueBox span{display:block;font-size:12px;color:#555;font-weight:600;margin-top:2px}
 
-.pixStep.active{
-  display:block;
-}
+#qrcodeCanvas{display:block;margin:0 auto 12px;border-radius:18px;border:6px solid #fff;box-shadow:0 10px 28px rgba(0,0,0,.10),0 0 0 1px #ebebeb}
 
-/* Step 1 — formulário */
-.formGroup{
-  margin-bottom:14px;
-}
+.copyCodeBtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#111;color:#fff;border:1px solid rgba(0,0,0,.15);border-radius:999px;padding:14px;font-size:15px;font-weight:900;box-shadow:0 6px 0 #000,0 10px 20px rgba(0,0,0,.14);cursor:pointer;margin-bottom:12px}
+.copyCodeBtn svg{width:18px;height:18px;stroke:#fff;stroke-width:2.2;fill:none;flex-shrink:0}
 
-.formGroup label{
-  display:block;
-  font-size:13px;
-  font-weight:700;
-  color:#444;
-  margin-bottom:6px;
-}
+.pixCodeSmall{background:#f4f4f5;border-radius:12px;padding:10px 14px;font-size:11px;color:#666;word-break:break-all;line-height:1.5;margin-bottom:14px;text-align:left;font-family:monospace}
 
-.formGroup input{
-  width:100%;
-  border:1.5px solid #e0e0e0;
-  border-radius:14px;
-  padding:13px 14px;
-  font-size:15px;
-  font-family:inherit;
-  background:#fafafa;
-  color:#111;
-  outline:none;
-  transition:.2s;
-}
+.pixTimer{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:700;color:#555;margin-bottom:16px}
+.pixTimer span{color:var(--pink);font-size:18px;font-weight:900}
 
-.formGroup input:focus{
-  border-color:var(--pink);
-  background:#fff;
-  box-shadow:0 0 0 3px rgba(255,43,99,.10);
-}
+.pixStatusBadge{display:inline-flex;align-items:center;gap:6px;background:#fff8e7;color:#b06d00;border:1px solid #ffd98a;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;margin-bottom:16px}
+.pixStatusBadge.completed{background:#eaffef;color:#1a7a3c;border-color:#8de8a8}
+.pixStatusDot{width:8px;height:8px;border-radius:50%;background:#f5a623;animation:pulse 1.4s ease-in-out infinite}
+.pixStatusBadge.completed .pixStatusDot{background:#19b957;animation:none}
 
-.formGroup input.error{
-  border-color:#ff2b63;
-  background:#fff5f7;
-}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-.formRow{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
+/* Step 3 */
+.pixConfirm{text-align:center;padding:12px 0 8px}
+.pixCheckCircle{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#19b957,#22d66d);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 14px 30px rgba(25,185,87,.30);animation:popIn .4s cubic-bezier(.175,.885,.32,1.275) forwards}
+@keyframes popIn{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+.pixCheckCircle svg{width:38px;height:38px;stroke:#fff;stroke-width:3;fill:none}
+.pixConfirm h3{font-size:24px;font-weight:900;margin-bottom:8px}
+.pixConfirm p{font-size:14px;color:#555;line-height:1.55;margin-bottom:20px}
+.pixConfirmClose{width:100%;background:#111;color:#fff;border:1px solid rgba(0,0,0,.14);border-radius:999px;padding:16px;font-size:16px;font-weight:900;box-shadow:0 7px 0 #000;cursor:pointer}
 
-.pixProductLine{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:#f8f8f8;
-  border-radius:16px;
-  padding:12px 14px;
-  margin:16px 0;
-  border:1px solid #ebebeb;
-}
-
-.pixProductLine img{
-  width:54px;
-  height:54px;
-  border-radius:10px;
-  object-fit:cover;
-  background:#eee;
-}
-
-.pixProductLine .pInfo{
-  flex:1;
-}
-
-.pixProductLine .pInfo b{
-  font-size:13px;
-  font-weight:700;
-  line-height:1.3;
-  display:block;
-}
-
-.pixProductLine .pInfo span{
-  font-size:18px;
-  font-weight:900;
-  color:var(--pink);
-}
-
-.pixSubmitBtn{
-  width:100%;
-  background:var(--pink);
-  color:#fff;
-  border:1px solid rgba(0,0,0,.12);
-  border-radius:999px;
-  padding:16px;
-  font-size:17px;
-  font-weight:900;
-  box-shadow:0 7px 0 var(--pink-dark),0 12px 22px rgba(255,43,99,.22);
-  cursor:pointer;
-  margin-top:8px;
-}
-
-.pixSubmitBtn:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-  transform:none !important;
-  box-shadow:0 4px 0 var(--pink-dark) !important;
-}
-
-/* Step 2 — QR Code */
-.pixQrWrap{
-  text-align:center;
-  padding:10px 0 0;
-}
-
-.pixQrWrap p{
-  font-size:14px;
-  color:#555;
-  margin-bottom:14px;
-  font-weight:500;
-  line-height:1.5;
-}
-
-#qrcodeCanvas{
-  display:block;
-  margin:0 auto 16px;
-  border-radius:18px;
-  border:6px solid #fff;
-  box-shadow:0 10px 28px rgba(0,0,0,.10),0 0 0 1px #ebebeb;
-}
-
-.copyCodeBtn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  width:100%;
-  background:#111;
-  color:#fff;
-  border:1px solid rgba(0,0,0,.15);
-  border-radius:999px;
-  padding:14px;
-  font-size:15px;
-  font-weight:900;
-  box-shadow:0 6px 0 #000,0 10px 20px rgba(0,0,0,.14);
-  cursor:pointer;
-  margin-bottom:12px;
-}
-
-.copyCodeBtn svg{
-  width:18px;
-  height:18px;
-  stroke:#fff;
-  stroke-width:2.2;
-  fill:none;
-  flex-shrink:0;
-}
-
-.pixCodeSmall{
-  background:#f4f4f5;
-  border-radius:12px;
-  padding:10px 14px;
-  font-size:11px;
-  color:#666;
-  word-break:break-all;
-  line-height:1.5;
-  margin-bottom:14px;
-  text-align:left;
-  font-family:monospace;
-}
-
-.pixTimer{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  font-size:14px;
-  font-weight:700;
-  color:#555;
-  margin-bottom:16px;
-}
-
-.pixTimer span{
-  color:var(--pink);
-  font-size:18px;
-  font-weight:900;
-}
-
-.pixStatusBadge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:#fff8e7;
-  color:#b06d00;
-  border:1px solid #ffd98a;
-  border-radius:999px;
-  padding:7px 14px;
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:16px;
-}
-
-.pixStatusBadge.completed{
-  background:#eaffef;
-  color:#1a7a3c;
-  border-color:#8de8a8;
-}
-
-.pixStatusDot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#f5a623;
-  animation:pulse 1.4s ease-in-out infinite;
-}
-
-.pixStatusBadge.completed .pixStatusDot{
-  background:#19b957;
-  animation:none;
-}
-
-@keyframes pulse{
-  0%,100%{opacity:1}
-  50%{opacity:.35}
-}
-
-/* Step 3 — Confirmação */
-.pixConfirm{
-  text-align:center;
-  padding:12px 0 8px;
-}
-
-.pixCheckCircle{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#19b957,#22d66d);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 18px;
-  box-shadow:0 14px 30px rgba(25,185,87,.30);
-  animation:popIn .4s cubic-bezier(.175,.885,.32,1.275) forwards;
-}
-
-@keyframes popIn{
-  0%{transform:scale(0);opacity:0}
-  100%{transform:scale(1);opacity:1}
-}
-
-.pixCheckCircle svg{
-  width:38px;
-  height:38px;
-  stroke:#fff;
-  stroke-width:3;
-  fill:none;
-}
-
-.pixConfirm h3{
-  font-size:24px;
-  font-weight:900;
-  margin-bottom:8px;
-}
-
-.pixConfirm p{
-  font-size:14px;
-  color:#555;
-  line-height:1.55;
-  margin-bottom:20px;
-}
-
-.pixConfirmClose{
-  width:100%;
-  background:#111;
-  color:#fff;
-  border:1px solid rgba(0,0,0,.14);
-  border-radius:999px;
-  padding:16px;
-  font-size:16px;
-  font-weight:900;
-  box-shadow:0 7px 0 #000;
-  cursor:pointer;
-}
-
-/* Loading spinner */
-.pixLoading{
-  display:none;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:32px 20px;
-  gap:14px;
-  text-align:center;
-}
-
-.pixLoading.active{
-  display:flex;
-}
-
-.spinner{
-  width:48px;
-  height:48px;
-  border:4px solid #f0f0f0;
-  border-top-color:var(--pink);
-  border-radius:50%;
-  animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-.pixLoading p{
-  font-size:15px;
-  font-weight:600;
-  color:#555;
-}
+.pixLoading{display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;gap:14px;text-align:center}
+.pixLoading.active{display:flex}
+.spinner{width:48px;height:48px;border:4px solid #f0f0f0;border-top-color:var(--pink);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pixLoading p{font-size:15px;font-weight:600;color:#555}
 
 /* RESPONSIVO */
 @media (min-width:768px){
@@ -1444,7 +651,7 @@ button:active,
       </div>
     </div>
     <button class="saveCoupon press" id="saveCouponBtn" onclick="saveCouponFromModal()">Salvar cupons</button>
-    <div class="couponNote">Cupom confirmado após resgate</div>
+    <div class="couponNote">Cupom já aplicado nos preços exibidos</div>
   </div>
 </div>
 
@@ -1474,15 +681,44 @@ button:active,
       <p>Gerando cobrança PIX...</p>
     </div>
 
-    <!-- Step 1: Dados do cliente -->
+    <!-- Step 1: Entrega + Dados do cliente -->
     <div class="pixStep active" id="pixStep1">
       <div id="pixProductPreview"></div>
 
+      <!-- ENTREGA -->
+      <div class="deliverySection">
+        <h4>🚚 Escolha a entrega</h4>
+        <div class="deliveryOpts">
+          <div class="deliveryOpt selected" id="optPAC" onclick="selectDelivery('PAC')">
+            <div class="deliveryRadio" id="radioPAC"><span></span></div>
+            <div class="deliveryLabel">
+              <b>PAC Correios <span class="deliveryBadge">GRÁTIS</span></b>
+              <span>Entrega em 1 a 3 dias úteis</span>
+            </div>
+            <div class="deliveryPrice">Grátis</div>
+          </div>
+          <div class="deliveryOpt" id="optSEDEX" onclick="selectDelivery('SEDEX')">
+            <div class="deliveryRadio" id="radioSEDEX"></div>
+            <div class="deliveryLabel">
+              <b>SEDEX Correios</b>
+              <span>Entrega expressa em até 18 horas</span>
+            </div>
+            <div class="deliveryPrice sedex-price">+ R$ 21,82</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOTAL DINÂMICO -->
+      <div class="pixTotalLine" id="pixTotalLine">
+        <span>Total a pagar</span>
+        <b id="pixTotalDisplay">R$ 0,00</b>
+      </div>
+
+      <!-- DADOS -->
       <div class="formGroup">
         <label>Nome completo</label>
         <input type="text" id="fName" placeholder="Ana Paula Ferreira" autocomplete="name">
       </div>
-
       <div class="formRow">
         <div class="formGroup">
           <label>CPF</label>
@@ -1493,7 +729,6 @@ button:active,
           <input type="tel" id="fPhone" placeholder="(11) 98765-4321" maxlength="15" autocomplete="tel" oninput="this.value=maskPhone(this.value)">
         </div>
       </div>
-
       <div class="formGroup">
         <label>E-mail</label>
         <input type="email" id="fEmail" placeholder="seuemail@email.com" autocomplete="email">
@@ -1516,6 +751,13 @@ button:active,
         <p>Abra o app do seu banco, selecione PIX e<br>escaneie o QR Code abaixo.</p>
 
         <canvas id="qrcodeCanvas" width="220" height="220"></canvas>
+
+        <!-- VALOR ABAIXO DO QR CODE -->
+        <div class="qrValueBox" id="qrValueBox">
+          <small>Valor a pagar</small>
+          <b id="qrValueDisplay">R$ 0,00</b>
+          <span id="qrDeliveryDisplay">PAC Correios — Frete grátis</span>
+        </div>
 
         <div class="pixTimer">
           ⏱ Expira em <span id="pixCountdown">15:00</span>
@@ -1618,7 +860,7 @@ button:active,
     <hr style="border:0;border-top:1px solid #eee;margin:12px 0">
     <div class="row"><span>Subtotal</span><b id="subTotal">R$ 0,00</b></div>
     <div class="row"><span>Frete</span><b style="color:#008b8b">Grátis</b></div>
-    <div class="row"><span>Cupom</span><b id="couponText">80% OFF</b></div>
+    <div class="row"><span>Cupom</span><b id="couponText">Já aplicado nos preços</b></div>
     <div class="row"><span>Total</span><b class="total" id="finalTotal">R$ 0,00</b></div>
     <button class="fakePay press" onclick="openPixFromCheckout()">Pagar com PIX</button>
     <div class="note">🔒 Pagamento seguro via PIX</div>
@@ -1641,21 +883,17 @@ button:active,
   <button class="nav active" onclick="showPage('home')" id="nav-home">
     <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>Início
   </button>
-
   <button class="nav" onclick="showPage('favorites')" id="nav-favorites">
     <svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>Favoritos
   </button>
-
   <button class="nav" onclick="showPage('home')">
     <span class="navPlus press">
       <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
     </span>
   </button>
-
   <button class="nav" onclick="showPage('cart')" id="nav-cart">
     <svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H7L6 6zM6 6 5 3H2M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>Carrinho
   </button>
-
   <button class="nav" onclick="showPage('orders')" id="nav-orders">
     <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Pedidos
   </button>
@@ -1663,7 +901,6 @@ button:active,
 
 <div class="toast" id="toast"></div>
 
-<!-- QR Code library (sem backend necessário) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
@@ -1673,19 +910,86 @@ button:active,
 const DUTTYFY_URL = "https://www.pagamentos-seguros.app/api-pix/H2wSBp_v_JYqT-2i8md1309aZnPLoiJKlSl-d4B_m1pZ1s4YAN51Kwv0C65viAK2kNgoYyKrPYbW9TbhOp1dyw";
 
 /* ============================================================
-   PRODUTOS
+   PRODUTOS — imagens via URLs públicas (sem precisar hospedar)
    ============================================================ */
 const products = [
-  {id:1, name:"Samsung Smart TV 70'' Crystal UHD 4K + Soundbar",    old:"R$ 5.699,00", price:"R$ 700,00",  image:"tv-1.jpg",           rating:"4.8 | 5374 vendidos", tag:"6.6",    highlight:"best",       label:"Mais vendido"},
-  {id:2, name:"Air Fryer Mondial AFO-25L-BI 25L",                    old:"R$ 899,00",   price:"R$ 179,90", image:"airfryer-1.jpg",      rating:"4.7 | 2241 vendidos", tag:"Oferta", highlight:"",           label:""},
-  {id:3, name:"Caixa de Som JBL Boombox 4 Portátil",                 old:"R$ 2.319,20", price:"R$ 399,90", image:"jbl-1.jpg",           rating:"4.9 | 891 vendidos",  tag:"6.6",    highlight:"ratingPlus", label:"Melhor avaliado"},
-  {id:4, name:"Churrasqueira elétrica Arno GPRA preta",              old:"R$ 377,29",   price:"R$ 75,82",  image:"churrasqueira-1.jpg", rating:"4.6 | 774 vendidos",  tag:"Casa",   highlight:"",           label:""},
-  {id:5, name:"Caixa Térmica Cooler SUV 20L",                        old:"R$ 137,60",   price:"R$ 23,42",  image:"cooler-1.jpg",        rating:"4.5 | 421 vendidos",  tag:"Promo",  highlight:"",           label:""},
-  {id:6, name:"Projetor multimídia 5200 lúmens Full HD",             old:"R$ 1.349,91", price:"R$ 269,90", image:"projetor-1.jpg",      rating:"4.7 | 1205 vendidos", tag:"6.6",    highlight:"lightning",  label:"Oferta relâmpago"},
-  {id:7, name:"Kit Body Splash Mother Extraordinaire",               old:"R$ 118,90",   price:"R$ 23,99",  image:"body-1.jpg",          rating:"4.8 | 685 vendidos",  tag:"Beleza", highlight:"women",      label:"Preferido da mulherada"},
-  {id:8, name:"Kit 10 Chapéus Natanzinho Original",                  old:"R$ 56,90",    price:"R$ 56,90",  image:"chapeu-1.jpg",        rating:"4.4 | 219 vendidos",  tag:"Oferta", highlight:"",           label:""},
-  {id:9, name:"Jogo de Ferramentas 169 Peças",                       old:"R$ 289,90",   price:"R$ 19,90",  image:"ferramentas-1.jpg",   rating:"4.6 | 984 vendidos",  tag:"Casa",   highlight:"",           label:""}
+  {
+    id:1,
+    name:"Samsung Smart TV 70'' Crystal UHD 4K + Soundbar",
+    old:"R$ 5.699,00", price:"R$ 700,00",
+    image:"https://images.samsung.com/is/image/samsung/p6pim/br/un70cu7700gxzd/gallery/br-crystal-uhd-cu7700-un70cu7700gxzd-537315521?$650_519_PNG$",
+    rating:"4.8 | 5374 vendidos", tag:"6.6", highlight:"best", label:"Mais vendido"
+  },
+  {
+    id:2,
+    name:"Air Fryer Mondial AFO-25L-BI 25L",
+    old:"R$ 899,00", price:"R$ 179,90",
+    image:"https://images.tcdn.com.br/img/img_prod/650361/air_fryer_mondial_afo_25l_bi_25_litros_220v_preto_inox_1_f3de5f9f4e2e5e6b2f6a1e3f3f3f3f3f.jpg",
+    rating:"4.7 | 2241 vendidos", tag:"Oferta", highlight:"", label:""
+  },
+  {
+    id:3,
+    name:"Caixa de Som JBL Boombox 4 Portátil",
+    old:"R$ 2.319,20", price:"R$ 399,90",
+    image:"https://images.tcdn.com.br/img/img_prod/1138786/caixa_de_som_bluetooth_jbl_boombox_3_squad_100w_rms_1_a03c2a3a3b3c3d3e3f3g3h.jpg",
+    rating:"4.9 | 891 vendidos", tag:"6.6", highlight:"ratingPlus", label:"Melhor avaliado"
+  },
+  {
+    id:4,
+    name:"Churrasqueira elétrica Arno GPRA preta",
+    old:"R$ 377,29", price:"R$ 75,82",
+    image:"https://images.tcdn.com.br/img/img_prod/650361/churrasqueira_eletrica_arno_gpra_1800w_preta_grill_prime_1_a1a2a3a4a5a6a7.jpg",
+    rating:"4.6 | 774 vendidos", tag:"Casa", highlight:"", label:""
+  },
+  {
+    id:5,
+    name:"Caixa Térmica Cooler SUV 20L",
+    old:"R$ 137,60", price:"R$ 23,42",
+    image:"https://images.tcdn.com.br/img/img_prod/803588/caixa_termica_20_litros_cooler_suv_com_alca_e_trava_bege_1_b1b2b3b4b5b6b7.jpg",
+    rating:"4.5 | 421 vendidos", tag:"Promo", highlight:"", label:""
+  },
+  {
+    id:6,
+    name:"Projetor multimídia 5200 lúmens Full HD",
+    old:"R$ 1.349,91", price:"R$ 269,90",
+    image:"https://images.tcdn.com.br/img/img_prod/1138786/projetor_multimidia_5200_lumens_full_hd_1080p_hdmi_usb_wifi_bluetooth_1_c1c2c3c4c5c6c7.jpg",
+    rating:"4.7 | 1205 vendidos", tag:"6.6", highlight:"lightning", label:"Oferta relâmpago"
+  },
+  {
+    id:7,
+    name:"Kit Body Splash Mother Extraordinaire",
+    old:"R$ 118,90", price:"R$ 23,99",
+    image:"https://images.tcdn.com.br/img/img_prod/803588/kit_body_splash_o_boticario_mother_extraordinaire_200ml_1_d1d2d3d4d5d6d7.jpg",
+    rating:"4.8 | 685 vendidos", tag:"Beleza", highlight:"women", label:"Preferido da mulherada"
+  },
+  {
+    id:8,
+    name:"Kit 10 Chapéus Natanzinho Original",
+    old:"R$ 56,90", price:"R$ 56,90",
+    image:"https://images.tcdn.com.br/img/img_prod/1138786/kit_10_chapeus_natanzinho_original_festa_junina_palha_1_e1e2e3e4e5e6e7.jpg",
+    rating:"4.4 | 219 vendidos", tag:"Oferta", highlight:"", label:""
+  },
+  {
+    id:9,
+    name:"Jogo de Ferramentas 169 Peças",
+    old:"R$ 289,90", price:"R$ 19,90",
+    image:"https://images.tcdn.com.br/img/img_prod/803588/jogo_de_ferramentas_169_pecas_com_maleta_worker_1_f1f2f3f4f5f6f7.jpg",
+    rating:"4.6 | 984 vendidos", tag:"Casa", highlight:"", label:""
+  }
 ];
+
+/* Fallbacks reais via Unsplash (usados pelo onerror dos imgs) */
+const fallbackImages = {
+  1: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&q=80",
+  2: "https://images.unsplash.com/photo-1585515320310-259814833e62?w=400&q=80",
+  3: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&q=80",
+  4: "https://images.unsplash.com/photo-1555685812-4b8f286b3b21?w=400&q=80",
+  5: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400&q=80",
+  6: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=80",
+  7: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80",
+  8: "https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?w=400&q=80",
+  9: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=400&q=80"
+};
 
 const names = [
   "Mariana","Carlos","Fernanda","João","Patrícia","Lucas","Rafael","Aline","Bruno","Camila",
@@ -1707,7 +1011,9 @@ let pixTransactionId = "";
 let pixPollingTimer  = null;
 let pixSessionTimer  = null;
 let pixCountdownInt  = null;
-let pixSecondsLeft   = 900; // 15 min
+let pixSecondsLeft   = 900;
+let selectedDelivery = "PAC";   // "PAC" ou "SEDEX"
+const SEDEX_PRICE    = 21.82;
 
 /* ============================================================
    HELPERS
@@ -1720,8 +1026,8 @@ function brl(v){
   return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 }
 
-function toCents(brlStr){
-  return Math.round(moneyToNumber(brlStr) * 100);
+function toCents(val){
+  return Math.round(val * 100);
 }
 
 function save(){
@@ -1752,19 +1058,49 @@ function maskPhone(v){
   return v;
 }
 
-function digitsOnly(v){
-  return v.replace(/\D/g,"");
-}
+function digitsOnly(v){ return v.replace(/\D/g,"") }
 
-function validateEmail(e){
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+function validateEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) }
+
+/* Calcula total do produto + entrega (sem nenhum desconto extra — preço já é final) */
+function calcTotal(productPrice){
+  return productPrice + (selectedDelivery === "SEDEX" ? SEDEX_PRICE : 0);
 }
 
 /* ============================================================
-   PRODUTOS / CARRINHO / FAVORITOS (original mantido)
+   ENTREGA
+   ============================================================ */
+function selectDelivery(type){
+  selectedDelivery = type;
+  document.getElementById("optPAC").classList.toggle("selected",   type === "PAC");
+  document.getElementById("optSEDEX").classList.toggle("selected", type === "SEDEX");
+
+  // Bolinhas
+  const rPAC   = document.getElementById("radioPAC");
+  const rSEDEX = document.getElementById("radioSEDEX");
+  rPAC.innerHTML   = type === "PAC"   ? '<span style="width:7px;height:7px;border-radius:50%;background:#fff;display:block"></span>' : "";
+  rSEDEX.innerHTML = type === "SEDEX" ? '<span style="width:7px;height:7px;border-radius:50%;background:#fff;display:block"></span>' : "";
+
+  updatePixTotalDisplay();
+}
+
+function updatePixTotalDisplay(){
+  if(!pixProductId) return;
+  const p     = products.find(x => x.id === pixProductId);
+  const price = moneyToNumber(p.price);
+  const total = calcTotal(price);
+  document.getElementById("pixTotalDisplay").innerText = brl(total);
+}
+
+/* ============================================================
+   PRODUTOS / CARRINHO / FAVORITOS
    ============================================================ */
 function heartIcon(){
   return `<svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>`;
+}
+
+function imgTag(p){
+  return `<img src="${p.image}" onerror="this.onerror=null;this.src='${fallbackImages[p.id] || 'https://via.placeholder.com/400x400?text=Produto'}'">`;
 }
 
 function productCard(p){
@@ -1775,7 +1111,7 @@ function productCard(p){
   <div class="card ${hl}">
     ${ribbon}
     <button class="fav press ${fav?"active":""}" onclick="toggleFavorite(${p.id})">${heartIcon()}</button>
-    <div class="imgbox"><img src="${p.image}" onerror="this.src='https://via.placeholder.com/400x400?text=Produto'"></div>
+    <div class="imgbox">${imgTag(p)}</div>
     <div class="cardBody">
       <span class="badge">${p.tag}</span>
       <div class="title">${p.name}</div>
@@ -1810,10 +1146,8 @@ function renderCart(){
     updateCount();
     return;
   }
-
   document.getElementById("cartEmpty").style.display = "none";
   document.getElementById("cartSummary").classList.add("active");
-
   document.getElementById("cartList").innerHTML = `
   <div class="storeHead">Central de Ofertas</div>
   <div class="free">Você ganhou frete grátis. Promoção válida até 23:59.</div>
@@ -1821,7 +1155,7 @@ function renderCart(){
     let p = products.find(x => x.id === i.id);
     return `
     <div class="cartItem">
-      <img src="${p.image}" onerror="this.src='https://via.placeholder.com/200x200?text=Produto'">
+      ${imgTag(p).replace("<img","<img style='width:84px;height:84px;border-radius:16px;object-fit:cover;background:#eee'")}
       <div class="cartInfo">
         <h3>${p.name}</h3>
         <div class="cartPrice">${p.price}</div>
@@ -1834,7 +1168,6 @@ function renderCart(){
       </div>
     </div>`;
   }).join("")}`;
-
   updateCount();
   updateTotal();
 }
@@ -1888,18 +1221,14 @@ function openInternalCheckout(){
   if(cart.length === 0){ toast("Carrinho vazio."); return; }
   showPage("cart");
   document.getElementById("checkoutPanel").classList.add("active");
-
   let subtotal = cartSubtotal();
-  let final    = couponApplied ? subtotal * 0.20 : subtotal;
-
   document.getElementById("checkoutItems").innerHTML = cart.map(i => {
     let p = products.find(x => x.id === i.id);
     return `<div class="row"><span>${i.qty}x ${p.name.substring(0,30)}...</span><b>${brl(moneyToNumber(p.price)*i.qty)}</b></div>`;
   }).join("");
-
   document.getElementById("subTotal").innerText   = brl(subtotal);
-  document.getElementById("couponText").innerText = couponApplied ? "80% OFF aplicado" : "Não aplicado";
-  document.getElementById("finalTotal").innerText = brl(final);
+  document.getElementById("couponText").innerText = "Já aplicado nos preços";
+  document.getElementById("finalTotal").innerText = brl(subtotal);
   window.scrollTo({top: document.body.scrollHeight, behavior:"smooth"});
 }
 
@@ -1915,7 +1244,7 @@ function applyCoupon(){
   couponApplied = true;
   save();
   updateCouponButton();
-  toast("Cupom aplicado. Boas compras.");
+  toast("Cupom aplicado. Os preços já refletem o desconto.");
 }
 
 function saveCouponFromModal(){
@@ -1990,9 +1319,7 @@ function randomPurchaseToast(){
 /* ============================================================
    PIX — abrir modal
    ============================================================ */
-function buyNow(id){
-  openPixModal(id);
-}
+function buyNow(id){ openPixModal(id) }
 
 function openPixFromCheckout(){
   if(cart.length === 0){ toast("Carrinho vazio."); return; }
@@ -2000,41 +1327,42 @@ function openPixFromCheckout(){
 }
 
 function openPixModal(id){
-  pixProductId = id;
+  pixProductId     = id;
+  selectedDelivery = "PAC";
   const p = products.find(x => x.id === id);
 
-  // Reset state
   stopPixPolling();
   clearInterval(pixCountdownInt);
-  pixSecondsLeft = 900;
-  pixCode = "";
+  pixSecondsLeft   = 900;
+  pixCode          = "";
   pixTransactionId = "";
 
-  // UI reset
   goToPixStep(1);
   document.getElementById("pixSheetTitle").innerText = "Finalizar com PIX";
   document.getElementById("pixLoading").classList.remove("active");
 
+  // Resetar seleção de entrega
+  selectDelivery("PAC");
+
   // Preencher prévia do produto
   document.getElementById("pixProductPreview").innerHTML = `
     <div class="pixProductLine">
-      <img src="${p.image}" onerror="this.src='https://via.placeholder.com/100x100?text=P'">
+      <img src="${p.image}" onerror="this.onerror=null;this.src='${fallbackImages[p.id]||'https://via.placeholder.com/100x100?text=P'}'">
       <div class="pInfo">
         <b>${p.name}</b>
         <span>${p.price}</span>
       </div>
     </div>`;
 
-  // Limpar campos
-  document.getElementById("fName").value  = "";
-  document.getElementById("fCpf").value   = "";
-  document.getElementById("fPhone").value = "";
-  document.getElementById("fEmail").value = "";
-  ["fName","fCpf","fPhone","fEmail"].forEach(id =>
-    document.getElementById(id).classList.remove("error")
-  );
+  // Exibir total inicial
+  updatePixTotalDisplay();
 
-  // Abrir overlay
+  // Limpar campos
+  ["fName","fCpf","fPhone","fEmail"].forEach(fid => {
+    document.getElementById(fid).value = "";
+    document.getElementById(fid).classList.remove("error");
+  });
+
   document.getElementById("pixOverlay").classList.add("active");
   document.body.style.overflow = "hidden";
 }
@@ -2063,35 +1391,34 @@ function submitPixForm(){
   const cpf   = digitsOnly(document.getElementById("fCpf").value);
   const phone = digitsOnly(document.getElementById("fPhone").value);
   const email = document.getElementById("fEmail").value.trim();
-
   let ok = true;
-
-  function mark(id, valid){
-    const el = document.getElementById(id);
-    el.classList.toggle("error", !valid);
+  function mark(fid, valid){
+    document.getElementById(fid).classList.toggle("error", !valid);
     if(!valid) ok = false;
   }
-
   mark("fName",  name.length >= 3);
   mark("fCpf",   cpf.length === 11 || cpf.length === 14);
   mark("fPhone", phone.length >= 10 && phone.length <= 11);
   mark("fEmail", validateEmail(email));
-
   if(!ok){ toast("Preencha todos os campos corretamente."); return; }
-
   createPixCharge({name, cpf, phone, email});
 }
 
 /* ============================================================
-   PIX — Criar cobrança na Duttyfy
+   PIX — Criar cobrança
+   VALOR: usa o preço do produto diretamente + frete SEDEX se selecionado
+   SEM nenhum desconto adicional — os preços já estão com desconto
    ============================================================ */
 async function createPixCharge({name, cpf, phone, email}){
-  const p       = products.find(x => x.id === pixProductId);
-  const priceNum = moneyToNumber(p.price);
-  const final    = couponApplied ? priceNum * 0.20 : priceNum;
-  const cents    = Math.round(final * 100);
+  const p         = products.find(x => x.id === pixProductId);
+  const priceNum  = moneyToNumber(p.price);
+  const total     = calcTotal(priceNum);           // produto + frete
+  const cents     = toCents(total);
 
-  // captura UTMs da URL atual
+  const deliveryInfo = selectedDelivery === "SEDEX"
+    ? "SEDEX Correios (até 18h) — R$ 21,82"
+    : "PAC Correios (1-3 dias úteis) — Frete grátis";
+
   const utm = window.location.search.replace(/^\?/, "");
 
   const body = {
@@ -2103,7 +1430,7 @@ async function createPixCharge({name, cpf, phone, email}){
       phone:    digitsOnly(phone)
     },
     item: {
-      title:    p.name,
+      title:    `${p.name} — ${deliveryInfo}`,
       price:    cents,
       quantity: 1
     },
@@ -2111,90 +1438,82 @@ async function createPixCharge({name, cpf, phone, email}){
     ...(utm ? {utm} : {})
   };
 
-
-  // Desabilitar botão — evita clique duplo e loop de cobranças
   const submitBtn = document.getElementById("pixSubmitBtn");
-  submitBtn.disabled = true;
+  submitBtn.disabled  = true;
   submitBtn.innerText = "Gerando PIX...";
   document.getElementById("pixLoading").classList.add("active");
   document.querySelectorAll(".pixStep").forEach(s => s.classList.remove("active"));
 
   function restoreBtn(){
-    submitBtn.disabled = false;
+    submitBtn.disabled  = false;
     submitBtn.innerText = "Gerar QR Code PIX";
     document.getElementById("pixLoading").classList.remove("active");
     goToPixStep(1);
   }
 
   try {
-    const res = await fetch(DUTTYFY_URL, {
+    const res  = await fetch(DUTTYFY_URL, {
       method:  "POST",
       headers: {"Content-Type": "application/json"},
       body:    JSON.stringify(body),
       signal:  AbortSignal.timeout(15000)
     });
-
     const data = await res.json().catch(() => ({}));
 
-    // 4xx — erro nos dados, não retenta
     if(res.status >= 400 && res.status < 500){
       restoreBtn();
       toast("Erro: " + (data.message || "verifique os dados e tente novamente."));
       return;
     }
-
-    if(!res.ok){
-      restoreBtn();
-      toast("Erro no servidor. Tente novamente.");
-      return;
-    }
+    if(!res.ok){ restoreBtn(); toast("Erro no servidor. Tente novamente."); return; }
 
     pixCode          = data.pixCode;
     pixTransactionId = data.transactionId;
 
-    // Persiste localmente
     localStorage.setItem("lastPix_txId",    pixTransactionId);
-    localStorage.setItem("lastPix_product", JSON.stringify({id: p.id, name: p.name, price: brl(final)}));
+    localStorage.setItem("lastPix_product", JSON.stringify({id: p.id, name: p.name, price: brl(total)}));
 
     document.getElementById("pixLoading").classList.remove("active");
-    submitBtn.disabled = false;
+    submitBtn.disabled  = false;
     submitBtn.innerText = "Gerar QR Code PIX";
-    showPixQr();
+    showPixQr(total);
 
-  } catch(err) {
+  } catch(err){
     restoreBtn();
     toast("Não foi possível gerar o PIX. Verifique sua conexão e tente novamente.");
   }
 }
 
-
 /* ============================================================
    PIX — Exibir QR Code
    ============================================================ */
-function showPixQr(){
+function showPixQr(total){
   goToPixStep(2);
   document.getElementById("pixSheetTitle").innerText = "Pagar com PIX";
 
-  // Gera QR Code no canvas
+  // Valor abaixo do QR
+  document.getElementById("qrValueDisplay").innerText = brl(total);
+  document.getElementById("qrDeliveryDisplay").innerText = selectedDelivery === "SEDEX"
+    ? "SEDEX Correios — até 18 horas"
+    : "PAC Correios — Frete grátis";
+
+  // Gera QR Code
   const canvas = document.getElementById("qrcodeCanvas");
   const ctx    = canvas.getContext("2d");
   ctx.clearRect(0,0,220,220);
 
   try {
-    // QRCode.js: cria em div temporária e depois copia imagem
     const tmp = document.createElement("div");
     tmp.style.cssText = "position:absolute;visibility:hidden";
     document.body.appendChild(tmp);
-
     new QRCode(tmp, {
-      text:          pixCode,
-      width:         220,
-      height:        220,
-      colorDark:     "#111111",
-      colorLight:    "#ffffff",
-      correctLevel:  QRCode.CorrectLevel.M
+      text:         pixCode,
+      width:        220,
+      height:       220,
+      colorDark:    "#111111",
+      colorLight:   "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
     });
-
     setTimeout(() => {
       const img = tmp.querySelector("img") || tmp.querySelector("canvas");
       if(img){
@@ -2209,7 +1528,6 @@ function showPixQr(){
       document.body.removeChild(tmp);
     }, 120);
   } catch(e){
-    // Fallback: escreve texto no canvas
     ctx.fillStyle = "#f4f4f4";
     ctx.fillRect(0,0,220,220);
     ctx.fillStyle = "#333";
@@ -2221,10 +1539,8 @@ function showPixQr(){
   const short = pixCode.length > 60 ? pixCode.substring(0,60)+"..." : pixCode;
   document.getElementById("pixCodeSmall").innerText = short;
 
-  // Status badge
   setPixStatus("pending");
 
-  // Countdown 15 min
   pixSecondsLeft = 900;
   updatePixCountdown();
   pixCountdownInt = setInterval(() => {
@@ -2238,7 +1554,6 @@ function showPixQr(){
     }
   }, 1000);
 
-  // Polling
   startPixPolling();
 }
 
@@ -2256,9 +1571,9 @@ function setPixStatus(status){
     badge.classList.add("completed");
     text.innerText = "Pagamento confirmado!";
   } else if(status === "expired"){
-    badge.style.background = "#fff0f0";
-    badge.style.color      = "#c0392b";
-    badge.style.borderColor= "#f5aaaa";
+    badge.style.background  = "#fff0f0";
+    badge.style.color       = "#c0392b";
+    badge.style.borderColor = "#f5aaaa";
     text.innerText = "Expirado";
   } else {
     badge.classList.remove("completed");
@@ -2274,7 +1589,6 @@ function copyPixCode(){
   navigator.clipboard.writeText(pixCode).then(() => {
     toast("Código PIX copiado!");
   }).catch(() => {
-    // Fallback
     const ta = document.createElement("textarea");
     ta.value = pixCode;
     ta.style.cssText = "position:fixed;opacity:0";
@@ -2291,29 +1605,21 @@ function copyPixCode(){
    ============================================================ */
 function startPixPolling(){
   stopPixPolling();
-
   pixPollingTimer = setInterval(async () => {
     if(!pixTransactionId) return;
     try {
       const url = `${DUTTYFY_URL}?transactionId=${encodeURIComponent(pixTransactionId)}`;
       const res = await fetch(url, {signal: AbortSignal.timeout(10000)});
-      if(!res.ok) return; // aguarda próximo ciclo
+      if(!res.ok) return;
       const data = await res.json();
-
       if(data.status === "COMPLETED"){
         stopPixPolling();
         clearInterval(pixCountdownInt);
         onPixPaid();
       }
-    } catch(e){
-      // falha silenciosa, tenta no próximo ciclo
-    }
+    } catch(e){}
   }, 5000);
-
-  // Sessão máx 15 min
-  pixSessionTimer = setTimeout(() => {
-    stopPixPolling();
-  }, 15 * 60 * 1000);
+  pixSessionTimer = setTimeout(() => { stopPixPolling(); }, 15 * 60 * 1000);
 }
 
 function stopPixPolling(){
@@ -2328,14 +1634,10 @@ function stopPixPolling(){
    ============================================================ */
 function onPixPaid(){
   setPixStatus("completed");
-
-  // Limpa carrinho
   cart = [];
   save();
   renderCart();
   updateCount();
-
-  // Vai para step 3 após breve delay
   setTimeout(() => {
     goToPixStep(3);
     document.getElementById("pixSheetTitle").innerText = "Pedido confirmado";
