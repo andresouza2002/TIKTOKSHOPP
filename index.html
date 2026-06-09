@@ -1486,11 +1486,11 @@ button:active,
       <div class="formRow">
         <div class="formGroup">
           <label>CPF</label>
-          <input type="text" id="fCpf" placeholder="000.000.000-00" maxlength="14" autocomplete="off">
+          <input type="text" id="fCpf" placeholder="000.000.000-00" maxlength="14" autocomplete="off" oninput="this.value=maskCpf(this.value)">
         </div>
         <div class="formGroup">
           <label>Telefone</label>
-          <input type="tel" id="fPhone" placeholder="(11) 98765-4321" maxlength="15" autocomplete="tel">
+          <input type="tel" id="fPhone" placeholder="(11) 98765-4321" maxlength="15" autocomplete="tel" oninput="this.value=maskPhone(this.value)">
         </div>
       </div>
 
@@ -2025,17 +2025,18 @@ function openPixModal(id){
       </div>
     </div>`;
 
+  // Limpar campos
+  document.getElementById("fName").value  = "";
+  document.getElementById("fCpf").value   = "";
+  document.getElementById("fPhone").value = "";
+  document.getElementById("fEmail").value = "";
+  ["fName","fCpf","fPhone","fEmail"].forEach(id =>
+    document.getElementById(id).classList.remove("error")
+  );
+
   // Abrir overlay
   document.getElementById("pixOverlay").classList.add("active");
   document.body.style.overflow = "hidden";
-
-  // Máscaras nos campos
-  document.getElementById("fCpf").addEventListener("input", function(){
-    this.value = maskCpf(this.value);
-  });
-  document.getElementById("fPhone").addEventListener("input", function(){
-    this.value = maskPhone(this.value);
-  });
 }
 
 function closePixModal(){
@@ -2110,59 +2111,62 @@ async function createPixCharge({name, cpf, phone, email}){
     ...(utm ? {utm} : {})
   };
 
-  // Mostrar loader, esconder steps
+
+  // Desabilitar botão — evita clique duplo e loop de cobranças
+  const submitBtn = document.getElementById("pixSubmitBtn");
+  submitBtn.disabled = true;
+  submitBtn.innerText = "Gerando PIX...";
   document.getElementById("pixLoading").classList.add("active");
-  goToPixStep(0); // sem step ativo
   document.querySelectorAll(".pixStep").forEach(s => s.classList.remove("active"));
 
-  let attempt = 0;
-  const maxAttempts = 3;
-  const delays = [1000, 2000, 4000];
+  function restoreBtn(){
+    submitBtn.disabled = false;
+    submitBtn.innerText = "Gerar QR Code PIX";
+    document.getElementById("pixLoading").classList.remove("active");
+    goToPixStep(1);
+  }
 
-  while(attempt < maxAttempts){
-    try {
-      const res = await fetch(DUTTYFY_URL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(body),
-        signal: AbortSignal.timeout(15000)
-      });
+  try {
+    const res = await fetch(DUTTYFY_URL, {
+      method:  "POST",
+      headers: {"Content-Type": "application/json"},
+      body:    JSON.stringify(body),
+      signal:  AbortSignal.timeout(15000)
+    });
 
-      if(res.status >= 400 && res.status < 500){
-        // 4xx: não retentável
-        const err = await res.json().catch(() => ({}));
-        document.getElementById("pixLoading").classList.remove("active");
-        goToPixStep(1);
-        toast("Erro nos dados: " + (err.message || "verifique e tente novamente."));
-        return;
-      }
+    const data = await res.json().catch(() => ({}));
 
-      if(!res.ok) throw new Error("HTTP " + res.status);
-
-      const data = await res.json();
-      pixCode          = data.pixCode;
-      pixTransactionId = data.transactionId;
-
-      // Persiste localmente
-      localStorage.setItem("lastPix_txId",    pixTransactionId);
-      localStorage.setItem("lastPix_product", JSON.stringify({id: p.id, name: p.name, price: brl(final)}));
-
-      document.getElementById("pixLoading").classList.remove("active");
-      showPixQr();
+    // 4xx — erro nos dados, não retenta
+    if(res.status >= 400 && res.status < 500){
+      restoreBtn();
+      toast("Erro: " + (data.message || "verifique os dados e tente novamente."));
       return;
-
-    } catch(err) {
-      attempt++;
-      if(attempt >= maxAttempts){
-        document.getElementById("pixLoading").classList.remove("active");
-        goToPixStep(1);
-        toast("Não foi possível gerar o PIX. Tente novamente.");
-        return;
-      }
-      await new Promise(r => setTimeout(r, delays[attempt - 1]));
     }
+
+    if(!res.ok){
+      restoreBtn();
+      toast("Erro no servidor. Tente novamente.");
+      return;
+    }
+
+    pixCode          = data.pixCode;
+    pixTransactionId = data.transactionId;
+
+    // Persiste localmente
+    localStorage.setItem("lastPix_txId",    pixTransactionId);
+    localStorage.setItem("lastPix_product", JSON.stringify({id: p.id, name: p.name, price: brl(final)}));
+
+    document.getElementById("pixLoading").classList.remove("active");
+    submitBtn.disabled = false;
+    submitBtn.innerText = "Gerar QR Code PIX";
+    showPixQr();
+
+  } catch(err) {
+    restoreBtn();
+    toast("Não foi possível gerar o PIX. Verifique sua conexão e tente novamente.");
   }
 }
+
 
 /* ============================================================
    PIX — Exibir QR Code
