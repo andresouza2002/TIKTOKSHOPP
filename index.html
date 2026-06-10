@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tiktok Shop · Central de Ofertas</title>
+<title>Shop · Central de Ofertas</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -168,28 +168,6 @@ img{display:block;max-width:100%}
 .section-title svg{width:18px;height:18px;stroke:#FFB800;fill:#FFB800;stroke-width:0}
 .section-action{font-size:13px;font-weight:800;color:var(--gray-700);display:flex;align-items:center;gap:3px}
 .section-action::after{content:">";font-weight:900;margin-left:2px}
-
-/* ===== CATEGORIES ===== */
-.categories{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:14px 4px;
-  padding:0 14px;margin-bottom:18px;
-}
-.cat-item{display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer}
-.cat-icon{
-  width:56px;height:56px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;position:relative;
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
-}
-.cat-icon.fire{background:linear-gradient(135deg,#FF7A1A,#FF2B63)}
-.cat-icon.elec{background:linear-gradient(135deg,#A855F7,#7C3AED)}
-.cat-icon.home{background:linear-gradient(135deg,#10B981,#059669)}
-.cat-icon.beauty{background:linear-gradient(135deg,#EC4899,#F472B6)}
-.cat-icon.fashion{background:linear-gradient(135deg,#F59E0B,#EF4444)}
-.cat-icon.sport{background:linear-gradient(135deg,#3B82F6,#1D4ED8)}
-.cat-icon.toys{background:linear-gradient(135deg,#FBBF24,#F59E0B)}
-.cat-icon.coupons{background:linear-gradient(135deg,#FF2B63,#FF7A1A)}
-.cat-item span{font-size:12px;font-weight:700;color:#222;text-align:center}
 
 /* ===== FLASH BANNER ===== */
 .flash-banner{
@@ -798,8 +776,6 @@ img{display:block;max-width:100%}
 }
 @media(max-width:380px){
   .hero h1{font-size:30px}
-  .categories{grid-template-columns:repeat(4,1fr);gap:10px 2px}
-  .cat-icon{width:50px;height:50px;font-size:22px}
   .product-grid{grid-template-columns:1fr 1fr;gap:8px}
 }
 </style>
@@ -979,8 +955,8 @@ img{display:block;max-width:100%}
         <svg viewBox="0 0 24 24"><path d="M3 7h18l-2 13H5L3 7zM8 7V5a4 4 0 0 1 8 0v2"/></svg>
       </div>
       <div class="logo-text">
-        <b>Tiktok Shop</b>
-        <small>Ofertas 6.6</small>
+        <b>Shop</b>
+        <small>Central de Ofertas</small>
       </div>
     </div>
     <div class="header-actions">
@@ -1019,18 +995,6 @@ img{display:block;max-width:100%}
         <div class="cd-num" id="cdS">08</div>
       </div>
     </div>
-  </div>
-
-  <!-- CATEGORIES -->
-  <div class="categories">
-    <div class="cat-item" onclick="toast('Mega 6.6')"><div class="cat-icon fire">🔥</div><span>Mega 6.6</span></div>
-    <div class="cat-item" onclick="toast('Eletrônicos')"><div class="cat-icon elec">📱</div><span>Eletrônicos</span></div>
-    <div class="cat-item" onclick="toast('Casa')"><div class="cat-icon home">🏠</div><span>Casa</span></div>
-    <div class="cat-item" onclick="toast('Beleza')"><div class="cat-icon beauty">💄</div><span>Beleza</span></div>
-    <div class="cat-item" onclick="toast('Moda')"><div class="cat-icon fashion">👗</div><span>Moda</span></div>
-    <div class="cat-item" onclick="toast('Esporte')"><div class="cat-icon sport">⚽</div><span>Esporte</span></div>
-    <div class="cat-item" onclick="toast('Brinquedos')"><div class="cat-icon toys">🧸</div><span>Brinquedos</span></div>
-    <div class="cat-item" onclick="openCouponModal()"><div class="cat-icon coupons">🎟️</div><span>Cupons</span></div>
   </div>
 
   <!-- FLASH BANNER -->
