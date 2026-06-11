@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Central de Ofertas</title>
 
+<!-- ===== TIKTOK PIXEL ===== -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D8L17U3C77UCALGUHKQ0');
+  ttq.page(); // PageView ao carregar a pagina
+}(window, document, 'ttq');
+</script>
+<!-- ===== FIM TIKTOK PIXEL ===== -->
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -32,7 +42,6 @@ button,a{font-family:inherit;text-decoration:none;color:inherit;-webkit-tap-high
 
 button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-shadow:0 2px 0 rgba(0,0,0,.25)!important;}
 
-/* ===== TOPBAR ===== */
 .topbar{
   position:sticky;top:0;z-index:40;
   background:rgba(255,255,255,.94);
@@ -62,11 +71,9 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 }
 .search svg{width:20px;height:20px;margin-right:8px;stroke:#222;stroke-width:2;fill:none;}
 
-/* ===== PAGES ===== */
 .page{display:none}
 .page.active{display:block}
 
-/* ===== HERO ===== */
 .hero{
   margin:14px 12px;padding:22px 18px;color:#fff;border-radius:26px;
   background:radial-gradient(circle at 85% 15%,rgba(255,255,255,.35),transparent 22%),linear-gradient(135deg,#ff2b63,#ff8a3d);
@@ -83,7 +90,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
   border:1px solid rgba(0,0,0,.14);
 }
 
-/* ===== TIMER ===== */
 .timer{
   margin:0 12px 12px;background:#111;color:#fff;border-radius:18px;
   padding:13px 15px;display:flex;justify-content:space-between;align-items:center;
@@ -92,7 +98,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .timer span{font-size:13px;color:#ddd;font-weight:600;}
 .timer b{font-size:18px;color:#fff;letter-spacing:.5px;}
 
-/* ===== COUPONS ===== */
 .coupons{
   margin:12px;background:#fff;border-radius:25px;padding:16px;
   border:1px solid rgba(0,0,0,.12);
@@ -117,7 +122,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .coupon b{display:block;color:#008b8b;font-size:16px;font-weight:900;}
 .coupon span{font-size:12px;color:#008b8b;font-weight:500;}
 
-/* ===== STOCK BADGE ===== */
 .stockBadge{
   display:inline-flex;align-items:center;gap:4px;
   background:#fff3e0;color:#e65100;font-size:10px;font-weight:900;
@@ -126,7 +130,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .stockBadge.low{background:#ffebee;color:#c62828;border-color:#ef9a9a}
 .stockBadge.out{background:#fce4ec;color:#880e4f;border-color:#f48fb1}
 
-/* ===== TABS ===== */
 .tabs{
   display:flex;gap:25px;overflow:auto;background:#fff;
   padding:14px 16px 8px;border-top:1px solid #eee;border-bottom:1px solid #eee;
@@ -135,10 +138,8 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .tabs .active{color:#111;border-bottom:2px solid #111;font-weight:800;}
 .tabs .promo{color:#5744ff;font-weight:900;}
 
-/* ===== GRID ===== */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;padding:13px;}
 
-/* ===== CARD ===== */
 .card{
   background:#fff;border-radius:23px;overflow:hidden;
   border:1px solid rgba(0,0,0,.18);
@@ -165,11 +166,9 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .ribbon.apple{background:linear-gradient(135deg,#5a5aff,#a066ff)}
 .ribbon.gaming{background:linear-gradient(135deg,#00c864,#00e8a0);color:#002b15}
 
-/* ===== IMGBOX com miniaturas ===== */
 .imgbox{height:170px;background:#eee;overflow:hidden;border-bottom:1px solid #f0f0f0;position:relative;}
 .imgbox img.mainImg{width:100%;height:100%;object-fit:cover;display:block;}
 
-/* Indicador de fotos (bolinhas) */
 .imgDots{
   position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
   display:flex;gap:4px;
@@ -208,7 +207,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .empty{margin:16px 12px;background:#fff;border-radius:22px;padding:30px 18px;text-align:center;color:#777;border:1px solid rgba(0,0,0,.12);box-shadow:0 12px 24px rgba(0,0,0,.05);}
 .empty b{display:block;color:#111;font-size:18px;margin-bottom:6px;}
 
-/* ===== CART ===== */
 .cartBox{margin:12px;background:#fff;border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,.14);box-shadow:0 14px 26px rgba(0,0,0,.07),0 0 12px rgba(0,0,0,.05);}
 .storeHead{padding:14px;font-weight:900;border-bottom:1px solid #eee;}
 .free{background:#ecffff;color:#077;padding:12px 14px;font-weight:700;font-size:14px;}
@@ -220,7 +218,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .cartQtyLabel{font-size:13px;color:#555;font-weight:700;margin-top:8px;}
 .remove{border:0;background:none;color:#999;font-size:12px;margin-top:8px;font-weight:700;cursor:pointer;}
 
-/* ===== CHECKOUT PANEL ===== */
 .checkoutPanel{display:none;margin:12px;background:#fff;border-radius:24px;border:1px solid rgba(0,0,0,.14);padding:16px;box-shadow:0 14px 26px rgba(0,0,0,.07),0 0 12px rgba(0,0,0,.05);}
 .checkoutPanel.active{display:block;}
 .checkoutPanel h2{font-size:22px;margin-bottom:12px;font-weight:900;}
@@ -229,7 +226,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .fakePay{width:100%;border:1px solid rgba(0,0,0,.12);border-radius:999px;background:var(--pink);color:#fff;padding:15px;font-size:17px;font-weight:900;margin-top:14px;box-shadow:0 7px 0 var(--pink-dark),0 12px 20px rgba(255,43,99,.20);}
 .note{font-size:12px;color:#777;margin-top:8px;text-align:center;}
 
-/* ===== CART SUMMARY BAR ===== */
 .cartSummary{
   position:fixed;left:50%;transform:translateX(-50%);bottom:66px;
   width:100%;max-width:430px;background:#fff;border-top:1px solid #eee;
@@ -242,7 +238,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .cartSummary b{color:var(--pink);font-size:20px;font-weight:900;}
 .cartSummary button{border:1px solid rgba(0,0,0,.12);background:var(--pink);color:#fff;border-radius:999px;padding:13px 22px;font-size:16px;font-weight:900;box-shadow:0 6px 0 var(--pink-dark);}
 
-/* ===== BOTTOM NAV ===== */
 .bottomNav{
   position:fixed;left:50%;transform:translateX(-50%);bottom:0;
   width:100%;max-width:430px;height:66px;background:#fff;
@@ -255,7 +250,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .navPlus{width:50px;height:36px;background:#111;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-top:-7px;box-shadow:0 6px 0 #000,0 10px 18px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.08);}
 .navPlus svg{stroke:#fff;}
 
-/* ===== TOAST ===== */
 .toast{
   position:fixed;left:50%;bottom:84px;transform:translateX(-50%);
   background:#222;color:#fff;border-radius:999px;padding:11px 15px;
@@ -264,7 +258,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 }
 .toast.show{opacity:1;bottom:96px;}
 
-/* ===== PURCHASE TOAST ===== */
 .purchaseToast{
   position:fixed;left:50%;top:86px;
   transform:translateX(-50%) translateY(-20px);
@@ -281,7 +274,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .purchaseText b{display:block;font-size:13px;font-weight:900;}
 .purchaseText span{display:block;font-size:12px;color:#666;margin-top:2px;font-weight:600;}
 
-/* ===== COUPON MODAL ===== */
 .couponModal{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:999;display:flex;align-items:center;justify-content:center;padding:18px;}
 .couponBox{width:100%;max-width:430px;background:linear-gradient(180deg,#fff4ec,#fff);border-radius:18px;padding:24px 20px 22px;position:relative;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.12);}
 .couponClose{position:absolute;right:-4px;top:-44px;width:34px;height:34px;border:2px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(0,0,0,.25);color:#fff;font-size:22px;}
@@ -300,9 +292,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .saveCoupon.saved{background:linear-gradient(135deg,#19b957,#22d66d);box-shadow:0 7px 0 #0b8b3b,0 14px 20px rgba(25,185,87,.18);}
 .couponNote{font-size:12px;color:#777;margin-top:12px;}
 
-/* =============================================================
-   PRODUCT VIEWER MODAL
-   ============================================================= */
 .viewerOverlay{
   position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:1500;
   display:none;align-items:flex-end;justify-content:center;
@@ -317,14 +306,12 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 }
 .viewerHandle{width:42px;height:5px;background:#ddd;border-radius:99px;margin:12px auto 0;}
 
-/* Galeria principal */
 .viewerImgMain{
   width:100%;height:300px;object-fit:cover;
   background:#f0f0f0;display:block;
 }
 .viewerImgWrap{position:relative;overflow:hidden;background:#f0f0f0;}
 
-/* Setas da galeria */
 .viewerArrow{
   position:absolute;top:50%;transform:translateY(-50%);
   width:36px;height:36px;border-radius:50%;
@@ -336,7 +323,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .viewerArrow.next{right:10px;}
 .viewerArrow svg{width:16px;height:16px;stroke:#111;stroke-width:2.5;fill:none;}
 
-/* Miniaturas */
 .viewerThumbs{
   display:flex;gap:8px;padding:10px 16px 0;overflow-x:auto;
   scrollbar-width:none;
@@ -349,14 +335,12 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 }
 .viewerThumb.active{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink);}
 
-/* Contador de fotos */
 .viewerImgCount{
   position:absolute;bottom:10px;right:12px;
   background:rgba(0,0,0,.55);color:#fff;border-radius:999px;
   padding:4px 10px;font-size:12px;font-weight:700;backdrop-filter:blur(4px);
 }
 
-/* Conteúdo do produto */
 .viewerBody{padding:16px 16px 0;}
 .viewerBadge{display:inline-block;background:#eaffff;color:#008b8b;font-size:12px;font-weight:900;padding:3px 7px;border-radius:7px;margin-bottom:6px;}
 .viewerTitle{font-size:17px;font-weight:700;line-height:1.3;color:#111;margin-bottom:10px;}
@@ -367,7 +351,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .viewerTags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .viewerTags span{background:#ffedf3;color:var(--pink);font-size:12px;font-weight:850;padding:5px 8px;border-radius:8px;}
 
-/* Botões de ação do viewer */
 .viewerActions{
   display:flex;gap:10px;padding:0 16px;margin-top:16px;
   position:sticky;bottom:0;background:linear-gradient(180deg,transparent,#fff 30%);
@@ -392,7 +375,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 }
 .viewerClose svg{width:16px;height:16px;stroke:#333;stroke-width:2.5;fill:none;}
 
-/* ===== PIX CHECKOUT MODAL ===== */
 .pixOverlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:2000;display:none;align-items:flex-end;justify-content:center;}
 .pixOverlay.active{display:flex;}
 .pixSheet{width:100%;max-width:430px;background:#fff;border-radius:26px 26px 0 0;padding:0 0 32px;max-height:92vh;overflow-y:auto;box-shadow:0 -20px 60px rgba(0,0,0,.28);position:relative;}
@@ -403,7 +385,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .pixStep{display:none;width:100%;padding:0 20px;}
 .pixStep.active{display:block;}
 
-/* Entrega */
 .deliverySection{margin:16px 0 18px;}
 .deliverySection h4{font-size:13px;font-weight:800;color:#444;margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;}
 .deliveryOpts{display:flex;flex-direction:column;gap:9px;}
@@ -419,7 +400,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .deliveryPrice.sedex-price{color:var(--pink);}
 .deliveryBadge{font-size:10px;font-weight:900;padding:3px 7px;border-radius:6px;background:#e7fff1;color:#008b3a;border:1px solid #b8f0cc;}
 
-/* Formulário */
 .formGroup{margin-bottom:14px;}
 .formGroup label{display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:6px;}
 .formGroup input{width:100%;border:1.5px solid #e0e0e0;border-radius:14px;padding:13px 14px;font-size:15px;font-family:inherit;background:#fafafa;color:#111;outline:none;transition:.2s;}
@@ -440,7 +420,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .pixSubmitBtn{width:100%;background:var(--pink);color:#fff;border:1px solid rgba(0,0,0,.12);border-radius:999px;padding:16px;font-size:17px;font-weight:900;box-shadow:0 7px 0 var(--pink-dark),0 12px 22px rgba(255,43,99,.22);cursor:pointer;margin-top:8px;}
 .pixSubmitBtn:disabled{opacity:.6;cursor:not-allowed;transform:none!important;box-shadow:0 4px 0 var(--pink-dark)!important;}
 
-/* QR Step */
 .pixQrWrap{text-align:center;padding:10px 0 0;}
 .pixQrWrap p{font-size:14px;color:#555;margin-bottom:14px;font-weight:500;line-height:1.5;}
 .qrValueBox{background:#f4f4f5;border-radius:14px;padding:12px 16px;margin:0 auto 16px;max-width:260px;text-align:center;border:1px solid #e8e8e8;}
@@ -459,7 +438,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 .pixStatusBadge.completed .pixStatusDot{background:#19b957;animation:none;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* Step 3 */
 .pixConfirm{text-align:center;padding:12px 0 8px;}
 .pixCheckCircle{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#19b957,#22d66d);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 14px 30px rgba(25,185,87,.30);animation:popIn .4s cubic-bezier(.175,.885,.32,1.275) forwards;}
 @keyframes popIn{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
@@ -474,7 +452,6 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 @keyframes spin{to{transform:rotate(360deg)}}
 .pixLoading p{font-size:15px;font-weight:600;color:#555;}
 
-/* ===== RESPONSIVE ===== */
 @media(min-width:768px){
   body{padding-bottom:0;}
   .app{max-width:1180px;padding-bottom:90px;}
@@ -525,22 +502,22 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 <!-- MODAL CUPOM -->
 <div class="couponModal" id="couponModal">
   <div class="couponBox">
-    <button class="couponClose press" onclick="closeCouponModal()">×</button>
+    <button class="couponClose press" onclick="closeCouponModal()">x</button>
     <div class="giftBox"></div>
-    <h2>Ofertas especiais só para você</h2>
+    <h2>Ofertas especiais so para voce</h2>
     <div class="couponTicket">
       <div class="ticketLeft">
         <b>80%<small>OFF</small></b>
-        <span>+ Frete grátis</span>
+        <span>+ Frete gratis</span>
       </div>
       <div class="ticketRight">
         <b>Desconto 6.6</b>
-        <span>Sem valor mínimo</span>
-        <span>Válido até 23:59</span>
+        <span>Sem valor minimo</span>
+        <span>Valido ate 23:59</span>
       </div>
     </div>
     <button class="saveCoupon press" id="saveCouponBtn" onclick="saveCouponFromModal()">Salvar cupons</button>
-    <div class="couponNote">Cupom já aplicado nos preços exibidos</div>
+    <div class="couponNote">Cupom ja aplicado nos precos exibidos</div>
   </div>
 </div>
 
@@ -555,17 +532,13 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
   </div>
 </div>
 
-<!-- ===== PRODUCT VIEWER MODAL ===== -->
+<!-- PRODUCT VIEWER MODAL -->
 <div class="viewerOverlay" id="viewerOverlay">
   <div class="viewerSheet" id="viewerSheet">
     <div class="viewerHandle"></div>
-
-    <!-- Fechar -->
     <button class="viewerClose" onclick="closeViewer()">
       <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
-
-    <!-- Foto principal -->
     <div class="viewerImgWrap">
       <img class="viewerImgMain" id="viewerImgMain" src="" alt="">
       <div class="viewerImgCount" id="viewerImgCount">1 / 4</div>
@@ -576,54 +549,47 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
         <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </div>
-
-    <!-- Miniaturas -->
     <div class="viewerThumbs" id="viewerThumbs"></div>
-
-    <!-- Info do produto -->
     <div class="viewerBody" id="viewerBody"></div>
-
-    <!-- Botões -->
     <div class="viewerActions">
       <button class="viewerAdd press" id="viewerAddBtn" onclick="viewerAddToCart()">Adicionar ao Carrinho</button>
       <button class="viewerBuy press" id="viewerBuyBtn" onclick="viewerBuyNow()">Comprar Agora</button>
     </div>
   </div>
 </div>
-<!-- FIM VIEWER -->
 
-<!-- ===== PIX CHECKOUT SHEET ===== -->
+<!-- PIX CHECKOUT SHEET -->
 <div class="pixOverlay" id="pixOverlay">
   <div class="pixSheet" id="pixSheet">
     <div class="pixHandle"></div>
     <div class="pixSheetHead">
       <h3 id="pixSheetTitle">Finalizar com PIX</h3>
-      <button class="pixClose" onclick="closePixModal()">×</button>
+      <button class="pixClose" onclick="closePixModal()">x</button>
     </div>
 
     <div class="pixLoading" id="pixLoading">
       <div class="spinner"></div>
-      <p>Gerando cobrança PIX...</p>
+      <p>Gerando cobranca PIX...</p>
     </div>
 
     <div class="pixStep active" id="pixStep1">
       <div id="pixProductPreview"></div>
       <div class="deliverySection">
-        <h4>🚚 Escolha a entrega</h4>
+        <h4>Escolha a entrega</h4>
         <div class="deliveryOpts">
           <div class="deliveryOpt selected" id="optPAC" onclick="selectDelivery('PAC')">
             <div class="deliveryRadio" id="radioPAC"><span></span></div>
             <div class="deliveryLabel">
-              <b>PAC Correios <span class="deliveryBadge">GRÁTIS</span></b>
-              <span>Entrega em 1 a 3 dias úteis</span>
+              <b>PAC Correios <span class="deliveryBadge">GRATIS</span></b>
+              <span>Entrega em 1 a 3 dias uteis</span>
             </div>
-            <div class="deliveryPrice">Grátis</div>
+            <div class="deliveryPrice">Gratis</div>
           </div>
           <div class="deliveryOpt" id="optSEDEX" onclick="selectDelivery('SEDEX')">
             <div class="deliveryRadio" id="radioSEDEX"></div>
             <div class="deliveryLabel">
               <b>SEDEX Correios</b>
-              <span>Entrega expressa em até 18 horas</span>
+              <span>Entrega expressa em ate 18 horas</span>
             </div>
             <div class="deliveryPrice sedex-price">+ R$ 21,82</div>
           </div>
@@ -652,7 +618,7 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
         <input type="email" id="fEmail" placeholder="seuemail@email.com" autocomplete="email">
       </div>
       <button class="pixSubmitBtn press" id="pixSubmitBtn" onclick="submitPixForm()">Gerar QR Code PIX</button>
-      <div class="note" style="margin-bottom:10px">🔒 Pagamento 100% seguro · Ambiente criptografado</div>
+      <div class="note" style="margin-bottom:10px">Pagamento 100% seguro - Ambiente criptografado</div>
     </div>
 
     <div class="pixStep" id="pixStep2">
@@ -666,12 +632,12 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
         <div class="qrValueBox" id="qrValueBox">
           <small>Valor a pagar</small>
           <b id="qrValueDisplay">R$ 0,00</b>
-          <span id="qrDeliveryDisplay">PAC Correios — Frete grátis</span>
+          <span id="qrDeliveryDisplay">PAC Correios - Frete gratis</span>
         </div>
-        <div class="pixTimer">⏱ Expira em <span id="pixCountdown">15:00</span></div>
+        <div class="pixTimer">Expira em <span id="pixCountdown">15:00</span></div>
         <button class="copyCodeBtn press" onclick="copyPixCode()">
           <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copiar código PIX (Copia e Cola)
+          Copiar codigo PIX (Copia e Cola)
         </button>
         <div class="pixCodeSmall" id="pixCodeSmall"></div>
       </div>
@@ -683,15 +649,14 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
           <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
         </div>
         <h3>Pagamento confirmado!</h3>
-        <p>Recebemos seu pagamento com sucesso.<br>Em breve você receberá a confirmação por e-mail.</p>
+        <p>Recebemos seu pagamento com sucesso.<br>Em breve voce recebera a confirmacao por e-mail.</p>
         <button class="pixConfirmClose press" onclick="closePixModal()">Continuar comprando</button>
       </div>
     </div>
   </div>
 </div>
-<!-- FIM PIX -->
 
-<!-- ===== APP ===== -->
+<!-- APP -->
 <div class="app">
 
 <header class="topbar">
@@ -710,13 +675,13 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 
 <section id="homePage" class="page active">
   <div class="hero">
-    <small>6.6 MEGA PROMO • OFERTAS LIMITADAS</small>
-    <h1>Até 80%<br>Off no PIX</h1>
-    <p>Frete grátis • desconto exclusivo • compra segura</p>
+    <small>6.6 MEGA PROMO - OFERTAS LIMITADAS</small>
+    <h1>Ate 80%<br>Off no PIX</h1>
+    <p>Frete gratis - desconto exclusivo - compra segura</p>
     <a class="press" href="#productsGrid">Comprar Agora</a>
   </div>
   <div class="timer">
-    <span>Promoção válida somente hoje</span>
+    <span>Promocao valida somente hoje</span>
     <b id="countdown">--:--:--</b>
   </div>
   <div class="coupons">
@@ -724,19 +689,19 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
       <h2>Cupons novos clientes</h2>
       <button class="couponBtn press" id="couponBtn" onclick="applyCoupon()">
         Cupom 80% OFF
-        <small>Clique para resgatar frete grátis</small>
+        <small>Clique para resgatar frete gratis</small>
       </button>
     </div>
     <div class="couponGrid">
-      <div class="coupon"><b>Frete grátis</b><span>no envio</span></div>
+      <div class="coupon"><b>Frete gratis</b><span>no envio</span></div>
       <div class="coupon"><b>80%</b><span>OFF aplicado</span></div>
-      <div class="coupon"><b>6.6</b><span>sem mínimo</span></div>
+      <div class="coupon"><b>6.6</b><span>sem minimo</span></div>
     </div>
   </div>
   <div class="tabs">
     <span class="active">Todos</span>
     <span class="promo">6.6</span>
-    <span>Eletrônicos</span>
+    <span>Eletronicos</span>
     <span>Casa</span>
     <span>Beleza</span>
   </div>
@@ -746,41 +711,41 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 <section id="favoritesPage" class="page">
   <h2 class="sectionTitle">Favoritos</h2>
   <main class="grid" id="favoritesGrid"></main>
-  <div class="empty" id="favEmpty"><b>Nenhum favorito ainda</b>Toque no coração dos produtos.</div>
+  <div class="empty" id="favEmpty"><b>Nenhum favorito ainda</b>Toque no coracao dos produtos.</div>
 </section>
 
 <section id="cartPage" class="page">
   <h2 class="sectionTitle">Carrinho</h2>
   <div class="cartBox" id="cartList"></div>
-  <div class="empty" id="cartEmpty"><b>Seu carrinho está vazio</b>Adicione 1 produto por compra.</div>
+  <div class="empty" id="cartEmpty"><b>Seu carrinho esta vazio</b>Adicione 1 produto por compra.</div>
   <div class="checkoutPanel" id="checkoutPanel">
     <h2>Resumo do pedido</h2>
     <div id="checkoutItems"></div>
     <hr style="border:0;border-top:1px solid #eee;margin:12px 0">
     <div class="row"><span>Subtotal</span><b id="subTotal">R$ 0,00</b></div>
-    <div class="row"><span>Frete</span><b style="color:#008b8b">Grátis</b></div>
-    <div class="row"><span>Cupom</span><b id="couponText">Já aplicado nos preços</b></div>
+    <div class="row"><span>Frete</span><b style="color:#008b8b">Gratis</b></div>
+    <div class="row"><span>Cupom</span><b id="couponText">Ja aplicado nos precos</b></div>
     <div class="row"><span>Total</span><b class="total" id="finalTotal">R$ 0,00</b></div>
     <button class="fakePay press" onclick="openPixFromCheckout()">Pagar com PIX</button>
-    <div class="note">🔒 Pagamento seguro via PIX</div>
+    <div class="note">Pagamento seguro via PIX</div>
   </div>
 </section>
 
 <section id="ordersPage" class="page">
   <h2 class="sectionTitle">Pedidos</h2>
-  <div class="empty"><b>Central de pedidos</b>Seus pedidos aparecerão aqui após a finalização.</div>
+  <div class="empty"><b>Central de pedidos</b>Seus pedidos aparecerao aqui apos a finalizacao.</div>
 </section>
 
-</div><!-- /app -->
+</div>
 
 <div class="cartSummary" id="cartSummary">
-  <div><small>Frete grátis</small><b id="cartTotal">R$ 0,00</b></div>
+  <div><small>Frete gratis</small><b id="cartTotal">R$ 0,00</b></div>
   <button class="press" onclick="openInternalCheckout()">Finalizar compra</button>
 </div>
 
 <nav class="bottomNav">
   <button class="nav active" onclick="showPage('home')" id="nav-home">
-    <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>Início
+    <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>Inicio
   </button>
   <button class="nav" onclick="showPage('favorites')" id="nav-favorites">
     <svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>Favoritos
@@ -804,299 +769,50 @@ button:active,.press:active{transform:translateY(4px) scale(.985)!important;box-
 
 <script>
 /* ============================================================
-   CONFIG — API PIX
+   CONFIG - API PIX
    ============================================================ */
 const DUTTYFY_URL = "https://www.pagamentos-seguros.app/api-pix/H2wSBp_v_JYqT-2i8md1309aZnPLoiJKlSl-d4B_m1pZ1s4YAN51Kwv0C65viAK2kNgoYyKrPYbW9TbhOp1dyw";
 
 /* ============================================================
-   PRODUTOS — 4 fotos locais cada
-   ESTRUTURA: fotos/produto_XX/foto1.jpg ... foto4.jpg
+   PRODUTOS
    ============================================================ */
 const products = [
-  {
-    id:1,
-    name:"Samsung Smart TV 70'' Crystal UHD 4K + Soundbar",
-    old:"R$ 5.699,00", price:"R$ 689,90",
-    photos:[
-      "smart1.jpg",
-    "smart2.jpg",
-    "smart3.jpg",
-    "smart4.jpg"
-    ],
-    rating:"4.8 | 5374 vendidos", tag:"6.6", highlight:"best", label:"Mais vendido",
-    stock:null, stockLabel:null
-  },
-  {
-    id:2,
-    name:"Air Fryer Mondial AFO-25L-BI 25L",
-    old:"R$ 899,00", price:"R$ 139,90",
-    photos:[
-      "air1.jpg",
-      "air2.jpg",
-      "air3.jpg",
-      "air4.jpg"
-    ],
-    rating:"4.7 | 2241 vendidos", tag:"Oferta", highlight:"", label:"",
-    stock:null, stockLabel:null
-  },
-  {
-    id:3,
-    name:"Caixa de Som JBL Boombox 4 Portátil",
-    old:"R$ 2.319,20", price:"R$ 399,90",
-    photos:[
-      "jbl1.jpg",
-"jbl2.jpg",
-"jbl3.jpg",
-"jbl4.jpg"
-    ],
-    rating:"4.9 | 891 vendidos", tag:"6.6", highlight:"ratingPlus", label:"Melhor avaliado",
-    stock:null, stockLabel:null
-  },
-  {
-    id:4,
-    name:"Churrasqueira elétrica Arno GPRA preta",
-    old:"R$ 377,29", price:"R$ 55,82",
-    photos:[
-      "churra1.jpg",
-"churra2.jpg",
-"churra3.jpg",
-"churra4.jpg"
-    ],
-    rating:"4.6 | 774 vendidos", tag:"Casa", highlight:"", label:"",
-    stock:null, stockLabel:null
-  },
-  {
-    id:5,
-    name:"Caixa Térmica Cooler SUV 20L",
-    old:"R$ 137,60", price:"R$ 23,42",
-    photos:[
-      "cooler1.jpg",
-"cooler2.jpg",
-"cooler3.jpg",
-"cooler4.jpg"
-    ],
-    rating:"4.5 | 421 vendidos", tag:"Promo", highlight:"", label:"",
-    stock:null, stockLabel:null
-  },
-  {
-    id:6,
-    name:"Projetor multimídia 5200 lúmens Full HD",
-    old:"R$ 1.349,91", price:"R$ 269,90",
-    photos:[
-      "proj1.jpg",
-"proj2.jpg",
-"proj3.jpg",
-"proj4.jpg"
-    ],
-    rating:"4.7 | 1205 vendidos", tag:"6.6", highlight:"lightning", label:"Oferta relâmpago",
-    stock:null, stockLabel:null
-  },
-  {
-    id:7,
-    name:"Kit Body Splash Mother Extraordinaire",
-    old:"R$ 118,90", price:"R$ 23,99",
-    photos:[
-      "body1.jpg",
-"body2.jpg",
-"body3.jpg",
-"body4.jpg"
-    ],
-    rating:"4.8 | 685 vendidos", tag:"Beleza", highlight:"women", label:"Preferido da mulherada",
-    stock:null, stockLabel:null
-  },
-  {
-    id:8,
-    name:"Kit 10 Chapéus Natanzinho Original",
-    old:"R$ 56,90", price:"R$ 26,90",
-    photos:[
-      "chapeu1.jpg",
-"chapeu2.jpg",
-"chapeu3.jpg",
-"chapeu4.jpg"
-    ],
-    rating:"4.4 | 219 vendidos", tag:"Oferta", highlight:"", label:"",
-    stock:null, stockLabel:null
-  },
-  {
-    id:9,
-    name:"Jogo de Ferramentas 169 Peças",
-    old:"R$ 289,90", price:"R$ 22,90",
-    photos:[
-      "ferr1.jpg",
-"ferr2.jpg",
-"ferr3.jpg",
-"ferr4.jpg"
-    ],
-    rating:"4.6 | 984 vendidos", tag:"Casa", highlight:"", label:"",
-    stock:null, stockLabel:null
-  },
-  {
-    id:10,
-    name:"Apple iPhone 14 (128 GB) - Azul - Distribuidor Autorizado",
-    old:"R$ 2.899,90", price:"R$ 789,90",
-    photos:[
-      "iphone1.jpg",
-"iphone2.jpg",
-"iphone3.jpg",
-"iphone4.jpg"
-    ],
-    rating:"5.0 | 3821 vendidos", tag:"Apple", highlight:"apple", label:"🔥 Imperdível",
-    stock:1, stockLabel:"Apenas 1 unidade!"
-  },
-  {
-    id:11,
-    name:"Tablet 12GB RAM 512GB 10.1'' Dual SIM 5G Câmera 30MP Android 8000mAh Preto",
-    old:"R$ 829,90", price:"R$ 99,90",
-    photos:[
-      "tablet1.jpg",
-"tablet2.jpg",
-"tablet3.jpg",
-"tablet4.jpg"
-    ],
-    rating:"4.7 | 1540 vendidos", tag:"Eletrônicos", highlight:"lightning", label:"Oferta relâmpago",
-    stock:1, stockLabel:"Última unidade!"
-  },
-  {
-    id:12,
-    name:"Xiaomi POCO X8 Pro Max 256GB 5G 12GB RAM NFC Versão Global Original",
-    old:"R$ 1.299,90", price:"R$ 339,22",
-    photos:[
-      "poco1.jpg",
-"poco2.jpg",
-"poco3.jpg",
-"poco4.jpg"
-    ],
-    rating:"4.8 | 2104 vendidos", tag:"6.6", highlight:"best", label:"Mais vendido",
-    stock:3, stockLabel:"3 em estoque"
-  },
-  {
-    id:13,
-    name:"Escova Secadora Alisador Elétrica 3 Em 1 Hair Styler FANG 110V",
-    old:"R$ 89,90", price:"R$ 24,90",
-    photos:[
-      "escova1.jpg",
-"escova2.jpg",
-"escova3.jpg",
-"escova4.jpg"
-    ],
-    rating:"4.6 | 3312 vendidos", tag:"Beleza", highlight:"women", label:"Preferido da mulherada",
-    stock:1, stockLabel:"Última unidade!"
-  },
-  {
-    id:14,
-    name:"PC Gamer Agaron Intel i5 9th / Ryzen 5 5500 NVidia GeForce 16GB RAM SSD Gabinete Aquário",
-    old:"R$ 1.879,90", price:"R$ 694,32",
-    photos:[
-      "pc1.jpg",
-"pc2.jpg",
-"pc3.jpg",
-"pc4.jpg"
-    ],
-    rating:"4.9 | 876 vendidos", tag:"Eletrônicos", highlight:"gaming", label:"Gamer",
-    stock:null, stockLabel:null
-  },
-  {
-    id:15,
-    name:"Kit 30 Calcinhas Tanga Algodão Elástico Exposto Cotton Tamanho Único Ajustável",
-    old:"R$ 89,90", price:"R$ 22,74",
-    photos:[
-      "calc1.jpg",
-"calc2.jpg",
-"calc3.jpg",
-"calc4.jpg"
-    ],
-    rating:"4.7 | 5621 vendidos", tag:"Moda", highlight:"women", label:"Preferido da mulherada",
-    stock:null, stockLabel:null
-  },
-  {
-    id:16,
-    name:"Kit 10 Calcinhas Microfibra Fio Dental Regulagem Lingerie Sexy Tamanho M",
-    old:"R$ 69,90", price:"R$ 19,90",
-    photos:[
-      "fio1.jpg",
-"fio2.jpg",
-"fio3.jpg",
-"fio4.jpg"
-    ],
-    rating:"4.6 | 4103 vendidos", tag:"Moda", highlight:"women", label:"",
-    stock:null, stockLabel:null
-  },
-  {
-    id:17,
-    name:"Videogame Stick 10 Mil Jogos 2 Controles Sem Fio Console Portátil Retro",
-    old:"R$ 129,90", price:"R$ 27,90",
-    photos:[
-      "stick1.jpg",
-"stick2.jpg",
-"stick3.jpg",
-"stick4.jpg"
-    ],
-    rating:"4.5 | 2287 vendidos", tag:"Games", highlight:"gaming", label:"Gamer",
-    stock:null, stockLabel:null
-  },
-  {
-    id:18,
-    name:"PlayStation 5 Slim Mídia Digital 2 Controles + Jogo Aleatório + Headset Brinde",
-    old:"R$ 5.789,90", price:"R$ 779,90",
-    photos:[
-      "ps1.jpg",
-"ps2.jpg",
-"ps3.jpg",
-"ps4.jpg"
-    ],
-    rating:"5.0 | 1892 vendidos", tag:"Games", highlight:"gaming", label:"🎮 Top Games",
-    stock:1, stockLabel:"Apenas 1 unidade!"
-  },
-  {
-    id:19,
-    name:"AirPods Pro 3 USB-C MagSafe Cancelamento Ruído Original Garantia Apple Lacrado",
-    old:"R$ 1.679,90", price:"R$ 149,90",
-    photos:[
-      "airpods1.jpg",
-"airpods2.jpg",
-"airpods3.jpg",
-"airpods4.jpg"
-    ],
-    rating:"4.9 | 6234 vendidos", tag:"Apple", highlight:"apple", label:"🍎 Apple",
-    stock:3, stockLabel:"3 disponíveis"
-  },
-  {
-    id:20,
-    name:"Samsung Galaxy A17 4G Tela 6.7'' 128GB Super AMOLED Câmera Tripla 50MP Cinza",
-    old:"R$ 799,90", price:"R$ 289,90",
-    photos:[
-      "a171.jpg",
-"a172.jpg",
-"a173.jpg",
-"a174.jpg"
-    ],
-    rating:"4.7 | 3455 vendidos", tag:"Eletrônicos", highlight:"best", label:"Mais vendido",
-    stock:1, stockLabel:"Última unidade!"
-  }
+  {id:1,name:"Samsung Smart TV 70'' Crystal UHD 4K + Soundbar",old:"R$ 5.699,00",price:"R$ 689,90",photos:["smart1.jpg","smart2.jpg","smart3.jpg","smart4.jpg"],rating:"4.8 | 5374 vendidos",tag:"6.6",highlight:"best",label:"Mais vendido",stock:null,stockLabel:null},
+  {id:2,name:"Air Fryer Mondial AFO-25L-BI 25L",old:"R$ 899,00",price:"R$ 139,90",photos:["air1.jpg","air2.jpg","air3.jpg","air4.jpg"],rating:"4.7 | 2241 vendidos",tag:"Oferta",highlight:"",label:"",stock:null,stockLabel:null},
+  {id:3,name:"Caixa de Som JBL Boombox 4 Portátil",old:"R$ 2.319,20",price:"R$ 399,90",photos:["jbl1.jpg","jbl2.jpg","jbl3.jpg","jbl4.jpg"],rating:"4.9 | 891 vendidos",tag:"6.6",highlight:"ratingPlus",label:"Melhor avaliado",stock:null,stockLabel:null},
+  {id:4,name:"Churrasqueira elétrica Arno GPRA preta",old:"R$ 377,29",price:"R$ 55,82",photos:["churra1.jpg","churra2.jpg","churra3.jpg","churra4.jpg"],rating:"4.6 | 774 vendidos",tag:"Casa",highlight:"",label:"",stock:null,stockLabel:null},
+  {id:5,name:"Caixa Térmica Cooler SUV 20L",old:"R$ 137,60",price:"R$ 23,42",photos:["cooler1.jpg","cooler2.jpg","cooler3.jpg","cooler4.jpg"],rating:"4.5 | 421 vendidos",tag:"Promo",highlight:"",label:"",stock:null,stockLabel:null},
+  {id:6,name:"Projetor multimídia 5200 lúmens Full HD",old:"R$ 1.349,91",price:"R$ 269,90",photos:["proj1.jpg","proj2.jpg","proj3.jpg","proj4.jpg"],rating:"4.7 | 1205 vendidos",tag:"6.6",highlight:"lightning",label:"Oferta relâmpago",stock:null,stockLabel:null},
+  {id:7,name:"Kit Body Splash Mother Extraordinaire",old:"R$ 118,90",price:"R$ 23,99",photos:["body1.jpg","body2.jpg","body3.jpg","body4.jpg"],rating:"4.8 | 685 vendidos",tag:"Beleza",highlight:"women",label:"Preferido da mulherada",stock:null,stockLabel:null},
+  {id:8,name:"Kit 10 Chapéus Natanzinho Original",old:"R$ 56,90",price:"R$ 26,90",photos:["chapeu1.jpg","chapeu2.jpg","chapeu3.jpg","chapeu4.jpg"],rating:"4.4 | 219 vendidos",tag:"Oferta",highlight:"",label:"",stock:null,stockLabel:null},
+  {id:9,name:"Jogo de Ferramentas 169 Peças",old:"R$ 289,90",price:"R$ 22,90",photos:["ferr1.jpg","ferr2.jpg","ferr3.jpg","ferr4.jpg"],rating:"4.6 | 984 vendidos",tag:"Casa",highlight:"",label:"",stock:null,stockLabel:null},
+  {id:10,name:"Apple iPhone 14 (128 GB) - Azul - Distribuidor Autorizado",old:"R$ 2.899,90",price:"R$ 789,90",photos:["iphone1.jpg","iphone2.jpg","iphone3.jpg","iphone4.jpg"],rating:"5.0 | 3821 vendidos",tag:"Apple",highlight:"apple",label:"Imperdivel",stock:1,stockLabel:"Apenas 1 unidade!"},
+  {id:11,name:"Tablet 12GB RAM 512GB 10.1'' Dual SIM 5G Câmera 30MP Android 8000mAh Preto",old:"R$ 829,90",price:"R$ 99,90",photos:["tablet1.jpg","tablet2.jpg","tablet3.jpg","tablet4.jpg"],rating:"4.7 | 1540 vendidos",tag:"Eletronicos",highlight:"lightning",label:"Oferta relampago",stock:1,stockLabel:"Ultima unidade!"},
+  {id:12,name:"Xiaomi POCO X8 Pro Max 256GB 5G 12GB RAM NFC Versão Global Original",old:"R$ 1.299,90",price:"R$ 339,22",photos:["poco1.jpg","poco2.jpg","poco3.jpg","poco4.jpg"],rating:"4.8 | 2104 vendidos",tag:"6.6",highlight:"best",label:"Mais vendido",stock:3,stockLabel:"3 em estoque"},
+  {id:13,name:"Escova Secadora Alisador Elétrica 3 Em 1 Hair Styler FANG 110V",old:"R$ 89,90",price:"R$ 24,90",photos:["escova1.jpg","escova2.jpg","escova3.jpg","escova4.jpg"],rating:"4.6 | 3312 vendidos",tag:"Beleza",highlight:"women",label:"Preferido da mulherada",stock:1,stockLabel:"Ultima unidade!"},
+  {id:14,name:"PC Gamer Agaron Intel i5 9th / Ryzen 5 5500 NVidia GeForce 16GB RAM SSD Gabinete Aquario",old:"R$ 1.879,90",price:"R$ 694,32",photos:["pc1.jpg","pc2.jpg","pc3.jpg","pc4.jpg"],rating:"4.9 | 876 vendidos",tag:"Eletronicos",highlight:"gaming",label:"Gamer",stock:null,stockLabel:null},
+  {id:15,name:"Kit 30 Calcinhas Tanga Algodão Elástico Exposto Cotton Tamanho Único Ajustável",old:"R$ 89,90",price:"R$ 22,74",photos:["calc1.jpg","calc2.jpg","calc3.jpg","calc4.jpg"],rating:"4.7 | 5621 vendidos",tag:"Moda",highlight:"women",label:"Preferido da mulherada",stock:null,stockLabel:null},
+  {id:16,name:"Kit 10 Calcinhas Microfibra Fio Dental Regulagem Lingerie Sexy Tamanho M",old:"R$ 69,90",price:"R$ 19,90",photos:["fio1.jpg","fio2.jpg","fio3.jpg","fio4.jpg"],rating:"4.6 | 4103 vendidos",tag:"Moda",highlight:"women",label:"",stock:null,stockLabel:null},
+  {id:17,name:"Videogame Stick 10 Mil Jogos 2 Controles Sem Fio Console Portátil Retro",old:"R$ 129,90",price:"R$ 27,90",photos:["stick1.jpg","stick2.jpg","stick3.jpg","stick4.jpg"],rating:"4.5 | 2287 vendidos",tag:"Games",highlight:"gaming",label:"Gamer",stock:null,stockLabel:null},
+  {id:18,name:"PlayStation 5 Slim Mídia Digital 2 Controles + Jogo Aleatório + Headset Brinde",old:"R$ 5.789,90",price:"R$ 779,90",photos:["ps1.jpg","ps2.jpg","ps3.jpg","ps4.jpg"],rating:"5.0 | 1892 vendidos",tag:"Games",highlight:"gaming",label:"Top Games",stock:1,stockLabel:"Apenas 1 unidade!"},
+  {id:19,name:"AirPods Pro 3 USB-C MagSafe Cancelamento Ruído Original Garantia Apple Lacrado",old:"R$ 1.679,90",price:"R$ 149,90",photos:["airpods1.jpg","airpods2.jpg","airpods3.jpg","airpods4.jpg"],rating:"4.9 | 6234 vendidos",tag:"Apple",highlight:"apple",label:"Apple",stock:3,stockLabel:"3 disponiveis"},
+  {id:20,name:"Samsung Galaxy A17 4G Tela 6.7'' 128GB Super AMOLED Câmera Tripla 50MP Cinza",old:"R$ 799,90",price:"R$ 289,90",photos:["a171.jpg","a172.jpg","a173.jpg","a174.jpg"],rating:"4.7 | 3455 vendidos",tag:"Eletronicos",highlight:"best",label:"Mais vendido",stock:1,stockLabel:"Ultima unidade!"}
 ];
 
-/* Foto fallback — usada se a foto local não carregar */
 const FALLBACK = "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&q=80";
 
-const names = [
-  "Mariana","Carlos","Fernanda","João","Patrícia","Lucas","Rafael","Aline","Bruno","Camila",
-  "Juliana","Mateus","Gabriela","Thiago","Larissa","Eduardo","Renata","Vinícius","Bianca","Felipe",
-  "Isabela","Gustavo","Amanda","Rodrigo","Vanessa","Diego","Letícia","Marcelo","Natália","André"
-];
+const names = ["Mariana","Carlos","Fernanda","Joao","Patricia","Lucas","Rafael","Aline","Bruno","Camila","Juliana","Mateus","Gabriela","Thiago","Larissa","Eduardo","Renata","Vinicius","Bianca","Felipe","Isabela","Gustavo","Amanda","Rodrigo","Vanessa","Diego","Leticia","Marcelo","Natalia","Andre"];
 
 /* ============================================================
-   ESTADO — carrinho: 1 produto, quantidade fixa = 1
+   ESTADO
    ============================================================ */
 let cart          = JSON.parse(localStorage.getItem("cart")          || "[]");
 let favorites     = JSON.parse(localStorage.getItem("favorites")     || "[]");
 let couponApplied = JSON.parse(localStorage.getItem("couponApplied") || "false");
 
-// Migração: se havia múltiplos itens, zera (novo modelo: 1 produto 1x)
 if(cart.length > 1){ cart = []; save(); }
-// Garante qty sempre = 1
 if(cart.length === 1 && cart[0].qty !== 1){ cart[0].qty = 1; save(); }
 
-/* PIX state */
 let pixProductId     = null;
 let pixCode          = "";
 let pixTransactionId = "";
@@ -1107,9 +823,43 @@ let pixSecondsLeft   = 900;
 let selectedDelivery = "PAC";
 const SEDEX_PRICE    = 21.82;
 
-/* Viewer state */
 let viewerProductId  = null;
 let viewerPhotoIndex = 0;
+
+/* ============================================================
+   TIKTOK PIXEL — funcoes de rastreamento
+   Regras:
+   - PageView: ja disparado no head ao carregar a pagina
+   - InitiateCheckout: dispara ao clicar em comprar (buyNow / openPixFromCheckout)
+   - Purchase: dispara SOMENTE quando API confirmar pagamento
+   - Trava window.purchaseDisparado impede disparo duplicado
+   ============================================================ */
+window.purchaseDisparado = false;
+
+function ttqFireInitiateCheckout(productId) {
+  if (typeof ttq === "undefined") return;
+  try {
+    const p = products.find(function(x){ return x.id === productId; });
+    if (!p) return;
+    ttq.track("InitiateCheckout", {
+      value: moneyToNumber(p.price),
+      currency: "BRL"
+    });
+  } catch(e) {}
+}
+
+function ttqFirePurchase(totalValue) {
+  if (typeof ttq === "undefined") return;
+  // Trava anti-duplicacao: dispara apenas uma vez por sessao de pagamento
+  if (window.purchaseDisparado) return;
+  window.purchaseDisparado = true;
+  try {
+    ttq.track("Purchase", {
+      value: totalValue,
+      currency: "BRL"
+    });
+  } catch(e) {}
+}
 
 /* ============================================================
    HELPERS
@@ -1145,8 +895,8 @@ function calcTotal(productPrice){
   return productPrice + (selectedDelivery==="SEDEX" ? SEDEX_PRICE : 0);
 }
 function cartSubtotal(){
-  return cart.reduce((s,i)=>{
-    const p=products.find(x=>x.id===i.id);
+  return cart.reduce(function(s,i){
+    const p=products.find(function(x){return x.id===i.id;});
     return s+moneyToNumber(p.price);
   },0);
 }
@@ -1167,7 +917,7 @@ function selectDelivery(type){
 function updatePixTotalDisplay(){
   let total=0;
   if(pixProductId){
-    const p=products.find(x=>x.id===pixProductId);
+    const p=products.find(function(x){return x.id===pixProductId;});
     total=calcTotal(moneyToNumber(p.price));
   }
   document.getElementById("pixTotalDisplay").innerText=brl(total);
@@ -1179,111 +929,95 @@ function updatePixTotalDisplay(){
 function stockBadgeHtml(p){
   if(!p.stockLabel) return "";
   const cls=p.stock===1?"low":"";
-  return `<div class="stockBadge ${cls}">🔥 ${p.stockLabel}</div>`;
+  return '<div class="stockBadge '+cls+'">'+p.stockLabel+'</div>';
 }
 
 /* ============================================================
-   CARDS — foto principal é photos[0]
+   CARDS
    ============================================================ */
 function heartIcon(){
-  return `<svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>`;
+  return '<svg viewBox="0 0 24 24"><path d="M20.8 4.6c-1.8-1.7-4.6-1.6-6.3.2L12 7.4 9.5 4.8C7.8 3 5 2.9 3.2 4.6c-1.9 1.8-2 4.8-.2 6.7l9 9.2 9-9.2c1.8-1.9 1.7-4.9-.2-6.7z"/></svg>';
 }
 
 function productCard(p){
   const fav  =favorites.includes(p.id);
-  const hl   =p.highlight?`featured ${p.highlight}`:"";
-  const ribbon=p.label?`<div class="ribbon ${p.highlight}">${p.label}</div>`:"";
-  const oldHtml=p.old&&p.old!==p.price?`<div class="old">${p.old}</div>`:"";
+  const hl   =p.highlight?"featured "+p.highlight:"";
+  const ribbon=p.label?'<div class="ribbon '+p.highlight+'">'+p.label+'</div>':"";
+  const oldHtml=p.old&&p.old!==p.price?'<div class="old">'+p.old+'</div>':"";
   const mainPhoto=p.photos[0];
-  // bolinhas indicadoras
-  const dots=p.photos.map((_,i)=>`<div class="imgDot${i===0?" active":""}"></div>`).join("");
-  return `
-  <div class="card ${hl}" onclick="openViewer(${p.id})">
-    ${ribbon}
-    <button class="fav press ${fav?"active":""}" onclick="event.stopPropagation();toggleFavorite(${p.id})">${heartIcon()}</button>
-    <div class="imgbox">
-      <img class="mainImg" src="${mainPhoto}" onerror="this.onerror=null;this.src='${FALLBACK}'" alt="${p.name}">
-      <div class="imgDots" id="dots_${p.id}">${dots}</div>
-    </div>
-    <div class="cardBody">
-      <span class="badge">${p.tag}</span>
-      ${stockBadgeHtml(p)}
-      <div class="title">${p.name}</div>
-      <div class="price">${p.price}</div>
-      ${oldHtml}
-      <div class="tags"><span>Frete grátis</span><span>80% OFF</span></div>
-      <div class="rating">★ ${p.rating}</div>
-      <div class="actions">
-        <button class="add press" onclick="event.stopPropagation();addToCart(${p.id})">Carrinho</button>
-        <button class="buy press" onclick="event.stopPropagation();buyNow(${p.id})">Comprar</button>
-      </div>
-    </div>
-  </div>`;
+  const dots=p.photos.map(function(_,i){return '<div class="imgDot'+(i===0?" active":"")+'"></div>';}).join("");
+  return '<div class="card '+hl+'" onclick="openViewer('+p.id+')">'+
+    ribbon+
+    '<button class="fav press '+(fav?"active":"")+'" onclick="event.stopPropagation();toggleFavorite('+p.id+')">'+heartIcon()+'</button>'+
+    '<div class="imgbox">'+
+      '<img class="mainImg" src="'+mainPhoto+'" onerror="this.onerror=null;this.src=\''+FALLBACK+'\'" alt="'+p.name+'">'+
+      '<div class="imgDots" id="dots_'+p.id+'">'+dots+'</div>'+
+    '</div>'+
+    '<div class="cardBody">'+
+      '<span class="badge">'+p.tag+'</span>'+
+      stockBadgeHtml(p)+
+      '<div class="title">'+p.name+'</div>'+
+      '<div class="price">'+p.price+'</div>'+
+      oldHtml+
+      '<div class="tags"><span>Frete gratis</span><span>80% OFF</span></div>'+
+      '<div class="rating">'+p.rating+'</div>'+
+      '<div class="actions">'+
+        '<button class="add press" onclick="event.stopPropagation();addToCart('+p.id+')">Carrinho</button>'+
+        '<button class="buy press" onclick="event.stopPropagation();buyNow('+p.id+')">Comprar</button>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
 }
 
 function renderProducts(){
   document.getElementById("productsGrid").innerHTML=products.map(productCard).join("");
 }
 function renderFavorites(){
-  const favs=products.filter(p=>favorites.includes(p.id));
+  const favs=products.filter(function(p){return favorites.includes(p.id);});
   document.getElementById("favoritesGrid").innerHTML=favs.map(productCard).join("");
   document.getElementById("favEmpty").style.display=favs.length?"none":"block";
 }
 
 /* ============================================================
-   VIEWER — galeria de fotos
+   VIEWER
    ============================================================ */
 function openViewer(id){
   viewerProductId =id;
   viewerPhotoIndex=0;
-  const p=products.find(x=>x.id===id);
-
-  // Fotos: renderiza miniatura e foto principal
+  const p=products.find(function(x){return x.id===id;});
   renderViewerPhoto();
-
-  // Miniaturas
-  const thumbsHtml=p.photos.map((src,i)=>
-    `<img class="viewerThumb${i===0?" active":""}" id="vthumb_${i}"
-         src="${src}" onerror="this.onerror=null;this.src='${FALLBACK}'"
-         onclick="viewerGoTo(${i})" alt="foto ${i+1}">`
-  ).join("");
+  const thumbsHtml=p.photos.map(function(src,i){
+    return '<img class="viewerThumb'+(i===0?" active":"")+'" id="vthumb_'+i+'" src="'+src+'" onerror="this.onerror=null;this.src=\''+FALLBACK+'\'" onclick="viewerGoTo('+i+')" alt="foto '+(i+1)+'">';
+  }).join("");
   document.getElementById("viewerThumbs").innerHTML=thumbsHtml;
-
-  // Info do produto
-  const oldHtml=p.old&&p.old!==p.price?`<span class="viewerOld">${p.old}</span>`:"";
-  document.getElementById("viewerBody").innerHTML=`
-    <span class="viewerBadge">${p.tag}</span>
-    ${stockBadgeHtml(p)}
-    <div class="viewerTitle">${p.name}</div>
-    <div class="viewerPriceRow">
-      <span class="viewerPrice">${p.price}</span>
-      ${oldHtml}
-    </div>
-    <div class="viewerRating">★ ${p.rating}</div>
-    <div class="viewerTags"><span>Frete grátis</span><span>80% OFF</span><span>Pagamento seguro</span></div>
-  `;
-
+  const oldHtml=p.old&&p.old!==p.price?'<span class="viewerOld">'+p.old+'</span>':"";
+  document.getElementById("viewerBody").innerHTML=
+    '<span class="viewerBadge">'+p.tag+'</span>'+
+    stockBadgeHtml(p)+
+    '<div class="viewerTitle">'+p.name+'</div>'+
+    '<div class="viewerPriceRow"><span class="viewerPrice">'+p.price+'</span>'+oldHtml+'</div>'+
+    '<div class="viewerRating">'+p.rating+'</div>'+
+    '<div class="viewerTags"><span>Frete gratis</span><span>80% OFF</span><span>Pagamento seguro</span></div>';
   document.getElementById("viewerOverlay").classList.add("active");
   document.body.style.overflow="hidden";
 }
 
 function renderViewerPhoto(){
-  const p=products.find(x=>x.id===viewerProductId);
+  const p=products.find(function(x){return x.id===viewerProductId;});
   if(!p) return;
   const src=p.photos[viewerPhotoIndex];
   const img=document.getElementById("viewerImgMain");
   img.src=src;
-  img.onerror=()=>{img.onerror=null;img.src=FALLBACK;};
-  document.getElementById("viewerImgCount").innerText=`${viewerPhotoIndex+1} / ${p.photos.length}`;
-  // Atualiza thumbs
-  p.photos.forEach((_,i)=>{
+  img.onerror=function(){img.onerror=null;img.src=FALLBACK;};
+  document.getElementById("viewerImgCount").innerText=(viewerPhotoIndex+1)+" / "+p.photos.length;
+  p.photos.forEach(function(_,i){
     const th=document.getElementById("vthumb_"+i);
     if(th) th.classList.toggle("active",i===viewerPhotoIndex);
   });
 }
 
 function viewerNav(dir){
-  const p=products.find(x=>x.id===viewerProductId);
+  const p=products.find(function(x){return x.id===viewerProductId;});
   if(!p) return;
   viewerPhotoIndex=(viewerPhotoIndex+dir+p.photos.length)%p.photos.length;
   renderViewerPhoto();
@@ -1306,16 +1040,15 @@ function viewerAddToCart(){
 
 function viewerBuyNow(){
   closeViewer();
-  openPixModal(viewerProductId);
+  buyNow(viewerProductId);
 }
 
-// Fecha viewer ao clicar no fundo
-document.getElementById("viewerOverlay").addEventListener("click",e=>{
+document.getElementById("viewerOverlay").addEventListener("click",function(e){
   if(e.target===document.getElementById("viewerOverlay")) closeViewer();
 });
 
 /* ============================================================
-   CARRINHO — 1 produto, quantidade fixa = 1
+   CARRINHO
    ============================================================ */
 function renderCart(){
   if(cart.length===0){
@@ -1328,50 +1061,44 @@ function renderCart(){
   }
   document.getElementById("cartEmpty").style.display="none";
   document.getElementById("cartSummary").classList.add("active");
-  document.getElementById("cartList").innerHTML=`
-  <div class="storeHead">Central de Ofertas · 1 produto</div>
-  <div class="free">Frete grátis em todos os produtos! Promoção válida até 23:59.</div>
-  ${cart.map(i=>{
-    const p=products.find(x=>x.id===i.id);
+  let html='<div class="storeHead">Central de Ofertas - 1 produto</div><div class="free">Frete gratis em todos os produtos! Promocao valida ate 23:59.</div>';
+  cart.forEach(function(i){
+    const p=products.find(function(x){return x.id===i.id;});
     const mainPhoto=p.photos[0];
-    return `
-    <div class="cartItem">
-      <img src="${mainPhoto}" onerror="this.onerror=null;this.src='${FALLBACK}'"
-           style="width:84px;height:84px;border-radius:16px;object-fit:cover;background:#eee">
-      <div class="cartInfo">
-        <h3>${p.name}</h3>
-        <div class="cartPrice">${p.price}</div>
-        <div class="cartQtyLabel">Quantidade: 1 unidade</div>
-        <button class="remove" onclick="removeCart(${p.id})">Remover</button>
-      </div>
-    </div>`;
-  }).join("")}`;
+    html+='<div class="cartItem">'+
+      '<img src="'+mainPhoto+'" onerror="this.onerror=null;this.src=\''+FALLBACK+'\'" style="width:84px;height:84px;border-radius:16px;object-fit:cover;background:#eee">'+
+      '<div class="cartInfo">'+
+        '<h3>'+p.name+'</h3>'+
+        '<div class="cartPrice">'+p.price+'</div>'+
+        '<div class="cartQtyLabel">Quantidade: 1 unidade</div>'+
+        '<button class="remove" onclick="removeCart('+p.id+')">Remover</button>'+
+      '</div>'+
+    '</div>';
+  });
+  document.getElementById("cartList").innerHTML=html;
   updateCount();
   updateTotal();
 }
 
 function addToCart(id){
-  // Já tem um produto diferente → bloqueia
   if(cart.length>0 && cart[0].id!==id){
     toast("Apenas 1 produto por compra. Remova o atual primeiro.");
     showPage("cart");
     return;
   }
-  // Já tem o mesmo produto → avisa que já está no carrinho
   if(cart.length>0 && cart[0].id===id){
-    toast("Produto já está no carrinho.");
+    toast("Produto ja esta no carrinho.");
     return;
   }
-  // Carrinho vazio → adiciona com qty=1
-  cart.push({id, qty:1});
+  cart.push({id:id, qty:1});
   save();
   renderCart();
   updateCount();
-  toast("Produto adicionado ao carrinho! 🛒");
+  toast("Produto adicionado ao carrinho!");
 }
 
 function removeCart(id){
-  cart=cart.filter(i=>i.id!==id);
+  cart=cart.filter(function(i){return i.id!==id;});
   save();
   renderCart();
   toast("Produto removido.");
@@ -1389,18 +1116,20 @@ function openInternalCheckout(){
   showPage("cart");
   document.getElementById("checkoutPanel").classList.add("active");
   const subtotal=cartSubtotal();
-  document.getElementById("checkoutItems").innerHTML=cart.map(i=>{
-    const p=products.find(x=>x.id===i.id);
-    return `<div class="row"><span>1x ${p.name.substring(0,30)}...</span><b>${brl(moneyToNumber(p.price))}</b></div>`;
-  }).join("");
+  let html="";
+  cart.forEach(function(i){
+    const p=products.find(function(x){return x.id===i.id;});
+    html+='<div class="row"><span>1x '+p.name.substring(0,30)+'...</span><b>'+brl(moneyToNumber(p.price))+'</b></div>';
+  });
+  document.getElementById("checkoutItems").innerHTML=html;
   document.getElementById("subTotal").innerText  =brl(subtotal);
-  document.getElementById("couponText").innerText="Já aplicado nos preços";
+  document.getElementById("couponText").innerText="Ja aplicado nos precos";
   document.getElementById("finalTotal").innerText=brl(subtotal);
   window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
 }
 
 function toggleFavorite(id){
-  favorites=favorites.includes(id)?favorites.filter(f=>f!==id):[...favorites,id];
+  favorites=favorites.includes(id)?favorites.filter(function(f){return f!==id;}):[].concat(favorites,[id]);
   save();
   renderProducts();
   renderFavorites();
@@ -1410,7 +1139,7 @@ function toggleFavorite(id){
 function applyCoupon(){
   couponApplied=true;save();
   updateCouponButton();
-  toast("Cupom aplicado. Os preços já refletem o desconto.");
+  toast("Cupom aplicado. Os precos ja refletem o desconto.");
 }
 function saveCouponFromModal(){
   couponApplied=true;save();
@@ -1418,7 +1147,7 @@ function saveCouponFromModal(){
   const btn=document.getElementById("saveCouponBtn");
   btn.classList.add("saved");
   btn.innerText="Cupom aplicado";
-  setTimeout(()=>{closeCouponModal();toast("Cupom 80% OFF + frete grátis aplicado.");},700);
+  setTimeout(function(){closeCouponModal();toast("Cupom 80% OFF + frete gratis aplicado.");},700);
 }
 function closeCouponModal(){
   document.getElementById("couponModal").style.display="none";
@@ -1432,8 +1161,8 @@ function updateCouponButton(){
 }
 
 function showPage(page){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
+  document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active");});
+  document.querySelectorAll(".nav").forEach(function(n){n.classList.remove("active");});
   document.getElementById(page+"Page").classList.add("active");
   const nav=document.getElementById("nav-"+page);
   if(nav) nav.classList.add("active");
@@ -1446,7 +1175,7 @@ function showPage(page){
 function toast(msg){
   const el=document.getElementById("toast");
   el.innerText=msg;el.classList.add("show");
-  setTimeout(()=>el.classList.remove("show"),1900);
+  setTimeout(function(){el.classList.remove("show");},1900);
 }
 
 /* ============================================================
@@ -1469,20 +1198,27 @@ function updateCountdown(){
 function randomPurchaseToast(){
   const name   =names[Math.floor(Math.random()*names.length)];
   const product=products[Math.floor(Math.random()*products.length)];
-  document.getElementById("purchaseTitle").innerText=`${name} acabou de comprar`;
+  document.getElementById("purchaseTitle").innerText=name+" acabou de comprar";
   document.getElementById("purchaseSub").innerText  =product.name;
   const el=document.getElementById("purchaseToast");
   el.classList.add("show");
-  setTimeout(()=>el.classList.remove("show"),4300);
+  setTimeout(function(){el.classList.remove("show");},4300);
 }
 
 /* ============================================================
-   PIX — abrir modal
+   PIX - abrir modal
    ============================================================ */
-function buyNow(id){ openPixModal(id); }
 
+// buyNow: dispara InitiateCheckout e abre o modal PIX
+function buyNow(id){
+  ttqFireInitiateCheckout(id);   // <-- InitiateCheckout aqui (clique em comprar)
+  openPixModal(id);
+}
+
+// "Pagar com PIX" no checkout interno
 function openPixFromCheckout(){
   if(cart.length===0){toast("Carrinho vazio.");return;}
+  ttqFireInitiateCheckout(cart[0].id);  // <-- InitiateCheckout aqui tambem
   openPixModal(cart[0].id);
 }
 
@@ -1495,23 +1231,26 @@ function openPixModal(id){
   pixCode         ="";
   pixTransactionId="";
 
+  // Reseta trava para nova sessao de pagamento
+  window.purchaseDisparado = false;
+
   document.getElementById("pixLoading").classList.remove("active");
   document.getElementById("pixSheetTitle").innerText ="Finalizar com PIX";
   document.getElementById("pixSubmitBtn").disabled   =false;
   document.getElementById("pixSubmitBtn").innerText  ="Gerar QR Code PIX";
-  ["fName","fCpf","fPhone","fEmail"].forEach(fid=>{
+  ["fName","fCpf","fPhone","fEmail"].forEach(function(fid){
     document.getElementById(fid).value="";
     document.getElementById(fid).classList.remove("error");
   });
   goToPixStep(1);
   selectDelivery("PAC");
 
-  const p=products.find(x=>x.id===id);
-  document.getElementById("pixProductPreview").innerHTML=`
-    <div class="pixProductLine">
-      <img src="${p.photos[0]}" onerror="this.onerror=null;this.src='${FALLBACK}'">
-      <div class="pInfo"><b>${p.name}</b><span>${p.price}</span></div>
-    </div>`;
+  const p=products.find(function(x){return x.id===id;});
+  document.getElementById("pixProductPreview").innerHTML=
+    '<div class="pixProductLine">'+
+      '<img src="'+p.photos[0]+'" onerror="this.onerror=null;this.src=\''+FALLBACK+'\'">'+
+      '<div class="pInfo"><b>'+p.name+'</b><span>'+p.price+'</span></div>'+
+    '</div>';
 
   updatePixTotalDisplay();
   document.getElementById("pixOverlay").classList.add("active");
@@ -1525,7 +1264,7 @@ function closePixModal(){
   clearInterval(pixCountdownInt);
 }
 
-document.getElementById("pixOverlay").addEventListener("click",e=>{
+document.getElementById("pixOverlay").addEventListener("click",function(e){
   if(e.target!==document.getElementById("pixOverlay")) return;
   const isLoading=document.getElementById("pixLoading").classList.contains("active");
   const isQr     =document.getElementById("pixStep2").classList.contains("active");
@@ -1534,12 +1273,12 @@ document.getElementById("pixOverlay").addEventListener("click",e=>{
 });
 
 function goToPixStep(n){
-  document.querySelectorAll(".pixStep").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".pixStep").forEach(function(s){s.classList.remove("active");});
   document.getElementById("pixStep"+n).classList.add("active");
 }
 
 /* ============================================================
-   PIX — Step 1: Validação
+   PIX - Step 1: Validacao
    ============================================================ */
 function submitPixForm(){
   const name =document.getElementById("fName").value.trim();
@@ -1553,14 +1292,15 @@ function submitPixForm(){
   mark("fPhone",phone.length>=10&&phone.length<=11);
   mark("fEmail",validateEmail(email));
   if(!ok){toast("Preencha todos os campos corretamente.");return;}
-  createPixCharge({name,cpf,phone,email});
+  createPixCharge({name:name,cpf:cpf,phone:phone,email:email});
 }
 
 /* ============================================================
-   PIX — Criar cobrança
+   PIX - Criar cobranca
    ============================================================ */
-async function createPixCharge({name,cpf,phone,email}){
-  const p        =products.find(x=>x.id===pixProductId);
+async function createPixCharge(params){
+  const name=params.name, cpf=params.cpf, phone=params.phone, email=params.email;
+  const p        =products.find(function(x){return x.id===pixProductId;});
   const priceNum =moneyToNumber(p.price);
   const total    =calcTotal(priceNum);
   const cents    =toCents(total);
@@ -1568,16 +1308,16 @@ async function createPixCharge({name,cpf,phone,email}){
     ?"SEDEX Correios (ate 18h) +R$21,82"
     :"PAC Correios (1-3 dias uteis) Frete gratis";
   const rawTitle=p.name.substring(0,60);
-  const itemTitle=`${rawTitle} - ${deliveryLabel}`.substring(0,100);
+  const itemTitle=(rawTitle+" - "+deliveryLabel).substring(0,100);
   const body={
     amount:cents,
-    customer:{name,document:digitsOnly(cpf),email,phone:digitsOnly(phone)},
+    customer:{name:name,document:digitsOnly(cpf),email:email,phone:digitsOnly(phone)},
     item:{title:itemTitle,price:cents,quantity:1},
     paymentMethod:"PIX"
   };
   const submitBtn=document.getElementById("pixSubmitBtn");
   submitBtn.disabled=true;submitBtn.innerText="Gerando PIX...";
-  document.querySelectorAll(".pixStep").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".pixStep").forEach(function(s){s.classList.remove("active");});
   document.getElementById("pixLoading").classList.add("active");
 
   function restoreForm(){
@@ -1595,7 +1335,7 @@ async function createPixCharge({name,cpf,phone,email}){
     let data={};
     try{data=await res.json();}catch(e){}
     if(!res.ok){restoreForm();toast(data.message||data.error||"Erro ao gerar PIX. Tente novamente.");return;}
-    if(!data.pixCode){restoreForm();toast("Resposta inválida da API. Tente novamente.");return;}
+    if(!data.pixCode){restoreForm();toast("Resposta invalida da API. Tente novamente.");return;}
     pixCode         =data.pixCode;
     pixTransactionId=data.transactionId||"";
     localStorage.setItem("lastPix_txId",   pixTransactionId);
@@ -1606,23 +1346,23 @@ async function createPixCharge({name,cpf,phone,email}){
   }catch(err){
     restoreForm();
     if(err.name==="TimeoutError"||err.name==="AbortError"){
-      toast("Tempo esgotado. Verifique sua conexão e tente novamente.");
+      toast("Tempo esgotado. Verifique sua conexao e tente novamente.");
     }else{
-      toast("Erro de conexão. Verifique sua internet e tente novamente.");
+      toast("Erro de conexao. Verifique sua internet e tente novamente.");
     }
   }
 }
 
 /* ============================================================
-   PIX — QR Code
+   PIX - QR Code
    ============================================================ */
 function showPixQr(total){
   goToPixStep(2);
   document.getElementById("pixSheetTitle").innerText ="Pagar com PIX";
   document.getElementById("qrValueDisplay").innerText=brl(total);
   document.getElementById("qrDeliveryDisplay").innerText=selectedDelivery==="SEDEX"
-    ?"SEDEX Correios — até 18 horas"
-    :"PAC Correios — Frete grátis";
+    ?"SEDEX Correios - ate 18 horas"
+    :"PAC Correios - Frete gratis";
   const canvas=document.getElementById("qrcodeCanvas");
   const ctx   =canvas.getContext("2d");
   ctx.clearRect(0,0,220,220);
@@ -1631,10 +1371,10 @@ function showPixQr(total){
     tmp.style.cssText="position:absolute;visibility:hidden;left:-9999px";
     document.body.appendChild(tmp);
     new QRCode(tmp,{text:pixCode,width:220,height:220,colorDark:"#111111",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});
-    setTimeout(()=>{
+    setTimeout(function(){
       const img=tmp.querySelector("img")||tmp.querySelector("canvas");
       if(img){
-        if(img.tagName==="IMG"){const i=new Image();i.onload=()=>{ctx.drawImage(i,0,0,220,220);};i.src=img.src;}
+        if(img.tagName==="IMG"){const i=new Image();i.onload=function(){ctx.drawImage(i,0,0,220,220);};i.src=img.src;}
         else{ctx.drawImage(img,0,0,220,220);}
       }
       if(document.body.contains(tmp)) document.body.removeChild(tmp);
@@ -1642,14 +1382,14 @@ function showPixQr(total){
   }catch(e){
     ctx.fillStyle="#f4f4f4";ctx.fillRect(0,0,220,220);
     ctx.fillStyle="#555";ctx.font="12px monospace";ctx.textAlign="center";
-    ctx.fillText("Use o código abaixo",110,110);
+    ctx.fillText("Use o codigo abaixo",110,110);
   }
   const short=pixCode.length>60?pixCode.substring(0,60)+"...":pixCode;
   document.getElementById("pixCodeSmall").innerText=short;
   setPixStatus("pending");
   pixSecondsLeft=900;
   updatePixCountdown();
-  pixCountdownInt=setInterval(()=>{
+  pixCountdownInt=setInterval(function(){
     pixSecondsLeft--;updatePixCountdown();
     if(pixSecondsLeft<=0){
       clearInterval(pixCountdownInt);stopPixPolling();
@@ -1673,38 +1413,67 @@ function setPixStatus(status){
 }
 function copyPixCode(){
   if(!pixCode) return;
-  navigator.clipboard.writeText(pixCode).then(()=>toast("Código PIX copiado!")).catch(()=>{
+  navigator.clipboard.writeText(pixCode).then(function(){toast("Codigo PIX copiado!");}).catch(function(){
     const ta=document.createElement("textarea");ta.value=pixCode;ta.style.cssText="position:fixed;opacity:0;top:0;left:0";
     document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}
-    document.body.removeChild(ta);toast("Código PIX copiado!");
+    document.body.removeChild(ta);toast("Codigo PIX copiado!");
   });
 }
 
 /* ============================================================
-   PIX — Polling
+   PIX - Polling
+   Aqui fica a logica central do Purchase:
+   O evento Purchase so dispara quando a API confirma o pagamento.
+   A trava window.purchaseDisparado garante que nao haja duplicatas.
    ============================================================ */
 function startPixPolling(){
   stopPixPolling();
   if(!pixTransactionId) return;
-  pixPollingTimer=setInterval(async()=>{
+  pixPollingTimer=setInterval(async function(){
     if(!pixTransactionId) return;
     try{
-      const url=`${DUTTYFY_URL}?transactionId=${encodeURIComponent(pixTransactionId)}`;
+      const url=DUTTYFY_URL+"?transactionId="+encodeURIComponent(pixTransactionId);
       const res=await fetch(url,{signal:AbortSignal.timeout(10000)});
       if(!res.ok) return;
       const data=await res.json();
-      if(data.status==="COMPLETED"){stopPixPolling();clearInterval(pixCountdownInt);onPixPaid();}
+      const status = data.status || "";
+
+      /* =====================================================
+         TIKTOK PIXEL - Purchase
+         Dispara SOMENTE quando a API retorna pagamento aprovado.
+         Nunca dispara ao abrir a pagina, ao clicar em comprar,
+         ao iniciar o checkout ou ao gerar o QR Code.
+         A trava window.purchaseDisparado garante disparo unico.
+         ===================================================== */
+      if (
+        status === "COMPLETED" ||
+        status === "PAID"      ||
+        status === "APPROVED"  ||
+        status === "paid"      ||
+        status === "approved"
+      ) {
+        const prod  = products.find(function(x){ return x.id === pixProductId; });
+        const total = prod ? calcTotal(moneyToNumber(prod.price)) : 0;
+
+        ttqFirePurchase(total); // disparo unico via trava interna
+
+        stopPixPolling();
+        clearInterval(pixCountdownInt);
+        onPixPaid();
+      }
     }catch(e){}
   },5000);
-  pixSessionTimer=setTimeout(()=>{stopPixPolling();},15*60*1000);
+  pixSessionTimer=setTimeout(function(){stopPixPolling();},15*60*1000);
 }
+
 function stopPixPolling(){
   clearInterval(pixPollingTimer);clearTimeout(pixSessionTimer);
   pixPollingTimer=null;pixSessionTimer=null;
 }
+
 function onPixPaid(){
   setPixStatus("completed");cart=[];save();renderCart();updateCount();
-  setTimeout(()=>{goToPixStep(3);document.getElementById("pixSheetTitle").innerText="Pedido confirmado";},800);
+  setTimeout(function(){goToPixStep(3);document.getElementById("pixSheetTitle").innerText="Pedido confirmado";},800);
 }
 
 /* ============================================================
